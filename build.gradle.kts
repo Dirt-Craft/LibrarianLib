@@ -216,8 +216,8 @@ dependencies {
     compile("net.shadowfacts:Forgelin:1.6.0")
 }
 
-tasks.withType<ProcessResources> {
-    val props = mapOf("version" to modVersion,
+tasks.withType<ProcessResources>("processResources") {
+    val props = mapOf("version" to version,
             "forge_version" to forgeProjectVersion,
             "mc_version" to mcVersion,
             "mod_id" to modName)
@@ -225,12 +225,12 @@ tasks.withType<ProcessResources> {
     inputs.properties(props)
 
     from(java.sourceSets["main"].resources.srcDirs) {
-        include("mcmod.info", "pack.mcmeta")
+        include("mcmod.info")
         expand(props)
     }
 
     from(java.sourceSets["main"].resources.srcDirs) {
-        exclude("mcmod.info", "pack.mcmeta")
+        exclude("mcmod.info")
     }
 
     rename("(.+_at.cfg)", "META-INF/$1")
