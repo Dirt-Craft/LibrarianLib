@@ -116,7 +116,7 @@ extensions.getByType(ForgeExtension::class.java).apply {
 }
 
 for (set in java.sourceSets) {
-    if (set != null && set.name == "test") continue
+    if (set == null || set.name == "test") continue
     val taskName = "source${set.name.capitalize()}Kotlin"
     val dir = File(project.buildDir, "sources/${set.name}/kotlin")
 
@@ -128,14 +128,14 @@ for (set in java.sourceSets) {
 
     val compileTask = tasks.withTypeIfPresent<KotlinCompile>(set.getCompileTaskName("kotlin"))
     if (compileTask != null) {
-        compileTask.source = fileTree(dir)
         compileTask.dependsOn(taskName)
         val dirPath = dir.toPath()
-        tasks.withType<KotlinCompile> {
+        tasks.withType<KotlinCompile>("compileKotlin") {
             include { it.file.toPath().startsWith(dirPath) }
         }
     }
 }
+
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {
