@@ -23,31 +23,31 @@ val SourceSet.kotlin: SourceDirectorySet
 fun SourceSet.kotlin(action: SourceDirectorySet.() -> Unit) =
         kotlin.action()
 
-inline fun <reified T: Task> task(name: String, vararg args: Pair<String, Any>)
+inline fun <reified T: Task> task(name: String, vararg args: Pair<String, Any>): Task
         = task<T>(name, *args) { }
 
-inline fun <reified T: Task> task(name: String, vararg args: Pair<String, Any>, noinline cfg: T.() -> Unit)
+inline fun <reified T: Task> task(name: String, vararg args: Pair<String, Any>, noinline cfg: T.() -> Unit): Task
         = if (!T::class.isAbstract) task(name, T::class, *args, cfg = cfg) else task(mapOf(*args), name, closureOf(cfg))
 
 
-fun <T: Task> task(name: String, type: KClass<T>, vararg args: Pair<String, Any>)
+fun <T: Task> task(name: String, type: KClass<T>, vararg args: Pair<String, Any>): Task
         = task(name, type, *args) { }
 
-fun <T: Task> task(name: String, type: KClass<T>, vararg args: Pair<String, Any>, cfg: T.() -> Unit)
+fun <T: Task> task(name: String, type: KClass<T>, vararg args: Pair<String, Any>, cfg: T.() -> Unit): Task
         = task(mapOf(*args, "type" to type.java), name, closureOf(cfg))
 
 
-inline fun <reified T : Task> TaskContainer.withType(name: String)
-        = withType<T>(name) {}
+inline fun <reified T : Task> TaskContainer.withType(name: String): T
+        = withType(name) {}
 
-inline fun <reified T : Task> TaskContainer.withType(name: String, cfg: T.() -> Unit)
+inline fun <reified T : Task> TaskContainer.withType(name: String, cfg: T.() -> Unit): T
         = withType(T::class.java).getByName(name).apply(cfg)
 
 
-inline fun <reified T : Task> TaskContainer.withTypeIfPresent(name: String)
-        = withTypeIfPresent<T>(name) {}
+inline fun <reified T : Task> TaskContainer.withTypeIfPresent(name: String): T?
+        = withTypeIfPresent(name) {}
 
-inline fun <reified T : Task> TaskContainer.withTypeIfPresent(name: String, cfg: T.() -> Unit)
+inline fun <reified T : Task> TaskContainer.withTypeIfPresent(name: String, cfg: T.() -> Unit): T?
         = withType(T::class.java).findByName(name)?.apply(cfg)
 
 
