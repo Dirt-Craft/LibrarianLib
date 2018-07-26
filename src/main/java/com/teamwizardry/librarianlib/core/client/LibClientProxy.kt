@@ -15,6 +15,7 @@ import com.teamwizardry.librarianlib.features.sprite.SpritesMetadataSection
 import com.teamwizardry.librarianlib.features.sprite.SpritesMetadataSectionSerializer
 import com.teamwizardry.librarianlib.features.sprite.Texture
 import com.teamwizardry.librarianlib.features.tesr.TileRendererRegisterProcessor
+import com.teamwizardry.librarianlib.features.utilities.DispatchQueue
 import com.teamwizardry.librarianlib.features.utilities.client.ClientRunnable
 import com.teamwizardry.librarianlib.features.utilities.client.F3Handler
 import com.teamwizardry.librarianlib.features.utilities.client.ScissorUtil
@@ -33,6 +34,7 @@ import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
+import net.minecraftforge.fml.common.gameevent.TickEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import java.io.File
@@ -47,7 +49,6 @@ import java.util.*
 class LibClientProxy : LibCommonProxy(), IResourceManagerReloadListener {
 
     init {
-        MinecraftForge.EVENT_BUS.register(this)
         if (!Minecraft.getMinecraft().framebuffer.isStencilEnabled)
             Minecraft.getMinecraft().framebuffer.enableStencil()
     }
@@ -128,26 +129,30 @@ class LibClientProxy : LibCommonProxy(), IResourceManagerReloadListener {
         GlStateManager.pushMatrix()
         GlStateManager.pushAttrib()
         val player = Minecraft.getMinecraft().player
-
-        val lastPos = vec(player.lastTickPosX, player.lastTickPosY, player.lastTickPosZ)
-        val partialOffset = (player.positionVector - lastPos) * (1 - Animation.getPartialTickTime())
-
-        val globalize = -(player.positionVector - partialOffset)
-        GlStateManager.translate(globalize.x, globalize.y, globalize.z)
-
-
-        GlStateManager.disableTexture2D()
-        GlStateManager.color(1f, 1f, 1f, 1f)
-
         val partialTicks = if (Minecraft.getMinecraft().isGamePaused)
             Minecraft.getMinecraft().renderPartialTicksPaused
         else
             Minecraft.getMinecraft().timer.renderPartialTicks
+
+        val lastPos = vec(player.lastTickPosX, player.lastTickPosY, player.lastTickPosZ)
+        val partialOffset = (player.positionVector - lastPos) * (1 - partialTicks)
+
+        val globalize = -(player.positionVector - partialOffset)
+        GlStateManager.translate(globalize.x, globalize.y, globalize.z)
+
+        GlStateManager.disableTexture2D()
+        GlStateManager.color(1f, 1f, 1f, 1f)
+
         MinecraftForge.EVENT_BUS.post(CustomWorldRenderEvent(Minecraft.getMinecraft().world, e.context, partialTicks))
 
         GlStateManager.enableTexture2D()
         GlStateManager.popAttrib()
         GlStateManager.popMatrix()
+    }
+
+    @SubscribeEvent
+    fun serverTick(e: TickEvent.ClientTickEvent) {
+        DispatchQueue.clientThread.runJobs()
     }
 }
 

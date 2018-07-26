@@ -13,21 +13,26 @@ import com.teamwizardry.librarianlib.features.gui.provided.book.structure.Struct
 import com.teamwizardry.librarianlib.features.helpers.VariantHelper
 import com.teamwizardry.librarianlib.features.kotlin.times
 import com.teamwizardry.librarianlib.features.saving.SavingFieldCache
+import com.teamwizardry.librarianlib.features.utilities.DispatchQueue
 import com.teamwizardry.librarianlib.features.utilities.JsonGenerationUtils.generatedFiles
 import com.teamwizardry.librarianlib.features.utilities.client.ClientRunnable
 import com.teamwizardry.librarianlib.features.utilities.unsafeAllowedModIds
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.util.text.translation.I18n
+import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.FMLCommonHandler
 import net.minecraftforge.fml.common.Loader
 import net.minecraftforge.fml.common.discovery.ASMDataTable
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
+import net.minecraftforge.fml.common.gameevent.TickEvent
 import net.minecraftforge.fml.common.network.NetworkRegistry
 import java.io.File
 import java.io.InputStream
 import java.util.*
+import java.util.concurrent.ExecutorService
 
 /**
  * @author WireSegal
@@ -37,6 +42,8 @@ open class LibCommonProxy {
 
     lateinit var asmDataTable: ASMDataTable
         private set
+
+    init { MinecraftForge.EVENT_BUS.register(this) }
 
     // Internal methods for initialization
 
@@ -142,5 +149,10 @@ open class LibCommonProxy {
      * Gets the working minecraft data folder. A reasonable guess is made that the CWD is the data folder on serverside.
      */
     open fun getDataFolder() = File("")
+
+    @SubscribeEvent
+    fun serverTick(e: TickEvent.ServerTickEvent) {
+        DispatchQueue.serverThread.runJobs()
+    }
 }
 
