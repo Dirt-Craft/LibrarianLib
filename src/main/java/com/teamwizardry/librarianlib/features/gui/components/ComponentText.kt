@@ -6,9 +6,10 @@ import com.teamwizardry.librarianlib.features.helpers.vec
 import com.teamwizardry.librarianlib.features.math.BoundingBox2D
 import com.teamwizardry.librarianlib.features.math.Vec2d
 import net.minecraft.client.Minecraft
+import net.minecraft.client.renderer.GlStateManager
 import java.awt.Color
 
-class ComponentText @JvmOverloads constructor(posX: Int, posY: Int, var horizontal: ComponentText.TextAlignH = ComponentText.TextAlignH.LEFT, var vertical: ComponentText.TextAlignV = ComponentText.TextAlignV.TOP) : GuiComponent(posX, posY) {
+open class ComponentText @JvmOverloads constructor(posX: Int, posY: Int, var horizontal: ComponentText.TextAlignH = ComponentText.TextAlignH.LEFT, var vertical: ComponentText.TextAlignV = ComponentText.TextAlignV.TOP) : GuiComponent(posX, posY) {
 
     /**
      * The text to draw
@@ -111,11 +112,11 @@ class ComponentText @JvmOverloads constructor(posX: Int, posY: Int, var horizont
         }
     }
 
-    fun sizeToText() {
+    open fun sizeToText() {
         this.size = contentSize.size
     }
 
-    val contentSize: BoundingBox2D
+    open val contentSize: BoundingBox2D
         get() {
             val wrap = this.wrap.getValue(this)
 
