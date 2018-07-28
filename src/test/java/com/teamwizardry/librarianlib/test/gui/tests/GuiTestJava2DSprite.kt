@@ -2,10 +2,7 @@ package com.teamwizardry.librarianlib.test.gui.tests
 
 import com.teamwizardry.librarianlib.features.gui.GuiBase
 import com.teamwizardry.librarianlib.features.gui.component.GuiComponentEvents
-import com.teamwizardry.librarianlib.features.gui.components.ComponentJava2DText
-import com.teamwizardry.librarianlib.features.gui.components.ComponentRect
-import com.teamwizardry.librarianlib.features.gui.components.ComponentSprite
-import com.teamwizardry.librarianlib.features.gui.components.ComponentText
+import com.teamwizardry.librarianlib.features.gui.components.*
 import com.teamwizardry.librarianlib.features.helpers.vec
 import com.teamwizardry.librarianlib.features.java2d.SimpleStringRenderer
 import com.teamwizardry.librarianlib.features.sprite.ISprite
@@ -39,10 +36,10 @@ class GuiTestJava2DSprite : GuiBase(300, 150) {
         c3.color.setValue(Color.BLACK)
         mainComponents.add(c3)
         //==================================================================
-        val j2dTextComponent = ComponentJava2DText(1, 1)
-        j2dTextComponent.size = vec(150, 150)
+        val j2dTextComponent = ComponentJavaFxText(1, 1)
+        j2dTextComponent.size = vec(150, 300)
         j2dTextComponent.text.setValue(
-                "Lorem ipsum dolor §2sit amet§r, §lconsectetur§r adipiscing §melit.§r" +
+                "\u2588 Lorem ipsum dolor §2sit amet§r, §lconsectetur§r adipiscing §melit.§r" +
                 " §nInteger a§r orci ut arcu scelerisque tempus. Nunc finibus, erat non pellentesque egestas," +
                 " neque massa volutpat lectus, eu consequat sapien lacus ut lorem."
         )

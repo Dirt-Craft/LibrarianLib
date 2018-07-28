@@ -20,6 +20,14 @@ object SimpleStringRenderer {
     val unifont: Font = Font.createFont(Font.TRUETYPE_FONT, Minecraft.getMinecraft().
             resourceManager.getResource("librarianlib:fonts/unifont-11.0.01.ttf".toRl()).inputStream
     )
+    @JvmStatic
+    val jfxUnifont: javafx.scene.text.Font = {
+        val inputStream = Minecraft.getMinecraft().resourceManager
+                .getResource("librarianlib:fonts/unifont-11.0.01.ttf".toRl()).inputStream
+        val font = javafx.scene.text.Font.loadFont(inputStream, 8.0)
+        inputStream.close()
+        font
+    }()
 
     fun createAttributedString(mcString: String, defaultAttributes: Map<TextAttribute, Any>): AttributedString {
         val builder = AttributedStringBuilder()

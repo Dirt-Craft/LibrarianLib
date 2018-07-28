@@ -27,6 +27,12 @@ class Java2DSprite(width: Int, height: Int) : ISprite {
 
     init {
         TextureUtil.allocateTexture(texID, width, height)
+        begin(clear = true)
+        end()
+    }
+
+    fun edit(): BufferedImage {
+        return image
     }
 
     @JvmOverloads
@@ -59,7 +65,7 @@ class Java2DSprite(width: Int, height: Int) : ISprite {
 
     fun finalize() {
         val id = texID
-        DispatchQueue.Companion.clientThread.dispatch {
+        DispatchQueue.clientThread.dispatch {
             LibrarianLog.debug("Deleting Java2DSprite $id")
             TextureUtil.deleteTexture(id)
         }
