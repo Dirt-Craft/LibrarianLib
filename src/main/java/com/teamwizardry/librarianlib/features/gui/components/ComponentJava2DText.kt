@@ -1,17 +1,15 @@
 package com.teamwizardry.librarianlib.features.gui.components
 
-import com.teamwizardry.librarianlib.features.gui.component.GuiComponent
 import com.teamwizardry.librarianlib.features.helpers.vec
-import com.teamwizardry.librarianlib.features.java2d.SimpleStringRenderer
+import com.teamwizardry.librarianlib.features.java2d.ColoredStrikeThroughText
 import com.teamwizardry.librarianlib.features.math.BoundingBox2D
 import com.teamwizardry.librarianlib.features.math.Vec2d
 import com.teamwizardry.librarianlib.features.sprite.Java2DSprite
+import com.teamwizardry.librarianlib.features.utilities.DispatchQueue
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.ScaledResolution
-import java.awt.BasicStroke
-import java.awt.Color
-import java.awt.RenderingHints
-import java.awt.font.TextAttribute
+import java.awt.Dimension
+import javax.swing.SwingUtilities
 
 class ComponentJava2DText @JvmOverloads constructor(
         posX: Int, posY: Int,
@@ -24,6 +22,7 @@ class ComponentJava2DText @JvmOverloads constructor(
     private var currentSize: Vec2d = size
     private var currentText: String = ""
     private var currentScale: Int = 0
+    private var mcTextPane = ColoredStrikeThroughText()
 
     init {
         this.add(spriteComponent)
@@ -31,19 +30,27 @@ class ComponentJava2DText @JvmOverloads constructor(
     }
 
     private fun redraw() {
-        val g2d = sprite.begin()
-        g2d.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON)
-        g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON)
-        g2d.scale(currentScale.toDouble(), currentScale.toDouble())
+        val dim = Dimension(currentSize.xi, currentSize.yi)
+        SwingUtilities.invokeLater {
+            mcTextPane.panel.size = dim
+            mcTextPane.panel.minimumSize = dim
+            mcTextPane.panel.maximumSize = dim
+            mcTextPane.panel.preferredSize = dim
+            val g2d = sprite.begin()
+            g2d.scale(currentScale.toDouble(), currentScale.toDouble())
+            mcTextPane.panel.paint(g2d)
+//        g2d.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON)
+//        g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON)
 
-        val wrap = this.wrap.getValue(this)
-        val attributed = SimpleStringRenderer.createAttributedString(currentText, mapOf(
-                TextAttribute.FONT to SimpleStringRenderer.unifont.deriveFont(8f),
-                TextAttribute.FOREGROUND to Color.BLACK
-        ))
-        SimpleStringRenderer.drawAttributedString(attributed, g2d, 0f) { wrap.toFloat() }
+//        val wrap = this.wrap.getValue(this)
+//        val attributed = SimpleStringRenderer.createAttributedString(currentText, mapOf(
+//                TextAttribute.FONT to SimpleStringRenderer.unifont.deriveFont(8f),
+//                TextAttribute.FOREGROUND to Color.BLACK
+//        ))
+//        SimpleStringRenderer.drawAttributedString(attributed, g2d, 0f) { wrap.toFloat() }
 
-        sprite.end()
+            DispatchQueue.clientThread.dispatch { sprite.end() }
+        }
     }
 
     override fun drawComponent(mousePos: Vec2d, partialTicks: Float) {
