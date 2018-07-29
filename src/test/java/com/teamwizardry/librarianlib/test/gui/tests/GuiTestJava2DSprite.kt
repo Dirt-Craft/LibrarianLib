@@ -40,9 +40,12 @@ class GuiTestJava2DSprite : GuiBase(300, 150) {
         val j2dTextComponent = ComponentJava2DText(-3, 0)
         j2dTextComponent.size = vec(150, 150)
         j2dTextComponent.text.setValue(
-                "\u2588 Lorem ipsum dolor §2sit amet§r, §lconsectetur§r adipiscing §melit.§r" +
-                " §nInteger a§r orci ut arcu scelerisque tempus. Nunc finibus, erat non pellentesque egestas," +
-                " neque massa volutpat lectus, eu consequat sapien lacus ut lorem."
+                "Plain text\n" +
+                        "§0R§1a§2i§3n§4b§5o§6w§7s§8! §9C§ao§bl§co§dr§es§f!§r\n" +
+                        "This is §lbold§r\n" +
+                        "This is §mstrikethrough§r\n" +
+                        "This is §nunderline§r\n" +
+                        "This is §oitalic§r\n"
         )
         mainComponents.add(j2dTextComponent)
 
@@ -50,9 +53,12 @@ class GuiTestJava2DSprite : GuiBase(300, 150) {
         textComponent.unicode.setValue(true)
         textComponent.wrap.setValue(150)
         textComponent.text.setValue(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit." +
-                " Integer a orci ut arcu scelerisque tempus. Nunc finibus, erat non pellentesque egestas," +
-                " neque massa volutpat lectus, eu consequat sapien lacus ut lorem."
+                "Plain text\n" +
+                        "§0R§1a§2i§3n§4b§5o§6w§7s§8! §9C§ao§bl§co§dr§es§f!§r\n" +
+                        "This is §lbold§r\n" +
+                        "This is §mstrikethrough§r\n" +
+                        "This is §nunderline§r\n" +
+                        "This is §oitalic§r\n"
         )
         mainComponents.add(textComponent)
     }
