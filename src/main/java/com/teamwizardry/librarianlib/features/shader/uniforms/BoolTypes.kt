@@ -32,5 +32,4 @@ class BoolTypes {
             ARBShaderObjects.glUniform4iARB(location, if (x) 1 else 0, if (y) 1 else 0, if (z) 1 else 0, if (w) 1 else 0)
         }
     }
-
 }

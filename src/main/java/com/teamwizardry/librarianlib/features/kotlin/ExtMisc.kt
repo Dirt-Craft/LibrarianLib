@@ -163,17 +163,17 @@ val <T : Any> Class<T>.singletonInstance: T?
     }
 // Player ==============================================================================================================
 
-fun EntityPlayer.sendMessage(str: String, actionBar: Boolean = false)
-        = sendStatusMessage(str.toComponent(), actionBar)
+fun EntityPlayer.sendMessage(str: String, actionBar: Boolean = false) =
+        sendStatusMessage(str.toComponent(), actionBar)
 
-fun EntityPlayer.sendSpamlessMessage(str: String, channelName: String)
-        = sendSpamlessMessage(str, channelName.hashCode())
+fun EntityPlayer.sendSpamlessMessage(str: String, channelName: String) =
+        sendSpamlessMessage(str, channelName.hashCode())
 
-fun EntityPlayer.sendSpamlessMessage(comp: ITextComponent, channelName: String)
-        = sendSpamlessMessage(comp, channelName.hashCode())
+fun EntityPlayer.sendSpamlessMessage(comp: ITextComponent, channelName: String) =
+        sendSpamlessMessage(comp, channelName.hashCode())
 
-fun EntityPlayer.sendSpamlessMessage(str: String, uniqueId: Int)
-        = sendSpamlessMessage(str.toComponent(), uniqueId)
+fun EntityPlayer.sendSpamlessMessage(str: String, uniqueId: Int) =
+        sendSpamlessMessage(str.toComponent(), uniqueId)
 
 fun EntityPlayer.sendSpamlessMessage(comp: ITextComponent, uniqueId: Int) {
     val packet = PacketSpamlessMessage(comp, uniqueId)
@@ -237,7 +237,6 @@ fun <T : Any> MutableList<T?>.asNonnullList(default: T): NonNullList<T> = FakeNo
 fun <T : Any> Iterable<T>.nullable() = toMutableList<T?>()
 fun <T : Any> kotlin.Array<T>.nullable() = toMutableList<T?>()
 
-
 // ItemStack ===========================================================================================================
 
 fun <C : ICapabilityProvider, T, R> C.forCap(capability: Capability<T>?, facing: EnumFacing?, callback: (T) -> R): R? {
@@ -270,8 +269,8 @@ fun Double.clamp(min: Double, max: Double): Double = if (this < min) min else if
 
 // IBlockAccess ========================================================================================================
 
-fun IBlockAccess.getTileEntitySafely(pos: BlockPos)
-        = if (this is ChunkCache) this.getTileEntity(pos, Chunk.EnumCreateEntityType.CHECK) else this.getTileEntity(pos)
+fun IBlockAccess.getTileEntitySafely(pos: BlockPos) =
+        if (this is ChunkCache) this.getTileEntity(pos, Chunk.EnumCreateEntityType.CHECK) else this.getTileEntity(pos)
 
 // listOf and mapOf ====================================================================================================
 

@@ -25,7 +25,7 @@ open class ModuleShroudedCapability<CAP : INBTSerializable<NBTTagCompound>>(capa
     }
 }
 
-open class ModuleMappedCapability<CAP: INBTSerializable<NBTTagCompound>>(capability: Capability<in CAP>, central: CAP, shroud: CAP.(EnumFacing) -> Any) : ModuleShroudedCapability<CAP>(capability, central, shroud) {
+open class ModuleMappedCapability<CAP : INBTSerializable<NBTTagCompound>>(capability: Capability<in CAP>, central: CAP, shroud: CAP.(EnumFacing) -> Any) : ModuleShroudedCapability<CAP>(capability, central, shroud) {
     private val shrouds = mutableMapOf<EnumFacing, Any>()
 
     override fun map(facing: EnumFacing) = shrouds.getOrPut(facing) { super.map(facing) }

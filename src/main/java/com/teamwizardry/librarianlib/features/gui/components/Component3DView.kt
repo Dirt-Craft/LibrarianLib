@@ -56,7 +56,7 @@ class Component3DView(posX: Int, posY: Int, width: Int, height: Int) : GuiCompon
     }
 
     override fun drawComponent(mousePos: Vec2d, partialTicks: Float) {
-        //NO-OP
+        // NO-OP
     }
 
     fun calcDrag(mousePos: Vec2d, button: EnumMouseButton?) {
@@ -105,8 +105,8 @@ class Component3DView(posX: Int, posY: Int, width: Int, height: Int) : GuiCompon
 
         run {
             // RenderHelper.enableStandardItemLighting but brighter because of different light and ambiant values.
-            val LIGHT0_POS = Vec3d(0.0, 1.0, 0.1).normalize()//(new Vec3d(0.20000000298023224D, 1.0D, -0.699999988079071D)).normalize();
-            val LIGHT1_POS = Vec3d(0.0, 1.0, -0.1).normalize()//(new Vec3d(-0.20000000298023224D, 1.0D, 0.699999988079071D)).normalize();
+            val LIGHT0_POS = Vec3d(0.0, 1.0, 0.1).normalize() // (new Vec3d(0.20000000298023224D, 1.0D, -0.699999988079071D)).normalize();
+            val LIGHT1_POS = Vec3d(0.0, 1.0, -0.1).normalize() // (new Vec3d(-0.20000000298023224D, 1.0D, 0.699999988079071D)).normalize();
 
             GlStateManager.enableLighting()
             GlStateManager.enableLight(0)
@@ -129,7 +129,6 @@ class Component3DView(posX: Int, posY: Int, width: Int, height: Int) : GuiCompon
             GlStateManager.shadeModel(GL11.GL_FLAT)
             GlStateManager.glLightModel(GL11.GL_LIGHT_MODEL_AMBIENT, RenderHelper.setColorBuffer(ambiant, ambiant, ambiant, 1.0f))
         }
-
     }
 
     fun postDraw() {
@@ -137,5 +136,4 @@ class Component3DView(posX: Int, posY: Int, width: Int, height: Int) : GuiCompon
         GlStateManager.disableRescaleNormal()
         GlStateManager.popMatrix()
     }
-
 }

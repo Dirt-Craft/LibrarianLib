@@ -44,7 +44,6 @@ abstract class PacketBase : IMessage {
 
     fun readAutoBytes(buf: ByteBuf) {
         AbstractSaveHandler.readAutoBytes(this, buf, true)
-
     }
 
     override fun fromBytes(buf: ByteBuf) {

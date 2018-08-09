@@ -22,5 +22,4 @@ class SearchBookmark : Bookmark {
 
         return c
     }
-
 }

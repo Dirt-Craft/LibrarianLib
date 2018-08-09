@@ -60,24 +60,23 @@ interface ITransferRule {
             return AutoTransferResult(runningStack, foundSpot, !foundSpot)
         }
 
-
         fun areItemStacksEqual(stackA: ItemStack, stackB: ItemStack): Boolean {
             return stackB.item === stackA.item && (!stackA.hasSubtypes || stackA.metadata == stackB.metadata) && ItemStack.areItemStackTagsEqual(stackA, stackB)
         }
-
     }
 
     data class AutoTransferResult(
-            /**
-             * The stack remaining after the transfer
-             */
-            val remainingStack: ItemStack,
-            /**
-             * whether the item was added to the slot, used to know if the next slot region should be attempted
-             */
-            val foundSpot: Boolean,
-            /**
-             * whether the rest of the stack should be tried in the other slots
-             */
-            val shouldContinue: Boolean = remainingStack.isNotEmpty)
+        /**
+         * The stack remaining after the transfer
+         */
+        val remainingStack: ItemStack,
+        /**
+         * whether the item was added to the slot, used to know if the next slot region should be attempted
+         */
+        val foundSpot: Boolean,
+        /**
+         * whether the rest of the stack should be tried in the other slots
+         */
+        val shouldContinue: Boolean = remainingStack.isNotEmpty
+    )
 }

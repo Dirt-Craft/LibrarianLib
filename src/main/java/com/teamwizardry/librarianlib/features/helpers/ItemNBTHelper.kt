@@ -134,5 +134,4 @@ object ItemNBTHelper {
         if (list.tagCount() != 2 || list.get(0) !is NBTPrimitive) return null
         return UUID((list.get(0) as NBTPrimitive).long, (list.get(1) as NBTPrimitive).long)
     }
-
 }

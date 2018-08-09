@@ -46,7 +46,6 @@ abstract class BlockModCrops(name: String, stages: Int) : BlockModBush(injectSta
                 AxisAlignedBB(0.0, 0.0, 0.0, 1.0, 0.875, 1.0),
                 AxisAlignedBB(0.0, 0.0, 0.0, 1.0, 1.0, 1.0))
 
-
         private var lastStages by threadLocal { 8 }
 
         private fun injectStages(name: String, stages: Int): String {
@@ -55,14 +54,13 @@ abstract class BlockModCrops(name: String, stages: Int) : BlockModBush(injectSta
         }
     }
 
-    override fun getBoundingBox(state: IBlockState, source: IBlockAccess, pos: BlockPos)
-            = CROPS_AABB[state.getValue(this.getAgeProperty()) * getAgeProperty().allowedValues.size / CROPS_AABB.size]
+    override fun getBoundingBox(state: IBlockState, source: IBlockAccess, pos: BlockPos) =
+            CROPS_AABB[state.getValue(this.getAgeProperty()) * getAgeProperty().allowedValues.size / CROPS_AABB.size]
 
     /**
      * Return true if the block can sustain a Bush
      */
     override fun canSustainBush(state: IBlockState): Boolean = state.block == Blocks.FARMLAND
-
 
     private var createdProperty = false
     private lateinit var property: PropertyInteger
@@ -179,8 +177,8 @@ abstract class BlockModCrops(name: String, stages: Int) : BlockModBush(injectSta
     open fun dropCount(world: IBlockAccess, pos: BlockPos, state: IBlockState, fortune: Int) = 3 + fortune
     open fun generateDrop(world: IBlockAccess, pos: BlockPos, state: IBlockState, fortune: Int, dropped: Int) = getDefaultCrop()
 
-    override fun getPickBlock(state: IBlockState, target: RayTraceResult?, world: World, pos: BlockPos, player: EntityPlayer?): ItemStack
-            = if (getAge(state) >= getMaxAge()) getDefaultCrop() else getSeed()
+    override fun getPickBlock(state: IBlockState, target: RayTraceResult?, world: World, pos: BlockPos, player: EntityPlayer?): ItemStack =
+            if (getAge(state) >= getMaxAge()) getDefaultCrop() else getSeed()
 
     override fun canGrow(worldIn: World, pos: BlockPos, state: IBlockState, isClient: Boolean): Boolean = !this.isMaxAge(state)
 

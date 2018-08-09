@@ -111,11 +111,10 @@ object InWorldRender {
             struct.blockAccess.setBlockState(pos, Blocks.AIR.defaultState)
         }
 
-        //		verts = StructureRenderUtil.render(structure, (check) -> true, (check) -> EnumFacing.values(), new Color(1, 1, 1, 0.75f), 0.75f);
+        // 		verts = StructureRenderUtil.render(structure, (check) -> true, (check) -> EnumFacing.values(), new Color(1, 1, 1, 0.75f), 0.75f);
 
         structure!!.blockAccess.resetSetBlocks()
     }
-
 
     private fun transformedBlockPos(pos: BlockPos, mirrorIn: Mirror, rotationIn: Rotation): BlockPos {
         var i = pos.x
@@ -155,7 +154,6 @@ object InWorldRender {
             i = -i
             k = -k
         }
-
 
         if (mirrorIn == Mirror.LEFT_RIGHT) k = -k
         else if (mirrorIn == Mirror.FRONT_BACK) i = -i

@@ -66,7 +66,6 @@ class ComponentTextField(private val fontRenderer: FontRenderer, x: Int, y: Int,
     var selectionColor = Option<ComponentTextField, Color>(Color(0x0000ff))
     var cursorColor = Option<ComponentTextField, Color>(Color(0xd0d0d0))
 
-
     var selectionEnd: Int = 0
         private set
 
@@ -104,7 +103,6 @@ class ComponentTextField(private val fontRenderer: FontRenderer, x: Int, y: Int,
         val remainingSpace = max - this.text.length - (selectionStart - selectionEnd)
 
         var build = if (this.text.isEmpty()) "" else this.text.substring(0, selectionStart)
-
 
         val fakeBuildStart = build
 
@@ -157,7 +155,6 @@ class ComponentTextField(private val fontRenderer: FontRenderer, x: Int, y: Int,
                     buildEnd = this.text.substring(end)
                     build += buildEnd
                 }
-
 
                 val editEvent = BUS.fire(TextEditEvent("", build))
                 if (!editEvent.isCanceled()) {
@@ -443,4 +440,3 @@ class ComponentTextField(private val fontRenderer: FontRenderer, x: Int, y: Int,
     class TextSentEvent(val content: String) : Event()
     class FocusEvent(val wasFocused: Boolean) : EventCancelable()
 }
-

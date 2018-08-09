@@ -17,8 +17,8 @@ class ExpandedItemStackHandler : ItemStackHandler {
     constructor(stacks: Array<ItemStack>) : super(stacks.toNonnullList())
     constructor(stacks: List<ItemStack>) : super(stacks.toNonnullList())
 
-    override fun getStackLimit(slot: Int, stack: ItemStack)
-            = if (canInsertIntoSlot(slot, stack)) stack.maxStackSize else 0
+    override fun getStackLimit(slot: Int, stack: ItemStack) =
+            if (canInsertIntoSlot(slot, stack)) stack.maxStackSize else 0
 
     fun canInsertIntoSlot(slot: Int, stack: ItemStack): Boolean {
         return slotPredicate?.invoke(this, slot, stack) ?: true

@@ -82,8 +82,8 @@ open class SlotType {
      * second is the value to return from the container slot click method. If the click was handled the default slot click
      * handling is not run.
      */
-    open fun handleClick(slot: SlotBase, container: ContainerBase, dragType: Int, clickType: ClickType?, player: EntityPlayer)
-            = false to ItemStack.EMPTY
+    open fun handleClick(slot: SlotBase, container: ContainerBase, dragType: Int, clickType: ClickType?, player: EntityPlayer) =
+            false to ItemStack.EMPTY
 
     /**
      * Called in the slot `onPickupFromSlot` method. If this returns true the normal handling will proceed, false will
@@ -106,7 +106,6 @@ open class SlotType {
      */
     open fun putStack(slot: SlotBase, stack: ItemStack) = true
 
-
     /**
      * Returned from the slot `getStack` method. It is passed the default stack, and may modify or entirely replace the
      * return value
@@ -117,6 +116,4 @@ open class SlotType {
      * Returned from the slot `canBeHovered` method.
      */
     open fun canHover(slot: SlotBase) = true
-
 }
-

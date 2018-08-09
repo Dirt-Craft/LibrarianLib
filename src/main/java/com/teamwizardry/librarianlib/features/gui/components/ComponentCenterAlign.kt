@@ -22,5 +22,4 @@ class ComponentCenterAlign(posX: Int, posY: Int, var centerHorizontal: Boolean, 
             }
         }
     }
-
 }

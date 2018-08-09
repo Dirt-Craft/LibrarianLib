@@ -7,7 +7,6 @@ import net.minecraft.util.ResourceLocation
 import org.lwjgl.input.Cursor
 import java.nio.IntBuffer
 
-
 class LibCursor(rl: ResourceLocation, originX: Int, originY: Int) {
     val lwjglCursor: Cursor
 
@@ -39,7 +38,7 @@ class LibCursor(rl: ResourceLocation, originX: Int, originY: Int) {
         @JvmField
         val DEFAULT: LibCursor? = null
 
-        //region resize up/down/left/right
+        // region resize up/down/left/right
         /**
          * Arrow pointing up from a horizontal bar. Used to indicate upward limited movement of a divider
          */
@@ -70,9 +69,9 @@ class LibCursor(rl: ResourceLocation, originX: Int, originY: Int) {
          */
         @JvmField
         val RESIZE_UPDOWN = _c("resize_updown", 12, 12)
-        //endregion
+        // endregion
 
-        //region resize north/south/east/west
+        // region resize north/south/east/west
         /**
          * Arrow pointing up and to the right. Used to indicate resizing by dragging the top-right corner of an object
          */
@@ -221,6 +220,5 @@ class LibCursor(rl: ResourceLocation, originX: Int, originY: Int) {
          */
         @JvmField
         val POINT = _c("point", 6, 15)
-
     }
 }

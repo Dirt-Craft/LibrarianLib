@@ -36,7 +36,5 @@ object BaseWrappers {
             legs.type = SlotTypeEquipment(player, EntityEquipmentSlot.LEGS)
             feet.type = SlotTypeEquipment(player, EntityEquipmentSlot.FEET)
         }
-
     }
-
 }

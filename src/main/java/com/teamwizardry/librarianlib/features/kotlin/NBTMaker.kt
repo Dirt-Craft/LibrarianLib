@@ -15,7 +15,6 @@ import java.util.function.Consumer
  * Created at 3:36 PM on 10/20/16.
  */
 
-
 @JvmName("create")
 fun tagCompound(lambda: NbtDsl.() -> Unit) = NbtDsl().apply(lambda).root
 
@@ -51,7 +50,6 @@ class NbtDsl(val root: NBTTagCompound = NBTTagCompound()) {
 
 operator fun NBTTagCompound.set(key: String, value: NBTBase) = setTag(key, value)
 
-
 fun convertNBT(value: Any?): NBTBase = when (value) {
     is NBTBase -> value
 
@@ -81,9 +79,6 @@ fun convertNBT(value: Any?): NBTBase = when (value) {
 
     else -> AbstractSaveHandler.writeAutoNBT(value, true)
 }
-
-
-
 
 @Deprecated("Use NbtDsl")
 object NBT {

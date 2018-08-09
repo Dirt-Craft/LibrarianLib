@@ -209,7 +209,6 @@ open class BlockModPane(name: String, canDrop: Boolean, val parent: IBlockState)
                     "pane"(name)
                 }
             }
-
         })
         return true
     }

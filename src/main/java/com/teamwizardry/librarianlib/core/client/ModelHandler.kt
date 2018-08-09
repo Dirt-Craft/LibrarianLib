@@ -57,8 +57,8 @@ object ModelHandler {
         MinecraftForge.EVENT_BUS.register(this)
     }
 
-    fun serialize(el: JsonElement)
-            = if (LibLibConfig.prettyJsonSerialization) el.serialize() else el.toString() + "\n"
+    fun serialize(el: JsonElement) =
+            if (LibLibConfig.prettyJsonSerialization) el.serialize() else el.toString() + "\n"
 
     // Easy access
     private val debug = LibrarianLib.DEV_ENVIRONMENT
@@ -66,14 +66,12 @@ object ModelHandler {
     val namePad: String
         get() = " " * modName.length
 
-
     private val variantCache = HashMap<String, MutableList<IVariantHolder>>()
 
     /**
      * This is Mod name -> (Variant name -> MRL), specifically for ItemMeshDefinitions.
      */
     val resourceLocations = mutableMapOf<String, MutableMap<String, ModelResourceLocation>>()
-
 
     /**
      * Use this method to inject your item into the list to be loaded at the end of preinit and colorized at the end of init.
@@ -87,8 +85,8 @@ object ModelHandler {
     fun getResource(modId: String, name: String) = resourceLocations[modId]?.get(name)
 
     @SideOnly(Side.CLIENT)
-    private fun addToCachedLocations(name: String, mrl: ModelResourceLocation)
-            = resourceLocations.getOrPut(modName) { hashMapOf() }.put(name, mrl)
+    private fun addToCachedLocations(name: String, mrl: ModelResourceLocation) =
+            resourceLocations.getOrPut(modName) { hashMapOf() }.put(name, mrl)
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
@@ -133,7 +131,6 @@ object ModelHandler {
                         blockColors.registerBlockColorHandler(IBlockColor(color), holder.providedBlock)
                     }
                 }
-
             }
         }
     }
@@ -161,7 +158,6 @@ object ModelHandler {
         }
 
         registerModels(holder, holder.variants, false)
-
     }
 
     @SideOnly(Side.CLIENT)
@@ -313,9 +309,11 @@ object ModelHandler {
     }
 
     @SideOnly(Side.CLIENT)
-    inline fun generateBlockJson(holder: IModBlockProvider,
-                                 blockstateFiles: FileDsl<Block>.() -> Unit,
-                                 modelFiles: FileDsl<Block>.() -> Unit) {
+    inline fun generateBlockJson(
+        holder: IModBlockProvider,
+        blockstateFiles: FileDsl<Block>.() -> Unit,
+        modelFiles: FileDsl<Block>.() -> Unit
+    ) {
         val files = FileDsl(holder.providedBlock).apply(blockstateFiles).map
         var flag = false
         for ((path, model) in files) {

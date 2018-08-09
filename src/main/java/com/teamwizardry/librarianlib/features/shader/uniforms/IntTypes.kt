@@ -32,5 +32,4 @@ class IntTypes {
             ARBShaderObjects.glUniform4iARB(location, x, y, z, w)
         }
     }
-
 }

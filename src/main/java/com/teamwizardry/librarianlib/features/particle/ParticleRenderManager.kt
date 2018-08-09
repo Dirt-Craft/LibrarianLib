@@ -39,7 +39,6 @@ object ParticleRenderManager {
             GlStateManager.disableLighting()
             GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f)
 
-
             val tessellator = Tessellator.getInstance()
             val vertexbuffer = tessellator.buffer
             vertexbuffer.begin(GL11.GL_QUADS, DefaultVertexFormats.PARTICLE_POSITION_TEX_COLOR_LMAP)
@@ -56,7 +55,6 @@ object ParticleRenderManager {
             GL11.glPopAttrib()
             GlStateManager.popAttrib()
         }
-
     }
 
     @JvmStatic
@@ -70,7 +68,6 @@ object ParticleRenderManager {
             GlStateManager.alphaFunc(GL11.GL_GREATER, 0.003921569F)
             GlStateManager.disableLighting()
             GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f)
-
 
             val tessellator = Tessellator.getInstance()
             val vertexbuffer = tessellator.buffer
@@ -86,7 +83,6 @@ object ParticleRenderManager {
             GL11.glPopAttrib()
             GlStateManager.popAttrib()
         }
-
     }
 
     val layers: MutableList<ParticleRenderLayer> = mutableListOf()
@@ -221,7 +217,6 @@ object ParticleRenderManager {
         val ab = b.subtract(a)
         return a.add(ab.scale(ap.dotProduct(ab) / ab.dotProduct(ab)))
     }
-
 }
 
 data class ParticleRenderInfo(val entityIn: Entity?, val partialTicks: Float, val rotationX: Float, val rotationZ: Float, val rotationYZ: Float, val rotationXY: Float, val rotationXZ: Float)
@@ -254,7 +249,6 @@ abstract class ParticleRenderLayer(val name: String, val shouldSort: Boolean) {
         }
 
         teardown()
-
     }
 
     fun clear() {
@@ -264,7 +258,6 @@ abstract class ParticleRenderLayer(val name: String, val shouldSort: Boolean) {
     fun clean() {
         if (particleList.size > 100000)
             clear() // sometimes the system sprials for no aparent reason
-
 
         val iter = particleList.iterator()
         for (particle in iter) {
@@ -293,7 +286,6 @@ abstract class ParticleRenderLayer(val name: String, val shouldSort: Boolean) {
         }
         particleList.sortByDescending { it.depthSquared }
     }
-
 }
 
 val Minecraft.renderPartialTicksPaused by MethodHandleHelper.delegateForReadOnly<Minecraft, Float>(Minecraft::class.java, "renderPartialTicksPaused", "field_193996_ah")

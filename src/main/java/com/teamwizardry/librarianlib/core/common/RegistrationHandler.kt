@@ -92,5 +92,4 @@ object RegistrationHandler {
 
     @JvmStatic
     fun <T : IForgeRegistryEntry<T>> register(entry: T) = entry.apply { getRegistrar(registryType).add(this) }
-
 }

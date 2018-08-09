@@ -157,7 +157,6 @@ object SavingFieldCache {
             errorList[type][name].add("Setter has no getter")
         }
 
-
         pairs.toList().sortedBy {
             it.first
         }.forEach {
@@ -192,10 +191,8 @@ object SavingFieldCache {
             if (meta.hasFlag(SavingFieldFlag.NO_SYNC) && meta.hasFlag(SavingFieldFlag.NON_PERSISTENT))
                 errorList[type][name].add("Annotated with both @NoSync and @NonPersistent. This field will never be used.")
 
-            val setterLambda: (Any, Any?) -> Unit = if (wrapperForSetter == null)
-                { _, _ -> throw IllegalAccessException("Tried to set final property $name for class $type (no save setter)") }
-            else
-                { obj, inp -> wrapperForSetter(obj, arrayOf(inp)) }
+            val setterLambda: (Any, Any?) -> Unit = if (wrapperForSetter == null) { _, _ -> throw IllegalAccessException("Tried to set final property $name for class $type (no save setter)") }
+            else { obj, inp -> wrapperForSetter(obj, arrayOf(inp)) }
 
             map.register(name, meta, { obj -> wrapperForGetter(obj, arrayOf()) }, setterLambda)
         }
@@ -306,7 +303,6 @@ object SavingFieldCache {
                 annotations.firstOrNull { annotationClass.isInstance(it) }?.let { annotationClass.cast(it) }
         override fun getDeclaredAnnotations() = annotations
     }
-
 
     fun addAnnotationsForField(field: AnnotatedElement, meta: FieldMetadata) {
         field.declaredAnnotations.forEach {
@@ -459,7 +455,6 @@ data class FieldCache(val meta: FieldMetadata, val getter: (Any) -> Any?, privat
         setter_
     }
 
-
     companion object {
         val providersGetter = MethodHandleHelper.wrapperForGetter(CapabilityManager::class.java, "providers")
 
@@ -509,7 +504,6 @@ data class FieldMetadata(val type: FieldType, private var flagsInternal: Mutable
     fun containsAll(vararg list: SavingFieldFlag) = flags.containsAll(list.asList())
     fun containsAny(vararg list: SavingFieldFlag) = list.any { it in flags }
     fun containsAny() = flags.any { !it.descriptive }
-
 
     fun addFlag(flag: SavingFieldFlag) = flagsInternal.add(flag)
     fun removeFlag(flag: SavingFieldFlag) = flagsInternal.remove(flag)

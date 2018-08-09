@@ -7,17 +7,18 @@ import com.teamwizardry.librarianlib.features.gui.provided.book.hierarchy.IBookE
  * @author WireSegal
  * Created at 9:19 PM on 8/6/18.
  */
-class BookContext(val book: IBookGui,
-                  val pages: List<PaginationContext>,
-                  val bookElement: IBookElement,
-                  val bookmarks: List<Bookmark>,
-                  val parent: BookContext? = null) {
+class BookContext(
+    val book: IBookGui,
+    val pages: List<PaginationContext>,
+    val bookElement: IBookElement,
+    val bookmarks: List<Bookmark>,
+    val parent: BookContext? = null
+) {
     var position: Int = 0
 
     constructor(book: IBookGui, element: IBookElement, parent: BookContext? = book.context) :
             this(book, element.createComponents(book), element,
                     element.addAllBookmarks(parent?.bookmarks), parent)
-
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -42,6 +43,4 @@ class BookContext(val book: IBookGui,
         result = 31 * result + position
         return result
     }
-
-
 }

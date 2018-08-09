@@ -52,7 +52,6 @@ abstract class CapabilityMod(val name: ResourceLocation) {
                 override fun readNBT(capability: Capability<T>, instance: T, side: EnumFacing?, nbt: NBTBase?) {
                     instance.readFromNBT(nbt as NBTTagCompound)
                 }
-
             }, capClass)
             registeredClasses.add(capClass)
             capabilities.put(capClass, capObj)
@@ -95,7 +94,6 @@ abstract class CapabilityMod(val name: ResourceLocation) {
         override fun hasCapability(capability: Capability<*>, facing: EnumFacing?): Boolean {
             return capability == this@CapabilityMod.capability
         }
-
     }
 }
 

@@ -24,7 +24,6 @@ class Channel(private val network: SimpleNetworkWrapper) {
                 mutableMapOf<Any, PerIdentifier>()
             }
 
-
     fun send(target: PacketTarget, vararg packets: PacketBase) {
         if (target == TargetServer) {
             packets.forEach {
@@ -83,5 +82,4 @@ class Channel(private val network: SimpleNetworkWrapper) {
             packets.clear()
         }
     }
-
 }

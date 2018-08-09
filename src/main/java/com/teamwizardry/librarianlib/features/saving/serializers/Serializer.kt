@@ -46,7 +46,6 @@ abstract class Serializer<T : Any>(val type: FieldType) {
     protected abstract fun writeBytes(buf: ByteBuf, value: T, syncing: Boolean)
     abstract fun getDefault(): T
 
-
     fun read(nbt: NBTBase, existing: T?, syncing: Boolean): T {
         try {
             return readNBT(nbt, existing, syncing)
@@ -78,7 +77,6 @@ abstract class Serializer<T : Any>(val type: FieldType) {
             throw SerializerException("[Bytes] Error serializing $type", e)
         }
     }
-
 }
 
 abstract class SerializerFactory(val name: String) {

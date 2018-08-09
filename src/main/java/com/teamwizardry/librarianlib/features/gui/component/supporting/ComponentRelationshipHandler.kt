@@ -74,7 +74,6 @@ open class ComponentRelationshipHandler(private val component: GuiComponent) {
             throw IllegalArgumentException("Recursive component hierarchy")
         }
 
-
         if (component.BUS.fire(GuiComponentEvents.AddChildEvent(this.component, component)).isCanceled())
             return
         if (component.BUS.fire(GuiComponentEvents.AddToParentEvent(component, this.component)).isCanceled())

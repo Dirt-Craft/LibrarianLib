@@ -18,5 +18,4 @@ enum class EnumMouseButton {
             return values()[code]
         }
     }
-
 }

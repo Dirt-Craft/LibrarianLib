@@ -25,7 +25,6 @@ class ModuleMultiFluid(handler: SerializableFluidConcatenator) :
     constructor(vararg capacities: Int) : this(SerializableFluidConcatenator(*capacities))
     constructor(vararg fluidCapacities: FluidStack) : this(SerializableFluidConcatenator(*fluidCapacities))
 
-
     override fun onClicked(tile: TileMod, player: EntityPlayer, hand: EnumHand, side: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): Boolean {
         if (side !in allowedSides) return false
         val stack = player.getHeldItem(hand)

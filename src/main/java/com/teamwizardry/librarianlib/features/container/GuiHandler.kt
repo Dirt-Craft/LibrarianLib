@@ -66,9 +66,11 @@ object GuiHandler : IGuiHandler {
     }
 
     @JvmStatic
-    fun registerRaw(name: ResourceLocation,
-                    server: ((player: EntityPlayer, world: World, pos: BlockPos) -> ContainerBase?)?,
-                    client: ((player: EntityPlayer, world: World, pos: BlockPos) -> GuiScreen?)?) {
+    fun registerRaw(
+        name: ResourceLocation,
+        server: ((player: EntityPlayer, world: World, pos: BlockPos) -> ContainerBase?)?,
+        client: ((player: EntityPlayer, world: World, pos: BlockPos) -> GuiScreen?)?
+    ) {
         if (name !in ids.keys) {
             ids[name] = ids.size
         }
@@ -79,9 +81,11 @@ object GuiHandler : IGuiHandler {
     }
 
     @JvmStatic
-    fun <T : ContainerBase> registerBasicContainer(name: ResourceLocation,
-                                                   server: (player: EntityPlayer, pos: BlockPos, te: TileEntity?) -> T,
-                                                   client: (player: EntityPlayer, container: T) -> GuiContainerBase) {
+    fun <T : ContainerBase> registerBasicContainer(
+        name: ResourceLocation,
+        server: (player: EntityPlayer, pos: BlockPos, te: TileEntity?) -> T,
+        client: (player: EntityPlayer, container: T) -> GuiContainerBase
+    ) {
         val rawServer: (EntityPlayer, World, BlockPos) -> T = { player, world, pos ->
             server(player, pos, world.getTileEntitySafely(pos))
         }
@@ -116,10 +120,9 @@ object GuiHandler : IGuiHandler {
         }
         return null
     }
-
 }
 
 private data class GuiEntry(
-        val server: ((player: EntityPlayer, world: World, pos: BlockPos) -> ContainerBase?)?,
-        val client: ((player: EntityPlayer, world: World, pos: BlockPos) -> GuiScreen?)?
+    val server: ((player: EntityPlayer, world: World, pos: BlockPos) -> ContainerBase?)?,
+    val client: ((player: EntityPlayer, world: World, pos: BlockPos) -> GuiScreen?)?
 )

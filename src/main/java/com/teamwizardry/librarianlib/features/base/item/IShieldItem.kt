@@ -87,7 +87,6 @@ interface IShieldItem {
         }
     }
 
-
     /**
      * Offers shields an opportunity to have an effect when they block damage.
      */

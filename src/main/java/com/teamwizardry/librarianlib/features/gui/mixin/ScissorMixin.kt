@@ -8,5 +8,4 @@ object ScissorMixin {
     fun scissor(component: GuiComponent) {
         component.clipping.clipToBounds = true
     }
-
 }

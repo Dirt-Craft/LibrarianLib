@@ -10,4 +10,3 @@ object VirtualFieldAccessorHandler {
         TODO("implement `VirtualFieldAccessor`s")
     }
 }
-

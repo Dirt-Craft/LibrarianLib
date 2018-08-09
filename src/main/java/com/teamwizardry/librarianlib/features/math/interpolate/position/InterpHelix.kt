@@ -15,8 +15,12 @@ import net.minecraft.util.math.Vec3d
  * ([offset] is in complete rotations. 0.5 == 180°, 1 == 360°)
  */
 class InterpHelix(
-        val point1: Vec3d, val point2: Vec3d, val radius1: Float, val radius2: Float,
-        val rotations: Float, val offset: Float
+    val point1: Vec3d,
+    val point2: Vec3d,
+    val radius1: Float,
+    val radius2: Float,
+    val rotations: Float,
+    val offset: Float
 ) : InterpFunction<Vec3d> {
     private val norm = (point2 - point1).normalize()
     private val perpX =
@@ -36,5 +40,4 @@ class InterpHelix(
 
         return point1 + (point2 - point1) * i + perpX * x + perpY * y
     }
-
 }

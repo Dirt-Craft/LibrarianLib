@@ -28,12 +28,12 @@ fun toLong(px: Int, py: Int, pz: Int) =
         (py.toLong() and Y_MASK shl Y_SHIFT) or
         (pz.toLong() and Z_MASK shl Z_SHIFT)
 
-fun fromLongX(pack: Long)
-        = (pack shl (64 - X_SHIFT - NUM_X_BITS) shr (64 - NUM_X_BITS)).toInt()
-fun fromLongY(pack: Long)
-        = (pack shl (64 - Y_SHIFT - NUM_Y_BITS) shr (64 - NUM_Y_BITS)).toInt()
-fun fromLongZ(pack: Long)
-        = (pack shl (64 - Z_SHIFT - NUM_Z_BITS) shr (64 - NUM_Z_BITS)).toInt()
+fun fromLongX(pack: Long) =
+        (pack shl (64 - X_SHIFT - NUM_X_BITS) shr (64 - NUM_X_BITS)).toInt()
+fun fromLongY(pack: Long) =
+        (pack shl (64 - Y_SHIFT - NUM_Y_BITS) shr (64 - NUM_Y_BITS)).toInt()
+fun fromLongZ(pack: Long) =
+        (pack shl (64 - Z_SHIFT - NUM_Z_BITS) shr (64 - NUM_Z_BITS)).toInt()
 
 class DynamicStructureBuilder {
     private val packed = LongObjectHashMap<DynamicBlockInfo>()
@@ -59,15 +59,14 @@ class DynamicStructureBuilder {
     }
 
     companion object {
-        fun addBlock(px: Int, py: Int, pz: Int, info: DynamicBlockInfo)
-                = DynamicStructureBuilder().addBlock(px, py, pz, info)
+        fun addBlock(px: Int, py: Int, pz: Int, info: DynamicBlockInfo) =
+                DynamicStructureBuilder().addBlock(px, py, pz, info)
 
-        fun addBlock(px: Int, py: Int, pz: Int, vararg states: IBlockState)
-                = DynamicStructureBuilder().addBlock(px, py, pz, *states)
+        fun addBlock(px: Int, py: Int, pz: Int, vararg states: IBlockState) =
+                DynamicStructureBuilder().addBlock(px, py, pz, *states)
 
-        fun addBlock(px: Int, py: Int, pz: Int, vararg blocks: Block)
-                = DynamicStructureBuilder().addBlock(px, py, pz, *blocks)
-
+        fun addBlock(px: Int, py: Int, pz: Int, vararg blocks: Block) =
+                DynamicStructureBuilder().addBlock(px, py, pz, *blocks)
     }
 }
 

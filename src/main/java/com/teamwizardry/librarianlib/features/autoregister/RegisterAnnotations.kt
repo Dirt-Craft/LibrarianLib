@@ -1,7 +1,7 @@
 package com.teamwizardry.librarianlib.features.autoregister
 
 // todo once mcmultipart is 1.11
-//import com.teamwizardry.librarianlib.common.base.multipart.PartMod
+// import com.teamwizardry.librarianlib.common.base.multipart.PartMod
 import com.teamwizardry.librarianlib.features.network.PacketBase
 import com.teamwizardry.librarianlib.features.properties.ModProperty
 import com.teamwizardry.librarianlib.features.saving.serializers.Serializer
@@ -50,7 +50,6 @@ annotation class SerializerRegister(vararg val classes: KClass<*>)
 @MustBeDocumented
 annotation class SerializerFactoryRegister
 
-
 /**
  * Apply this to [ModProperty]s.
  *
@@ -59,7 +58,6 @@ annotation class SerializerFactoryRegister
 @Target(AnnotationTarget.CLASS)
 @MustBeDocumented
 annotation class PropertyRegister(val value: String = "")
-
 
 /**
  * Apply this to [AnnotationMarkerProcessor]s.

@@ -65,7 +65,7 @@ class ComponentText @JvmOverloads constructor(posX: Int, posY: Int, var horizont
         val dropShadow = shadow.getValue(this)
 
         if (enableFlags) {
-            if(enableUnicodeBidi.getValue(this))
+            if (enableUnicodeBidi.getValue(this))
                 fr.bidiFlag = true
             fr.unicodeFlag = true
         }
@@ -81,7 +81,6 @@ class ComponentText @JvmOverloads constructor(posX: Int, posY: Int, var horizont
         } else {
             lines = fr.listFormattedStringToWidth(fullText, wrap)
         }
-
 
         val height = lines.size * fr.FONT_HEIGHT
         if (vertical == TextAlignV.MIDDLE) {
@@ -105,7 +104,7 @@ class ComponentText @JvmOverloads constructor(posX: Int, posY: Int, var horizont
         }
 
         if (enableFlags) {
-            if(enableUnicodeBidi.getValue(this))
+            if (enableUnicodeBidi.getValue(this))
                 fr.bidiFlag = false
             fr.unicodeFlag = false
         }
@@ -126,7 +125,7 @@ class ComponentText @JvmOverloads constructor(posX: Int, posY: Int, var horizont
             val enableFlags = unicode.getValue(this)
 
             if (enableFlags) {
-                if(enableUnicodeBidi.getValue(this))
+                if (enableUnicodeBidi.getValue(this))
                     fr.bidiFlag = true
                 fr.unicodeFlag = true
             }
@@ -139,7 +138,7 @@ class ComponentText @JvmOverloads constructor(posX: Int, posY: Int, var horizont
             }
 
             if (enableFlags) {
-                if(enableUnicodeBidi.getValue(this))
+                if (enableUnicodeBidi.getValue(this))
                     fr.bidiFlag = false
                 fr.unicodeFlag = false
             }
@@ -154,5 +153,4 @@ class ComponentText @JvmOverloads constructor(posX: Int, posY: Int, var horizont
     enum class TextAlignV {
         TOP, MIDDLE, BOTTOM
     }
-
 }

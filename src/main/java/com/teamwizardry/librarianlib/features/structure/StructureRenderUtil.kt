@@ -60,5 +60,4 @@ object StructureRenderUtil {
         }
         return bufferInts
     }
-
 }

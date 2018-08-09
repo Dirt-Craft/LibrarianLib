@@ -28,5 +28,4 @@ class InterpFloatInOut(val fadeInFraction: Float, val fadeOutFraction: Float) : 
         val fadeOutResult = (1 - i) / fadeOutFraction
         return max(0f, min(1f, min(fadeInResult, fadeOutResult)))
     }
-
 }

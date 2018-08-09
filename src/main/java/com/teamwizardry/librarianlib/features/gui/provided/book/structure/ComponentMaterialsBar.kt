@@ -33,6 +33,5 @@ class ComponentMaterialsBar(book: IBookGui, id: Int, val materials: StructureMat
                     focusedElement.add(ComponentMaterialList(book, materials, focusedElement))
             }
         }
-
     }
 }

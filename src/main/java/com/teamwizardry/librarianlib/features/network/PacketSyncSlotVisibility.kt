@@ -18,5 +18,4 @@ class PacketSyncSlotVisibility(@Save var visibility: BooleanArray = BooleanArray
                 slot.visible = visibility[i]
         }
     }
-
 }

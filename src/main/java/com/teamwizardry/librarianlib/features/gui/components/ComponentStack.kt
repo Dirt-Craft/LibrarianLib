@@ -65,5 +65,4 @@ open class ComponentStack(posX: Int, posY: Int) : GuiComponent(posX, posY, 16, 1
             return list
         }
     }
-
 }

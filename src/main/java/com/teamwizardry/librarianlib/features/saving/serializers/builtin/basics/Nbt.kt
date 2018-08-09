@@ -57,21 +57,20 @@ object SerializeNBTGeneric : GenericNBTSerializer<NBTBase>(NBTBase::class.java)
 @SerializerRegister(NBTPrimitive::class)
 object SerializeNBTPrimitive : GenericNBTSerializer<NBTPrimitive>(NBTPrimitive::class.java)
 
-
 open class GenericNBTSerializer<T : NBTBase>(val clazz: Class<T>) : Serializer<T>(FieldType.create(clazz)) {
 
-    override fun getDefault(): T
-            = clazz.defaultNBT()
+    override fun getDefault(): T =
+            clazz.defaultNBT()
 
-    override fun readNBT(nbt: NBTBase, existing: T?, syncing: Boolean): T
-            = nbt.safeCast(clazz)
+    override fun readNBT(nbt: NBTBase, existing: T?, syncing: Boolean): T =
+            nbt.safeCast(clazz)
 
-    override fun writeNBT(value: T, syncing: Boolean): NBTBase
-            = value.copy()
+    override fun writeNBT(value: T, syncing: Boolean): NBTBase =
+            value.copy()
 
     @Suppress("UNCHECKED_CAST")
-    override fun readBytes(buf: ByteBuf, existing: T?, syncing: Boolean): T
-            = readTagFromBuffer(buf.readByte(), buf) as T
+    override fun readBytes(buf: ByteBuf, existing: T?, syncing: Boolean): T =
+            readTagFromBuffer(buf.readByte(), buf) as T
 
     override fun writeBytes(buf: ByteBuf, value: T, syncing: Boolean) {
         buf.writeByte(value.id.toInt())
@@ -83,8 +82,8 @@ open class NBTSerializer<T : NBTBase>(clazz: Class<T>) : GenericNBTSerializer<T>
     val id = clazz.idForClazz().toByte()
 
     @Suppress("UNCHECKED_CAST")
-    override fun readBytes(buf: ByteBuf, existing: T?, syncing: Boolean): T
-            = readTagFromBuffer(id, buf) as T
+    override fun readBytes(buf: ByteBuf, existing: T?, syncing: Boolean): T =
+            readTagFromBuffer(id, buf) as T
 
     override fun writeBytes(buf: ByteBuf, value: T, syncing: Boolean) {
         writeTagToBuffer(value, buf)
@@ -112,8 +111,6 @@ fun readTagFromBuffer(id: Byte, buf: ByteBuf): NBTBase {
         else -> NBTTagCompound()
     }
 }
-
-
 
 val NBTTagLongArray.longArray by MethodHandleHelper.delegateForReadOnly<NBTTagLongArray, LongArray>(NBTTagLongArray::class.java, "field_193587_b", "data")
 

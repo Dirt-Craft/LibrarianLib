@@ -43,7 +43,6 @@ class DynamicStructure(inheriting: LongObjectHashMap<DynamicBlockInfo>) {
     val ySize get() = extent.maxY - extent.minY
     val zSize get() = extent.maxZ - extent.minZ
 
-
     fun composePosition(origin: BlockPos, pack: Long, orientation: EnumFacing): Long {
         val px = fromLongX(pack)
         val py = fromLongY(pack)
@@ -70,8 +69,8 @@ class DynamicStructure(inheriting: LongObjectHashMap<DynamicBlockInfo>) {
         return true
     }
 
-    fun match(world: IBlockAccess, origin: BlockPos): EnumFacing?
-            = EnumFacing.HORIZONTALS.firstOrNull { match(world, origin, it) }
+    fun match(world: IBlockAccess, origin: BlockPos): EnumFacing? =
+            EnumFacing.HORIZONTALS.firstOrNull { match(world, origin, it) }
 
     @JvmOverloads
     @SideOnly(Side.CLIENT)
@@ -84,7 +83,6 @@ class DynamicStructure(inheriting: LongObjectHashMap<DynamicBlockInfo>) {
         val dispatcher = Minecraft.getMinecraft().blockRendererDispatcher
 
         DYNAMIC_STRUCTURE_ACCESS.packed.clear()
-
 
         for ((pack, info) in packed) {
             val composed = composePosition(origin, pack, orientation)

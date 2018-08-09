@@ -2,7 +2,6 @@ package com.teamwizardry.librarianlib.features.gui.components
 
 import com.teamwizardry.librarianlib.features.gui.HandlerList
 import com.teamwizardry.librarianlib.features.gui.component.GuiComponent
-import com.teamwizardry.librarianlib.features.gui.mixin.ScissorMixin
 import com.teamwizardry.librarianlib.features.helpers.vec
 import com.teamwizardry.librarianlib.features.math.Vec2d
 
@@ -14,7 +13,7 @@ class ComponentScrolledView(posX: Int, posY: Int, width: Int, height: Int) : Gui
     }
 
     override fun drawComponent(mousePos: Vec2d, partialTicks: Float) {
-        //NO-OP
+        // NO-OP
     }
 
     /**
@@ -51,5 +50,4 @@ class ComponentScrolledView(posX: Int, posY: Int, width: Int, height: Int) : Gui
     interface IScrollEvent<T> {
         fun handle(component: T, oldScroll: Vec2d, newScroll: Vec2d): Vec2d
     }
-
 }

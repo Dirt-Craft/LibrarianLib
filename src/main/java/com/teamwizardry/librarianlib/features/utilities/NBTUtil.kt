@@ -69,8 +69,8 @@ fun NBTTagCompound.setObject(key: String, tag: NBTBase): Boolean {
             val ind = m.removePrefix("[").removeSuffix("]").toInt()
             if (currentElement is NBTTagList) {
                 if (currentElement.tagCount() < ind + 1 && !done) {
-                    val new = if ((currentElement.tagType == 0 || currentElement.tagType == Constants.NBT.TAG_LIST)
-                            && matched[index + 1].groupValues[1].startsWith("[")) NBTTagList()
+                    val new = if ((currentElement.tagType == 0 || currentElement.tagType == Constants.NBT.TAG_LIST) &&
+                            matched[index + 1].groupValues[1].startsWith("[")) NBTTagList()
                     else if ((currentElement.tagType == 0 || currentElement.tagType == Constants.NBT.TAG_COMPOUND))
                         NBTTagCompound()
                     else return false

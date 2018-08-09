@@ -41,7 +41,6 @@ fun getUnsafe(more: Int = 0): Unsafe {
     throw IllegalAccessError("Tried to access Unsafe from $modid")
 }
 
-
 @Suppress("UNCHECKED_CAST")
 fun <T> Class<T>.newInstanceUnsafe(more: Int = 0) = getUnsafe(1 + more).allocateInstance(this) as? T ?: throw ClassNotFoundException("Invalid class $this")
 

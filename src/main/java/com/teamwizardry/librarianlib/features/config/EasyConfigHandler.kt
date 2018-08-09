@@ -17,7 +17,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import java.io.File
 import java.lang.reflect.Field
 
-
 /**
  * Created by Elad on 10/14/2016.
  * This object contains utilities for the automatic config system.
@@ -65,18 +64,20 @@ object EasyConfigHandler {
     private val fieldMapDoubleArr: MutableList<FieldEntry<DoubleArray>> = mutableListOf()
     private val fieldMapLongArr: MutableList<FieldEntry<LongArray>> = mutableListOf()
 
-    private data class FieldEntry<T>(val modId: String,
-                                     val setter: (T) -> Unit,
-                                     val defaultValue: T?,
-                                     val devOnly: Boolean,
-                                     val comment: String,
-                                     val category: String,
-                                     val identifier: String,
-                                     val max: T? = null,
-                                     val min: T? = null,
-                                     val sortingId: Int = 0,
-                                     val requiresRestart: Boolean = false,
-                                     val requiresWorld: Boolean = false) {
+    private data class FieldEntry<T>(
+        val modId: String,
+        val setter: (T) -> Unit,
+        val defaultValue: T?,
+        val devOnly: Boolean,
+        val comment: String,
+        val category: String,
+        val identifier: String,
+        val max: T? = null,
+        val min: T? = null,
+        val sortingId: Int = 0,
+        val requiresRestart: Boolean = false,
+        val requiresWorld: Boolean = false
+    ) {
 
         val editedComment: String
 
@@ -99,7 +100,6 @@ object EasyConfigHandler {
         MinecraftForge.EVENT_BUS.register(this)
 
         findAllProperties(asm)
-
 
         allIds.forEach {
             initInternal(it, toLoad[it])
@@ -223,7 +223,6 @@ object EasyConfigHandler {
             bookConfigValues[it.modId + "." + it.identifier] = value
         }
 
-
         if (LibrarianLib.DEV_ENVIRONMENT) {
             val maxNameLen = toLog.maxBy { it.first.length }?.first?.length ?: 0
             toLog.forEach { LibrarianLog.info("${modid.length * " "} | ${it.first}${" " * (maxNameLen - it.first.length)} | ${it.second}") }
@@ -284,8 +283,15 @@ object EasyConfigHandler {
         }
     }
 
-    private inline fun <reified T> addToMaps(name: String, inst: Any?, modid: String, field: Field, info: AnnotationInfo, target: MutableList<FieldEntry<T>>,
-                                             noinline makeFieldEntry: (String, Any?, Field, String, AnnotationInfo) -> FieldEntry<T> = EasyConfigHandler::makeFieldEntryDefault) {
+    private inline fun <reified T> addToMaps(
+        name: String,
+        inst: Any?,
+        modid: String,
+        field: Field,
+        info: AnnotationInfo,
+        target: MutableList<FieldEntry<T>>,
+        noinline makeFieldEntry: (String, Any?, Field, String, AnnotationInfo) -> FieldEntry<T> = EasyConfigHandler::makeFieldEntryDefault
+    ) {
         var identifier = info.getString("name")
         if (identifier.isBlank()) identifier = VariantHelper.toSnakeCase(field.name)
 
@@ -314,7 +320,6 @@ object EasyConfigHandler {
     }
 }
 
-
 /**
  * Apply to a field you wish to be a config property.
  * [category] is the place in the config you want your property to be.
@@ -327,11 +332,13 @@ object EasyConfigHandler {
  */
 @MustBeDocumented
 @Target(AnnotationTarget.FIELD)
-annotation class ConfigProperty(val category: String,
-                                val comment: String = "",
-                                val name: String = "",
-                                val configId: String = "",
-                                val sortingId: Int = 0)
+annotation class ConfigProperty(
+    val category: String,
+    val comment: String = "",
+    val name: String = "",
+    val configId: String = "",
+    val sortingId: Int = 0
+)
 
 /**
  * Apply this to an @[ConfigProperty] to have it only be loaded in the dev environment.

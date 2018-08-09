@@ -38,7 +38,7 @@ abstract class ItemModBauble(name: String, vararg variants: String) : ItemMod(na
     }
 
     @Optional.Method(modid = "baubles")
-    override abstract fun getBaubleType(stack: ItemStack): BaubleType
+    abstract override fun getBaubleType(stack: ItemStack): BaubleType
 
     override fun onItemRightClick(world: World, player: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
         val stack = player.getHeldItem(hand)
@@ -70,7 +70,7 @@ abstract class ItemModBauble(name: String, vararg variants: String) : ItemMod(na
     }
 
     open fun onEquippedOrLoadedIntoWorld(stack: ItemStack, player: EntityLivingBase) {
-        //NO-OP
+        // NO-OP
     }
 
     @Optional.Method(modid = "baubles")

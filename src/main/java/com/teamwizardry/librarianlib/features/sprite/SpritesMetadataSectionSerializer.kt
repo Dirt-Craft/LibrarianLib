@@ -32,7 +32,6 @@ class SpritesMetadataSectionSerializer : BaseMetadataSectionSerializer<SpritesMe
 
             // create def
             return SpriteDefinition(name, u, v, w, h, IntArray(0), 0, 0)
-
         } else if (element.isJsonObject) {
             val obj = JsonUtils.getJsonObject(element, "spritesheet{sprites{" + name)
 
@@ -85,7 +84,6 @@ class SpritesMetadataSectionSerializer : BaseMetadataSectionSerializer<SpritesMe
 
             // create def
             return SpriteDefinition(name, u, v, w, h, frames, offsetU, offsetV)
-
         } else {
             throw JsonSyntaxException("expected spritesheet{sprites{$name to be either an object or array")
         }
@@ -106,5 +104,4 @@ class SpritesMetadataSectionSerializer : BaseMetadataSectionSerializer<SpritesMe
         }
         return SpritesMetadataSection(width, height, definitions)
     }
-
 }

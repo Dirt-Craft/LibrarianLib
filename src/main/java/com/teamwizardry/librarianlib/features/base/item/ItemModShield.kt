@@ -70,7 +70,6 @@ open class ItemModShield(name: String, durability: Int = 336) : ItemMod(name), I
 
     override fun onAxeBlocked(stack: ItemStack, player: EntityPlayer, attacker: EntityLivingBase, amount: Float, source: DamageSource) = false
 
-
     override fun generateMissingItem(item: IModItemProvider, variant: String): Boolean {
         ModelHandler.generateItemJson(this) {
             getPathForItemModel(this, variant) to {
@@ -105,4 +104,3 @@ open class ItemModShield(name: String, durability: Int = 336) : ItemMod(name), I
         return true
     }
 }
-

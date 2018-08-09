@@ -135,7 +135,6 @@ class LibClientProxy : LibCommonProxy(), IResourceManagerReloadListener {
         val globalize = -(player.positionVector - partialOffset)
         GlStateManager.translate(globalize.x, globalize.y, globalize.z)
 
-
         GlStateManager.disableTexture2D()
         GlStateManager.color(1f, 1f, 1f, 1f)
 

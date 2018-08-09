@@ -45,7 +45,6 @@ open class ComponentGeometryHandler(private val component: GuiComponent) {
      */
     var shouldCalculateOwnHover = true
 
-
     /**
      * Takes [pos], which is in our parent's context (coordinate space), and transforms it to our context
      */
@@ -122,7 +121,7 @@ open class ComponentGeometryHandler(private val component: GuiComponent) {
                 if (child.mouseOver && child.geometry.componentOccludesMouseOver) {
                     // occlude all siblings below this component
                     occludeChildren = true
-                    if(!child.geometry.componentPropagatesMouseOverToParent) {
+                    if (!child.geometry.componentPropagatesMouseOverToParent) {
                         // if the component occludes and also doesn't pass the mouseover up the chain, set a flag to
                         // make the parent component's mouseover occlude
                         occludeSelf = true
@@ -167,5 +166,4 @@ open class ComponentGeometryHandler(private val component: GuiComponent) {
                 transformPos.x >= 0 && transformPos.x <= size.x &&
                 transformPos.y >= 0 && transformPos.y <= size.y
     }
-
 }

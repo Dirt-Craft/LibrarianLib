@@ -53,7 +53,6 @@ open class ModGuiBook(override val book: Book) : GuiBase(146, 180), IBookGui {
 
     override val navBar: ComponentNavBar
 
-
     init {
         mainBookComponent = ComponentSprite(pageSprite, 0, 0)
         mainBookComponent.color.setValue(book.bookColor)

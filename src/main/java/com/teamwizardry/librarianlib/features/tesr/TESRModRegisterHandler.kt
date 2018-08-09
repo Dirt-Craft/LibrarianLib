@@ -8,9 +8,7 @@ import com.teamwizardry.librarianlib.features.utilities.client.ClientRunnable
 import net.minecraftforge.fml.client.registry.ClientRegistry
 import kotlin.reflect.KClass
 
-
 annotation class TileRenderer(val value: KClass<out TileRenderHandler<TileMod>>, val fast: Boolean = false)
-
 
 @AMPRegister
 object TileRendererRegisterProcessor : AnnotationMarkerProcessor<TileRenderer, TileMod>(TileRenderer::class.java, TileMod::class.java) {

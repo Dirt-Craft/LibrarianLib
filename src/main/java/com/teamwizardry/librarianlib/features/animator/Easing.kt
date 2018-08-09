@@ -1,6 +1,5 @@
 package com.teamwizardry.librarianlib.features.animator
 
-
 /**
  * An easing function. Used to make more natural transitions.
  */
@@ -229,5 +228,4 @@ abstract class Easing {
             }
         }
     }
-
 }

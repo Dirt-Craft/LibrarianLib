@@ -135,4 +135,3 @@ inline fun <K, V> DoubleArray.flatAssociateBy(mapper: (Double) -> Iterable<Pair<
     forEach { map.putAll(mapper(it)) }
     return map
 }
-

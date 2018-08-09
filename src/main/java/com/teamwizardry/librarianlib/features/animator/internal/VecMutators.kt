@@ -22,7 +22,7 @@ object VecMutators {
 
     init {
 
-        //region Vec2d
+        // region Vec2d
         ImmutableFieldMutatorHandler.registerProvider(Vec2d::class.java, object : ImmutableFieldMutatorProvider<Vec2d> {
             override fun getMutatorForImmutableField(name: String): ImmutableFieldMutator<Vec2d>? {
                 when (name) {
@@ -45,11 +45,10 @@ object VecMutators {
                 }
                 return null
             }
-
         })
-        //endregion
+        // endregion
 
-        //region Vec3d
+        // region Vec3d
         ImmutableFieldMutatorHandler.registerProvider(Vec3d::class.java, object : ImmutableFieldMutatorProvider<Vec3d> {
             override fun getMutatorForImmutableField(name: String): ImmutableFieldMutator<Vec3d>? {
                 when (name) {
@@ -80,8 +79,7 @@ object VecMutators {
                 }
                 return null
             }
-
         })
-        //endregion
+        // endregion
     }
 }

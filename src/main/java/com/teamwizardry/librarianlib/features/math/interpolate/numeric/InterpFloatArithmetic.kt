@@ -4,26 +4,26 @@ import com.teamwizardry.librarianlib.features.math.interpolate.InterpCombine
 import com.teamwizardry.librarianlib.features.math.interpolate.InterpFunction
 import com.teamwizardry.librarianlib.features.math.interpolate.StaticInterp
 
-class InterpFloatAdd(first: InterpFunction<Float>, second: InterpFunction<Float>):
-        InterpCombine<Float, Float, Float>(first, second, { a, b -> a + b}){
+class InterpFloatAdd(first: InterpFunction<Float>, second: InterpFunction<Float>) :
+        InterpCombine<Float, Float, Float>(first, second, { a, b -> a + b }) {
     constructor(first: InterpFunction<Float>, second: Float): this(first, StaticInterp(second))
     constructor(first: Float, second: InterpFunction<Float>): this(StaticInterp(first), second)
 }
 
-class InterpFloatSubtract(first: InterpFunction<Float>, second: InterpFunction<Float>):
-        InterpCombine<Float, Float, Float>(first, second, { a, b -> a - b}){
+class InterpFloatSubtract(first: InterpFunction<Float>, second: InterpFunction<Float>) :
+        InterpCombine<Float, Float, Float>(first, second, { a, b -> a - b }) {
     constructor(first: InterpFunction<Float>, second: Float): this(first, StaticInterp(second))
     constructor(first: Float, second: InterpFunction<Float>): this(StaticInterp(first), second)
 }
 
-class InterpFloatMultiply(first: InterpFunction<Float>, second: InterpFunction<Float>):
-        InterpCombine<Float, Float, Float>(first, second, { a, b -> a * b}){
+class InterpFloatMultiply(first: InterpFunction<Float>, second: InterpFunction<Float>) :
+        InterpCombine<Float, Float, Float>(first, second, { a, b -> a * b }) {
     constructor(first: InterpFunction<Float>, second: Float): this(first, StaticInterp(second))
     constructor(first: Float, second: InterpFunction<Float>): this(StaticInterp(first), second)
 }
 
-class InterpFloatDivide(first: InterpFunction<Float>, second: InterpFunction<Float>):
-        InterpCombine<Float, Float, Float>(first, second, { a, b -> a / b}){
+class InterpFloatDivide(first: InterpFunction<Float>, second: InterpFunction<Float>) :
+        InterpCombine<Float, Float, Float>(first, second, { a, b -> a / b }) {
     constructor(first: InterpFunction<Float>, second: Float): this(first, StaticInterp(second))
     constructor(first: Float, second: InterpFunction<Float>): this(StaticInterp(first), second)
 }

@@ -45,12 +45,10 @@ interface Page {
                 }
 
                 return if (obj == null || provider == null) null else provider(entry, obj)
-
             } catch (error: Exception) {
                 LibrarianLog.error(error, "Failed trying to parse a page component")
                 return null
             }
-
         }
     }
 }

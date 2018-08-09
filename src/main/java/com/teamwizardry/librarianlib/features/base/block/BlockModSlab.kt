@@ -38,7 +38,6 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import java.util.*
 
-
 /**
  * @author WireSegal
  * Created at 9:50 AM on 1/10/17.
@@ -100,9 +99,7 @@ open class BlockModSlab(name: String, val parent: IBlockState) : BlockSlab(wrapM
                 setBurning()
             }
         }
-
     }
-
 
     override val variants = VariantHelper.beginSetupBlock(name, arrayOf())
     val doubleBlock: BlockSlab = if (!isDouble) createDoubleForm(name) else this
@@ -115,7 +112,6 @@ open class BlockModSlab(name: String, val parent: IBlockState) : BlockSlab(wrapM
     init {
         VariantHelper.finishSetupBlock(this, bareName, itemForm, this::creativeTab)
     }
-
 
     override fun setUnlocalizedName(name: String): Block {
         super.setUnlocalizedName(name)
@@ -130,7 +126,6 @@ open class BlockModSlab(name: String, val parent: IBlockState) : BlockSlab(wrapM
         return if (isDouble) null else ItemModSlab(this)
     }
 
-
     /**
      * Override this to have a custom BlockDouble implementation.
      */
@@ -143,7 +138,6 @@ open class BlockModSlab(name: String, val parent: IBlockState) : BlockSlab(wrapM
      */
     override val creativeTab: ModCreativeTab?
         get() = ModCreativeTab.defaultTabs[modId]
-
 
     @Suppress("OverridingDeprecatedMember")
     override fun getMapColor(state: IBlockState, worldIn: IBlockAccess, pos: BlockPos): MapColor = parent.getMapColor(worldIn, pos)
@@ -158,8 +152,8 @@ open class BlockModSlab(name: String, val parent: IBlockState) : BlockSlab(wrapM
     override fun isToolEffective(type: String, state: IBlockState) = parent.block.isToolEffective(type, parent) || (blockMaterial == FAKE_WOOD && type == "axe")
     override fun getHarvestTool(state: IBlockState): String? = parent.block.getHarvestTool(parent) ?: if (blockMaterial == FAKE_WOOD) "axe" else null
 
-    override fun createBlockState()
-            = if (isDouble) BlockStateContainer(this, DUMMY_PROP)
+    override fun createBlockState() =
+            if (isDouble) BlockStateContainer(this, DUMMY_PROP)
     else BlockStateContainer(this, HALF, DUMMY_PROP)
 
     override val ignoredProperties: Array<IProperty<*>>?
@@ -178,12 +172,12 @@ open class BlockModSlab(name: String, val parent: IBlockState) : BlockSlab(wrapM
     }
 
     @Suppress("OverridingDeprecatedMember")
-    override fun getStateFromMeta(meta: Int): IBlockState
-            = if (isDouble) defaultState
+    override fun getStateFromMeta(meta: Int): IBlockState =
+            if (isDouble) defaultState
     else defaultState.withProperty(BlockSlab.HALF, if (meta == 8) EnumBlockHalf.TOP else EnumBlockHalf.BOTTOM)
 
-    override fun getMetaFromState(state: IBlockState)
-            = when {
+    override fun getMetaFromState(state: IBlockState) =
+            when {
                 isDouble -> 0
                 state.getValue(BlockSlab.HALF) == EnumBlockHalf.TOP -> 8
                 else -> 0
@@ -226,7 +220,6 @@ open class BlockModSlab(name: String, val parent: IBlockState) : BlockSlab(wrapM
                             "top"(name)
                             "side"(name)
                         }
-
                     }
         })
         return true
@@ -240,5 +233,4 @@ open class BlockModSlab(name: String, val parent: IBlockState) : BlockSlab(wrapM
         return true
     }
 }
-
 

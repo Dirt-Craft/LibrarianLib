@@ -55,6 +55,5 @@ class KeyframeAnimation<T : Any>(target: T, property: AnimatableProperty<T>) : A
         } else if (prev != null) {
             property.set(target, prev.value)
         }
-
     }
 }

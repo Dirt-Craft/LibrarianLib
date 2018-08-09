@@ -36,7 +36,6 @@ class ComponentSearchBar(book: IBookGui, id: Int, onType: ((String) -> Unit)?) :
                 slideIn()
         }
 
-
         textField.enabledColor.setValue(book.book.searchTextColor)
         textField.selectionColor.setValue(book.book.searchTextHighlight)
         textField.cursorColor.setValue(book.book.searchTextCursor)

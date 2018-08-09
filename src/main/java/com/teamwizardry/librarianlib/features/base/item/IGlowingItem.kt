@@ -63,8 +63,6 @@ interface IGlowingItem {
             return wrappedModels.getOrPut(modelEntry) {
                 ModelWrapper(model, allowUntinted) { it in allowedTintIndices }
             }
-
         }
     }
 }
-

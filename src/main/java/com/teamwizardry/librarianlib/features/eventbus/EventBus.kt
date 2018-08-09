@@ -51,7 +51,7 @@ class EventBus {
                 val list = mutableListOf<Class<*>>()
 
                 var c = clazz
-                while(Event::class.java.isAssignableFrom(c)) {
+                while (Event::class.java.isAssignableFrom(c)) {
                     list.add(c)
                     c = c.superclass ?: break
                 }

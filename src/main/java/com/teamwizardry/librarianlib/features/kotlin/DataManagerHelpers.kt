@@ -28,7 +28,6 @@ import kotlin.reflect.KProperty
 
 // Creation methods
 
-
 inline fun KClass<out Entity>.createByteKey(): DataParameter<Byte> = createKey(DataSerializers.BYTE)
 inline fun KClass<out Entity>.createIntKey(): DataParameter<Int> = createKey(DataSerializers.VARINT)
 inline fun KClass<out Entity>.createFloatKey(): DataParameter<Float> = createKey(DataSerializers.FLOAT)
@@ -44,13 +43,17 @@ inline fun KClass<out Entity>.createFacingKey(): DataParameter<EnumFacing> = cre
 inline fun KClass<out Entity>.createUUIDKey(): DataParameter<Optional<UUID>> = createKey(DataSerializers.OPTIONAL_UNIQUE_ID)
 inline fun KClass<out Entity>.createCompoundKey(): DataParameter<NBTTagCompound> = createKey(DataSerializers.COMPOUND_TAG)
 
-inline fun <T> KClass<out Entity>.createKey(noinline writer: (PacketBuffer, T) -> Unit,
-                                            noinline reader: (PacketBuffer) -> T): DataParameter<T> =
+inline fun <T> KClass<out Entity>.createKey(
+    noinline writer: (PacketBuffer, T) -> Unit,
+    noinline reader: (PacketBuffer) -> T
+): DataParameter<T> =
         createKey(writer, reader) { it }
 
-inline fun <T> KClass<out Entity>.createKey(noinline writer: (PacketBuffer, T) -> Unit,
-                                            noinline reader: (PacketBuffer) -> T,
-                                            noinline copy: (T) -> T): DataParameter<T> =
+inline fun <T> KClass<out Entity>.createKey(
+    noinline writer: (PacketBuffer, T) -> Unit,
+    noinline reader: (PacketBuffer) -> T,
+    noinline copy: (T) -> T
+): DataParameter<T> =
         createKey(FunctionalDataSerializer(writer, reader, copy).also(DataSerializers::registerSerializer))
 
 inline fun <T> KClass<out Entity>.createKey(serializer: DataSerializer<T>): DataParameter<T> =
@@ -60,9 +63,11 @@ fun <T> Entity.with(serializer: DataParameter<T>, default: T) = dataManager.with
 
 fun <T> EntityDataManager.with(serializer: DataParameter<T>, default: T) = apply { register(serializer, default) }
 
-class FunctionalDataSerializer<T>(val writer: (PacketBuffer, T) -> Unit,
-                                          val reader: (PacketBuffer) -> T,
-                                          val copy: (T) -> T) : DataSerializer<T> {
+class FunctionalDataSerializer<T>(
+    val writer: (PacketBuffer, T) -> Unit,
+    val reader: (PacketBuffer) -> T,
+    val copy: (T) -> T
+) : DataSerializer<T> {
     override fun createKey(id: Int): DataParameter<T> = DataParameter(id, this)
     override fun copyValue(value: T): T = copy(value)
     override fun write(buf: PacketBuffer, value: T) = writer(buf, value)
@@ -85,5 +90,4 @@ class OptionalDataManagerProperty<E : Entity, T : Any>(val dataParameter: DataPa
 fun <E : Entity, T : Any> managedValue(dataParameter: DataParameter<Optional<T>>) = OptionalDataManagerProperty<E, T>(dataParameter)
 
 fun <E : Entity, T : Any> managedValue(dataParameter: DataParameter<T>) = DataManagerProperty<E, T>(dataParameter)
-
 

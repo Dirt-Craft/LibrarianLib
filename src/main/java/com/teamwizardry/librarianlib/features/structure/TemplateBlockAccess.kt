@@ -25,7 +25,6 @@ open class TemplateBlockAccess(protected var template: Template?) : IBlockAccess
 
     init {
         templateBlocks = template?.blocks
-
     }
 
     fun setBlockState(pos: BlockPos, state: IBlockState) {
@@ -86,5 +85,4 @@ open class TemplateBlockAccess(protected var template: Template?) : IBlockAccess
     override fun getBiome(pos: BlockPos): Biome {
         return Biomes.PLAINS
     }
-
 }

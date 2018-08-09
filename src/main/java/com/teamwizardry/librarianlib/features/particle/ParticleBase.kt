@@ -17,30 +17,30 @@ import java.util.concurrent.ThreadLocalRandom
  * Created by TheCodeWarrior
  */
 open class ParticleBase internal constructor(
-        val world: World,
-        val position: Vec3d,
-        val lifetime: Int,
-        val animStart: Float,
-        val animEnd: Float,
-        val positionFunc: InterpFunction<Vec3d>,
-        val colorFunc: InterpFunction<Color>,
-        val alphaFunc: InterpFunction<Float>,
-        val renderFunc: RenderFunction,
-        val tickFunc: TickFunction?,
-        val movementMode: EnumMovementMode,
-        val scaleFunc: InterpFunction<Float>,
-        val rotationFunc: InterpFunction<Float>,
-        val motionEnabled: Boolean,
-        val positionEnabled: Boolean,
-        var canCollide: Boolean,
-        initialMotion: Vec3d,
-        var acceleration: Vec3d,
-        var deceleration: Vec3d,
-        var friction: Vec3d,
-        var jitterMagnitude: Vec3d = Vec3d(0.05, 0.05, 0.05),
-        var jitterChance: Float = 0.1f,
-        var canBounce: Boolean = false,
-        var bounceMagnitude: Double = 0.9
+    val world: World,
+    val position: Vec3d,
+    val lifetime: Int,
+    val animStart: Float,
+    val animEnd: Float,
+    val positionFunc: InterpFunction<Vec3d>,
+    val colorFunc: InterpFunction<Color>,
+    val alphaFunc: InterpFunction<Float>,
+    val renderFunc: RenderFunction,
+    val tickFunc: TickFunction?,
+    val movementMode: EnumMovementMode,
+    val scaleFunc: InterpFunction<Float>,
+    val rotationFunc: InterpFunction<Float>,
+    val motionEnabled: Boolean,
+    val positionEnabled: Boolean,
+    var canCollide: Boolean,
+    initialMotion: Vec3d,
+    var acceleration: Vec3d,
+    var deceleration: Vec3d,
+    var friction: Vec3d,
+    var jitterMagnitude: Vec3d = Vec3d(0.05, 0.05, 0.05),
+    var jitterChance: Float = 0.1f,
+    var canBounce: Boolean = false,
+    var bounceMagnitude: Double = 0.9
 ) {
 
     open fun tickFirst() {
@@ -122,7 +122,6 @@ open class ParticleBase internal constructor(
             velocity *= deceleration
             if (this.isCollided)
                 velocity *= friction
-
         }
 
         tickFunc?.tick(this)

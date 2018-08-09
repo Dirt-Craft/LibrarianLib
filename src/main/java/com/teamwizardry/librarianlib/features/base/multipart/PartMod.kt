@@ -1,15 +1,15 @@
 // todo once mcmultipart is 1.11
-//import com.teamwizardry.librarianlib.common.util.saving.AbstractSaveHandler
-//import com.teamwizardry.librarianlib.common.util.saving.SaveInPlace
-//import mcmultipart.multipart.Multipart
-//import net.minecraft.nbt.NBTTagCompound
-//import net.minecraft.network.PacketBuffer
+// import com.teamwizardry.librarianlib.common.util.saving.AbstractSaveHandler
+// import com.teamwizardry.librarianlib.common.util.saving.SaveInPlace
+// import mcmultipart.multipart.Multipart
+// import net.minecraft.nbt.NBTTagCompound
+// import net.minecraft.network.PacketBuffer
 //
-///**
+// /**
 // * Created by TheCodeWarrior
 // */
-//@SaveInPlace
-//open class PartMod : Multipart() {
+// @SaveInPlace
+// open class PartMod : Multipart() {
 //
 //    /**
 //     * Override this function to store special data not stored in @Save fields in NBT.
@@ -68,4 +68,4 @@
 //        writeCustomBytes(buf, true)
 //        AbstractSaveHandler.writeAutoBytes(this, buf, true)
 //    }
-//}
+// }

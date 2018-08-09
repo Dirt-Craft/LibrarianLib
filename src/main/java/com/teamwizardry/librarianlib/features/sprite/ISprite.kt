@@ -9,7 +9,6 @@ package com.teamwizardry.librarianlib.features.sprite
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-
 /**
  * Abstraction for Sprites.
  * Most use cases will use the [Sprite] implementation, however
@@ -91,7 +90,6 @@ interface ISprite {
 
     fun drawClipped(animTicks: Int, x: Float, y: Float, width: Int, height: Int) =
             drawClipped(animTicks, x, y, width, height, false, false)
-
 
     /**
      * Width of this sprite.

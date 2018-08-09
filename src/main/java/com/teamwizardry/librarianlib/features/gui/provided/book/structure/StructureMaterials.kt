@@ -45,13 +45,11 @@ class StructureMaterials(packedBlockstateData: Map<List<IBlockState>, Int>) {
             return map
         }
 
-
         fun silkDrop(state: IBlockState): ItemStack {
             return accessor.invoke(state.block, arrayOf(state)) as ItemStack
         }
 
         private val accessor = MethodHandleHelper.wrapperForMethod(Block::class.java, "getSilkTouchDrop", "func_180643_i", IBlockState::class.java)
-
     }
 
     val stacks: List<List<ItemStack>>

@@ -47,4 +47,3 @@ open class ItemModArmor(name: String, material: ArmorMaterial, slot: EntityEquip
     open val creativeTab: ModCreativeTab?
         get() = ModCreativeTab.defaultTabs[modId]
 }
-

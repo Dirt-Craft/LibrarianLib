@@ -141,14 +141,12 @@ interface IMultipleComponentGeometry {
         }
     }
 
-
-
     fun getBoundingBoxes(state: IBlockState, world: IBlockAccess, pos: BlockPos, boxes: MutableSet<AxisAlignedBB>)
 
-    fun getTraceBoxes(state: IBlockState, world: IBlockAccess, pos: BlockPos, boxes: MutableSet<AxisAlignedBB>, start: Vec3d, end: Vec3d)
-            = getBoundingBoxes(state, world, pos, boxes)
+    fun getTraceBoxes(state: IBlockState, world: IBlockAccess, pos: BlockPos, boxes: MutableSet<AxisAlignedBB>, start: Vec3d, end: Vec3d) =
+            getBoundingBoxes(state, world, pos, boxes)
 
     @SideOnly(Side.CLIENT)
-    fun getSelectionBoxes(state: IBlockState, world: IBlockAccess, pos: BlockPos, hitVec: Vec3d, boxes: MutableSet<AxisAlignedBB>)
-            = getBoundingBoxes(state, world, pos, boxes)
+    fun getSelectionBoxes(state: IBlockState, world: IBlockAccess, pos: BlockPos, hitVec: Vec3d, boxes: MutableSet<AxisAlignedBB>) =
+            getBoundingBoxes(state, world, pos, boxes)
 }

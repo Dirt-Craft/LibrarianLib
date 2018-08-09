@@ -23,12 +23,11 @@ interface IGlowingBlock {
     @SideOnly(Side.CLIENT)
     object Helper {
         @JvmStatic
-        fun simpleBake(state: IBlockState): IBakedModel
-                = Minecraft.getMinecraft().blockRendererDispatcher.getModelForState(state)
+        fun simpleBake(state: IBlockState): IBakedModel =
+                Minecraft.getMinecraft().blockRendererDispatcher.getModelForState(state)
 
         @JvmStatic
-        fun wrapperBake(model: IBakedModel, allowUntinted: Boolean, vararg allowedTintIndices: Int)
-                = IGlowingItem.Helper.wrapperBake(model, allowUntinted, *allowedTintIndices)
+        fun wrapperBake(model: IBakedModel, allowUntinted: Boolean, vararg allowedTintIndices: Int) =
+                IGlowingItem.Helper.wrapperBake(model, allowUntinted, *allowedTintIndices)
     }
 }
-

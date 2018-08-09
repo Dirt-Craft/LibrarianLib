@@ -94,5 +94,4 @@ open class ComponentSpriteTiled @JvmOverloads constructor(protected var main: Sp
 
         DrawingUtil.endDrawingSession()
     }
-
 }

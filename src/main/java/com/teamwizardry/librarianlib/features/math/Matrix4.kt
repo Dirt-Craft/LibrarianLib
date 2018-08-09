@@ -15,7 +15,7 @@ import java.nio.ByteOrder
  */
 class Matrix4 {
 
-    //m<row><column>
+    // m<row><column>
     var m00: Double = 0.0
     var m01: Double = 0.0
     var m02: Double = 0.0
@@ -40,10 +40,24 @@ class Matrix4 {
         m33 = 1.0
     }
 
-    constructor(d00: Double, d01: Double, d02: Double, d03: Double,
-                d10: Double, d11: Double, d12: Double, d13: Double,
-                d20: Double, d21: Double, d22: Double, d23: Double,
-                d30: Double, d31: Double, d32: Double, d33: Double) {
+    constructor(
+        d00: Double,
+        d01: Double,
+        d02: Double,
+        d03: Double,
+        d10: Double,
+        d11: Double,
+        d12: Double,
+        d13: Double,
+        d20: Double,
+        d21: Double,
+        d22: Double,
+        d23: Double,
+        d30: Double,
+        d31: Double,
+        d32: Double,
+        d33: Double
+    ) {
         m00 = d00
         m01 = d01
         m02 = d02

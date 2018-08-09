@@ -37,8 +37,8 @@ enum class EnumBiFacing(val primary: EnumFacing, val secondary: EnumFacing) : En
     companion object {
         @JvmStatic
         fun getBiForFacings(a: EnumFacing, b: EnumFacing): EnumBiFacing {
-            return values().firstOrNull { it.primary == a && it.secondary == b || it.secondary == a && it.primary == b } ?:
-                    throw IllegalArgumentException("Someone tried to make a bifacing out of " + a.name + " and " + b.name)
+            return values().firstOrNull { it.primary == a && it.secondary == b || it.secondary == a && it.primary == b }
+                    ?: throw IllegalArgumentException("Someone tried to make a bifacing out of " + a.name + " and " + b.name)
         }
     }
 }

@@ -55,7 +55,6 @@ object ShaderHelper {
         if (!useShaders())
             return
 
-
         ARBShaderObjects.glUseProgramObjectARB(shader.glName)
 
         if (shader.time != null) {
@@ -78,14 +77,13 @@ object ShaderHelper {
         useShader<Shader>(null)
     }
 
-    //http://hastebin.com/ameremuqev.avrasm
+    // http://hastebin.com/ameremuqev.avrasm
     fun useShaders(): Boolean {
         try {
             return FMLCommonHandler.instance().effectiveSide == Side.CLIENT && LibLibConfig.shaders && OpenGlHelper.shadersSupported
         } catch (ignored: NoSuchFieldError) {
             return false
         }
-
     }
 
     private fun createProgram(shader: Shader): Int {
@@ -107,7 +105,6 @@ object ShaderHelper {
                     vertText += "\n" + elem.toString()
                 }
             }
-
         }
         if (frag != null) {
             try {
@@ -119,7 +116,6 @@ object ShaderHelper {
                     fragText += "\n" + elem.toString()
                 }
             }
-
         }
 
         if (shader.glName != 0)
@@ -172,14 +168,13 @@ object ShaderHelper {
             e.printStackTrace()
             return -1
         }
-
     }
 
     // Most of the code taken from the LWJGL wiki
     // http://lwjgl.org/wiki/index.php?title=GLSL_Shaders_with_LWJGL
 
     private fun getLogInfo(obj: Int): String {
-        return ARBShaderObjects.glGetInfoLogARB(obj, ARBShaderObjects.glGetObjectParameteriARB(obj, ARBShaderObjects.GL_OBJECT_INFO_LOG_LENGTH_ARB))// + "\n" + fileText;
+        return ARBShaderObjects.glGetInfoLogARB(obj, ARBShaderObjects.glGetObjectParameteriARB(obj, ARBShaderObjects.GL_OBJECT_INFO_LOG_LENGTH_ARB)) // + "\n" + fileText;
     }
 
     @Throws(Exception::class)
@@ -235,5 +230,4 @@ object ShaderHelper {
 
         return source.toString()
     }
-
 }

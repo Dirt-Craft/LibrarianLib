@@ -23,5 +23,4 @@ class InterpColorFade(val color: Color, fadeIn: Int, normal: Int, fadeOut: Int) 
         }
         return Color(color.rgb and 0x00FFFFFF or ((alpha * 255).toInt() shl 24), true)
     }
-
 }

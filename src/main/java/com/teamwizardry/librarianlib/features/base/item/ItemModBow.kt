@@ -90,4 +90,3 @@ open class ItemModBow(name: String) : ItemBow(), IModItemProvider, IModelGenerat
         return true
     }
 }
-

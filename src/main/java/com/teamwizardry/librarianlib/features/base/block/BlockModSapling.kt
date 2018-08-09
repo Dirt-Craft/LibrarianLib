@@ -113,4 +113,3 @@ abstract class BlockModSapling(name: String, vararg variants: String) : BlockMod
         return BlockStateContainer(this, STAGE)
     }
 }
-

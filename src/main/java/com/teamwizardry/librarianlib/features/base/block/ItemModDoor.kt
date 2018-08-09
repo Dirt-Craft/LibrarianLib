@@ -25,7 +25,6 @@ open class ItemModDoor(block: BlockModDoor, name: String, vararg variants: Strin
     private val modId = currentModId
     override val variants = VariantHelper.setupItem(this, bareName, variants, this::creativeTab)
 
-
     override fun setUnlocalizedName(name: String): Item {
         VariantHelper.setUnlocalizedNameForItem(this, modId, name)
         return super.setUnlocalizedName(name)
@@ -52,4 +51,3 @@ open class ItemModDoor(block: BlockModDoor, name: String, vararg variants: Strin
     open val creativeTab: ModCreativeTab?
         get() = ModCreativeTab.defaultTabs[modId]
 }
-

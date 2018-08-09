@@ -62,7 +62,6 @@ object GlowingHandler {
             "minecraft:experience_bottle",
             "quark:blaze_lantern|false")
 
-
     @ConfigProperty("client", "Whether to use the custom potion glow handler.",
             configId = LibrarianLib.MODID)
     var potionGlow = true
@@ -172,8 +171,10 @@ object GlowingHandler {
     private val removableGlowBlocks = mutableListOf<IGlowingBlock>()
     private val blockRenderSpecialHandlers = mutableMapOf<Block, IGlowingBlock>()
 
-    private fun registerReloadableGlowHandler(block: Block,
-                                              modelTransformer: (IBlockAccess, BakedQuad, IBlockState, BlockPos) -> Boolean) {
+    private fun registerReloadableGlowHandler(
+        block: Block,
+        modelTransformer: (IBlockAccess, BakedQuad, IBlockState, BlockPos) -> Boolean
+    ) {
         val glow = object : IGlowingBlock {
             override fun shouldGlow(world: IBlockAccess, quad: BakedQuad, state: IBlockState, pos: BlockPos): Boolean {
                 return modelTransformer(world, quad, state, pos)
@@ -185,8 +186,10 @@ object GlowingHandler {
     }
 
     @JvmStatic
-    fun registerCustomGlowHandler(block: Block,
-                                  modelTransformer: (IBlockAccess, BakedQuad, IBlockState, BlockPos) -> Boolean) {
+    fun registerCustomGlowHandler(
+        block: Block,
+        modelTransformer: (IBlockAccess, BakedQuad, IBlockState, BlockPos) -> Boolean
+    ) {
         blockRenderSpecialHandlers.put(block, object : IGlowingBlock {
             override fun shouldGlow(world: IBlockAccess, quad: BakedQuad, state: IBlockState, pos: BlockPos): Boolean {
                 return modelTransformer(world, quad, state, pos)
@@ -194,9 +197,11 @@ object GlowingHandler {
         })
     }
 
-    private fun registerReloadableGlowHandler(item: Item,
-                                              modelTransformer: (ItemStack, IBakedModel) -> IBakedModel?,
-                                              shouldDisableLighting: ((ItemStack, IBakedModel) -> Boolean) = { _, _ -> false }) {
+    private fun registerReloadableGlowHandler(
+        item: Item,
+        modelTransformer: (ItemStack, IBakedModel) -> IBakedModel?,
+        shouldDisableLighting: ((ItemStack, IBakedModel) -> Boolean) = { _, _ -> false }
+    ) {
         val glow = object : IGlowingItem {
             override fun transformToGlow(itemStack: ItemStack, model: IBakedModel): IBakedModel? {
                 return modelTransformer(itemStack, model)
@@ -212,9 +217,11 @@ object GlowingHandler {
 
     @JvmStatic
     @JvmOverloads
-    fun registerCustomGlowHandler(item: Item,
-                                  modelTransformer: (ItemStack, IBakedModel) -> IBakedModel?,
-                                  shouldDisableLighting: ((ItemStack, IBakedModel) -> Boolean) = { _, _ -> false }) {
+    fun registerCustomGlowHandler(
+        item: Item,
+        modelTransformer: (ItemStack, IBakedModel) -> IBakedModel?,
+        shouldDisableLighting: ((ItemStack, IBakedModel) -> Boolean) = { _, _ -> false }
+    ) {
         renderSpecialHandlers.put(item, object : IGlowingItem {
             override fun transformToGlow(itemStack: ItemStack, model: IBakedModel): IBakedModel? {
                 return modelTransformer(itemStack, model)
@@ -317,7 +324,6 @@ object GlowingHandler {
             total++
         }
 
-
         val format = buffer.vertexFormat
         val buf = buffer.byteBuffer.asIntBuffer()
         val brightness = glow.packedGlowCoords(world, state, pos)
@@ -332,4 +338,3 @@ object GlowingHandler {
         }
     }
 }
-

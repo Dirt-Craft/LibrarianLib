@@ -31,7 +31,6 @@ object GlUtils {
         OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, prevX, prevY)
     }
 
-
     inline fun useLightmap(packed: Int, lambda: () -> Unit) {
         val mask = 1 shl 16
         val x = (packed % mask).toFloat()

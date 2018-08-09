@@ -37,5 +37,3 @@ open class PropertyString(name: String, open val values: LinkedHashSet<String>) 
     override fun hashCode() = 31 * super.hashCode() + values.hashCode()
 }
 
-
-

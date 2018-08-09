@@ -43,11 +43,11 @@ abstract class EntityMod(world: World) : Entity(world), IModEntity {
         super.readFromNBT(compound)
     }
 
-    override final fun writeEntityToNBT(compound: NBTTagCompound) {
+    final override fun writeEntityToNBT(compound: NBTTagCompound) {
         // NO-OP
     }
 
-    override final fun readEntityFromNBT(compound: NBTTagCompound) {
+    final override fun readEntityFromNBT(compound: NBTTagCompound) {
         // NO-OP
     }
 }
@@ -68,11 +68,11 @@ abstract class LivingEntityMod(world: World) : EntityLiving(world), IModEntity {
         super.readFromNBT(compound)
     }
 
-    override final fun writeEntityToNBT(compound: NBTTagCompound) {
+    final override fun writeEntityToNBT(compound: NBTTagCompound) {
         super.writeEntityToNBT(compound)
     }
 
-    override final fun readEntityFromNBT(compound: NBTTagCompound) {
+    final override fun readEntityFromNBT(compound: NBTTagCompound) {
         super.readEntityFromNBT(compound)
     }
 }
@@ -93,11 +93,11 @@ abstract class LivingBaseEntityMod(world: World) : EntityLivingBase(world), IMod
         super.readFromNBT(compound)
     }
 
-    override final fun writeEntityToNBT(compound: NBTTagCompound) {
+    final override fun writeEntityToNBT(compound: NBTTagCompound) {
         super.writeEntityToNBT(compound)
     }
 
-    override final fun readEntityFromNBT(compound: NBTTagCompound) {
+    final override fun readEntityFromNBT(compound: NBTTagCompound) {
         super.readEntityFromNBT(compound)
     }
 }
@@ -118,11 +118,11 @@ abstract class AgeableEntityMod(world: World) : EntityAgeable(world), IModEntity
         super.readFromNBT(compound)
     }
 
-    override final fun writeEntityToNBT(compound: NBTTagCompound) {
+    final override fun writeEntityToNBT(compound: NBTTagCompound) {
         super.writeEntityToNBT(compound)
     }
 
-    override final fun readEntityFromNBT(compound: NBTTagCompound) {
+    final override fun readEntityFromNBT(compound: NBTTagCompound) {
         super.readEntityFromNBT(compound)
     }
 }
@@ -143,11 +143,11 @@ abstract class CreatureEntityMod(world: World) : EntityCreature(world), IModEnti
         super.readFromNBT(compound)
     }
 
-    override final fun writeEntityToNBT(compound: NBTTagCompound) {
+    final override fun writeEntityToNBT(compound: NBTTagCompound) {
         super.writeEntityToNBT(compound)
     }
 
-    override final fun readEntityFromNBT(compound: NBTTagCompound) {
+    final override fun readEntityFromNBT(compound: NBTTagCompound) {
         super.readEntityFromNBT(compound)
     }
 }
@@ -168,11 +168,11 @@ abstract class FlyingEntityMod(world: World) : EntityFlying(world), IModEntity {
         super.readFromNBT(compound)
     }
 
-    override final fun writeEntityToNBT(compound: NBTTagCompound) {
+    final override fun writeEntityToNBT(compound: NBTTagCompound) {
         super.writeEntityToNBT(compound)
     }
 
-    override final fun readEntityFromNBT(compound: NBTTagCompound) {
+    final override fun readEntityFromNBT(compound: NBTTagCompound) {
         super.readEntityFromNBT(compound)
     }
 }
@@ -193,11 +193,11 @@ abstract class MobEntityMod(world: World) : EntityMob(world), IModEntity {
         super.readFromNBT(compound)
     }
 
-    override final fun writeEntityToNBT(compound: NBTTagCompound) {
+    final override fun writeEntityToNBT(compound: NBTTagCompound) {
         super.writeEntityToNBT(compound)
     }
 
-    override final fun readEntityFromNBT(compound: NBTTagCompound) {
+    final override fun readEntityFromNBT(compound: NBTTagCompound) {
         super.readEntityFromNBT(compound)
     }
 }
@@ -218,11 +218,11 @@ abstract class AnimalEntityMod(world: World) : EntityAnimal(world), IModEntity {
         super.readFromNBT(compound)
     }
 
-    override final fun writeEntityToNBT(compound: NBTTagCompound) {
+    final override fun writeEntityToNBT(compound: NBTTagCompound) {
         super.writeEntityToNBT(compound)
     }
 
-    override final fun readEntityFromNBT(compound: NBTTagCompound) {
+    final override fun readEntityFromNBT(compound: NBTTagCompound) {
         super.readEntityFromNBT(compound)
     }
 }
@@ -243,11 +243,11 @@ abstract class TameableEntityMod(world: World) : EntityTameable(world), IModEnti
         super.readFromNBT(compound)
     }
 
-    override final fun writeEntityToNBT(compound: NBTTagCompound) {
+    final override fun writeEntityToNBT(compound: NBTTagCompound) {
         super.writeEntityToNBT(compound)
     }
 
-    override final fun readEntityFromNBT(compound: NBTTagCompound) {
+    final override fun readEntityFromNBT(compound: NBTTagCompound) {
         super.readEntityFromNBT(compound)
     }
 }
@@ -268,11 +268,11 @@ abstract class WaterMobEntityMod(world: World) : EntityWaterMob(world), IModEnti
         super.readFromNBT(compound)
     }
 
-    override final fun writeEntityToNBT(compound: NBTTagCompound) {
+    final override fun writeEntityToNBT(compound: NBTTagCompound) {
         super.writeEntityToNBT(compound)
     }
 
-    override final fun readEntityFromNBT(compound: NBTTagCompound) {
+    final override fun readEntityFromNBT(compound: NBTTagCompound) {
         super.readEntityFromNBT(compound)
     }
 }
@@ -293,11 +293,11 @@ abstract class SkeletonEntityMod(world: World) : AbstractSkeleton(world), IModEn
         super.readFromNBT(compound)
     }
 
-    override final fun writeEntityToNBT(compound: NBTTagCompound) {
+    final override fun writeEntityToNBT(compound: NBTTagCompound) {
         super.writeEntityToNBT(compound)
     }
 
-    override final fun readEntityFromNBT(compound: NBTTagCompound) {
+    final override fun readEntityFromNBT(compound: NBTTagCompound) {
         super.readEntityFromNBT(compound)
     }
 }
@@ -318,11 +318,11 @@ abstract class GolemEntityMod(world: World) : EntityGolem(world), IModEntity {
         super.readFromNBT(compound)
     }
 
-    override final fun writeEntityToNBT(compound: NBTTagCompound) {
+    final override fun writeEntityToNBT(compound: NBTTagCompound) {
         super.writeEntityToNBT(compound)
     }
 
-    override final fun readEntityFromNBT(compound: NBTTagCompound) {
+    final override fun readEntityFromNBT(compound: NBTTagCompound) {
         super.readEntityFromNBT(compound)
     }
 }
@@ -343,11 +343,11 @@ abstract class HorseEntityMod(world: World) : EntityHorse(world), IModEntity {
         super.readFromNBT(compound)
     }
 
-    override final fun writeEntityToNBT(compound: NBTTagCompound) {
+    final override fun writeEntityToNBT(compound: NBTTagCompound) {
         super.writeEntityToNBT(compound)
     }
 
-    override final fun readEntityFromNBT(compound: NBTTagCompound) {
+    final override fun readEntityFromNBT(compound: NBTTagCompound) {
         super.readEntityFromNBT(compound)
     }
 }
@@ -368,15 +368,14 @@ abstract class ChestHorseEntityMod(world: World) : AbstractChestHorse(world), IM
         super.readFromNBT(compound)
     }
 
-    override final fun writeEntityToNBT(compound: NBTTagCompound) {
+    final override fun writeEntityToNBT(compound: NBTTagCompound) {
         super.writeEntityToNBT(compound)
     }
 
-    override final fun readEntityFromNBT(compound: NBTTagCompound) {
+    final override fun readEntityFromNBT(compound: NBTTagCompound) {
         super.readEntityFromNBT(compound)
     }
 }
-
 
 @SaveInPlace
 abstract class ArrowEntityMod : EntityArrow, IModEntity {
@@ -398,11 +397,11 @@ abstract class ArrowEntityMod : EntityArrow, IModEntity {
         super.readFromNBT(compound)
     }
 
-    override final fun writeEntityToNBT(compound: NBTTagCompound) {
+    final override fun writeEntityToNBT(compound: NBTTagCompound) {
         super.writeEntityToNBT(compound)
     }
 
-    override final fun readEntityFromNBT(compound: NBTTagCompound) {
+    final override fun readEntityFromNBT(compound: NBTTagCompound) {
         super.readEntityFromNBT(compound)
     }
 }
@@ -426,11 +425,11 @@ abstract class MinecartEntityMod : EntityMinecart, IModEntity {
         super.readFromNBT(compound)
     }
 
-    override final fun writeEntityToNBT(compound: NBTTagCompound) {
+    final override fun writeEntityToNBT(compound: NBTTagCompound) {
         super.writeEntityToNBT(compound)
     }
 
-    override final fun readEntityFromNBT(compound: NBTTagCompound) {
+    final override fun readEntityFromNBT(compound: NBTTagCompound) {
         super.readEntityFromNBT(compound)
     }
 }
@@ -454,11 +453,11 @@ abstract class MinecartContainerEntityMod : EntityMinecartContainer, IModEntity 
         super.readFromNBT(compound)
     }
 
-    override final fun writeEntityToNBT(compound: NBTTagCompound) {
+    final override fun writeEntityToNBT(compound: NBTTagCompound) {
         super.writeEntityToNBT(compound)
     }
 
-    override final fun readEntityFromNBT(compound: NBTTagCompound) {
+    final override fun readEntityFromNBT(compound: NBTTagCompound) {
         super.readEntityFromNBT(compound)
     }
 }
@@ -483,11 +482,11 @@ abstract class ThrowableEntityMod : EntityThrowable, IModEntity {
         super.readFromNBT(compound)
     }
 
-    override final fun writeEntityToNBT(compound: NBTTagCompound) {
+    final override fun writeEntityToNBT(compound: NBTTagCompound) {
         super.writeEntityToNBT(compound)
     }
 
-    override final fun readEntityFromNBT(compound: NBTTagCompound) {
+    final override fun readEntityFromNBT(compound: NBTTagCompound) {
         super.readEntityFromNBT(compound)
     }
 }
@@ -512,11 +511,11 @@ abstract class ItemEntityMod : EntityItem, IModEntity {
         super.readFromNBT(compound)
     }
 
-    override final fun writeEntityToNBT(compound: NBTTagCompound) {
+    final override fun writeEntityToNBT(compound: NBTTagCompound) {
         super.writeEntityToNBT(compound)
     }
 
-    override final fun readEntityFromNBT(compound: NBTTagCompound) {
+    final override fun readEntityFromNBT(compound: NBTTagCompound) {
         super.readEntityFromNBT(compound)
     }
 }
@@ -541,11 +540,11 @@ abstract class FireballEntityMod : EntityFireball, IModEntity {
         super.readFromNBT(compound)
     }
 
-    override final fun writeEntityToNBT(compound: NBTTagCompound) {
+    final override fun writeEntityToNBT(compound: NBTTagCompound) {
         super.writeEntityToNBT(compound)
     }
 
-    override final fun readEntityFromNBT(compound: NBTTagCompound) {
+    final override fun readEntityFromNBT(compound: NBTTagCompound) {
         super.readEntityFromNBT(compound)
     }
 }
@@ -569,11 +568,11 @@ abstract class HangingEntityMod : EntityHanging, IModEntity {
         super.readFromNBT(compound)
     }
 
-    override final fun writeEntityToNBT(compound: NBTTagCompound) {
+    final override fun writeEntityToNBT(compound: NBTTagCompound) {
         super.writeEntityToNBT(compound)
     }
 
-    override final fun readEntityFromNBT(compound: NBTTagCompound) {
+    final override fun readEntityFromNBT(compound: NBTTagCompound) {
         super.readEntityFromNBT(compound)
     }
 }

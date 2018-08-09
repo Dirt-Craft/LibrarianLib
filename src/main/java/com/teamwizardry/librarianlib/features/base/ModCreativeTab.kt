@@ -81,4 +81,3 @@ abstract class ModCreativeTab(postFix: String? = null) : CreativeTabs(currentMod
         item.providedItem.creativeTab = this
     }
 }
-

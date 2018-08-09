@@ -128,7 +128,6 @@ open class Book(val location: ResourceLocation) : IBookElement {
         } catch (error: Exception) {
             LibrarianLog.error(error, "Failed trying to parse a book component")
         }
-
     }
 
     @SideOnly(Side.CLIENT)

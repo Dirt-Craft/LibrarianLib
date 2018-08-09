@@ -49,11 +49,11 @@ open class Shader(vert: ResourceLocation?, frag: ResourceLocation?) {
     }
 
     open fun initUniforms() {
-        //NO-OP
+        // NO-OP
     }
 
     open fun uniformDefaults() {
-        //NO-OP
+        // NO-OP
     }
 
     fun <T : Uniform> getUniform(name: String): T? {

@@ -66,7 +66,7 @@ private fun Class<*>.getDeclaredFieldRecursive(name: String): Field? {
         try {
             field = cls.getDeclaredField(name)
         } catch (e: NoSuchFieldException) {
-            //noop
+            // noop
         }
         cls = cls.superclass
     }
@@ -95,19 +95,19 @@ private class FieldListItem(val target: Class<*>, val name: String) {
 
     init {
         if (target.isArray) {
-            accessorOfChoice = subscriptRegex.find(name)?.groupValues?.getOrNull(1)?.toIntOrNull() ?:
-                    throw IllegalArgumentException("Name `$name` not a valid subscript string! (valid format: `\\[\\d+\\]`)")
+            accessorOfChoice = subscriptRegex.find(name)?.groupValues?.getOrNull(1)?.toIntOrNull()
+                    ?: throw IllegalArgumentException("Name `$name` not a valid subscript string! (valid format: `\\[\\d+\\]`)")
             fieldClass = target.componentType
         } else {
-            val property = target.kotlin.getDeclaredPropertyRecursive(name) ?:
-                    throw IllegalArgumentException("Couldn't find a property `$name` in class `${target.canonicalName}` or any of its superclasses")
+            val property = target.kotlin.getDeclaredPropertyRecursive(name)
+                    ?: throw IllegalArgumentException("Couldn't find a property `$name` in class `${target.canonicalName}` or any of its superclasses")
             fieldClass = (property.returnType.classifier as KClass<*>).java
 
             accessorOfChoice = if (property.javaGetter != null) {
                 property
             } else {
-                property.javaField ?:
-                        throw IllegalArgumentException("Property `$name` in class `${target.canonicalName}` has no getter and no backing field")
+                property.javaField
+                        ?: throw IllegalArgumentException("Property `$name` in class `${target.canonicalName}` has no getter and no backing field")
             }
         }
     }
@@ -180,14 +180,14 @@ private class FieldListItem(val target: Class<*>, val name: String) {
                 when (accessorOfChoice) {
                     is Field -> {
                         val m = MethodHandleHelper.wrapperForSetter<Any>(accessorOfChoice)
-                        return@lazy m@ { t, v ->
+                        return@lazy m@{ t, v ->
                             m(t, v)
                             return@m NULL_OBJECT
                         }
                     }
                     is KMutableProperty<*> -> {
                         val m = MethodHandleHelper.wrapperForMethod<Any>(accessorOfChoice.javaSetter!!)
-                        return@lazy m@ { t, v ->
+                        return@lazy m@{ t, v ->
                             m(t, arrayOf(v))
                             return@m NULL_OBJECT
                         }
@@ -198,14 +198,13 @@ private class FieldListItem(val target: Class<*>, val name: String) {
                 val mutator = ImmutableFieldMutatorHandler.getMutator(target, name)
                         ?: throw IllegalAccessException("Cannot set the immutable field `$name` without a mutator")
 
-                return@lazy m@ { t, v ->
+                return@lazy m@{ t, v ->
                     return@m mutator.mutate(t, v)
                 }
             }
-
         }
 
-        return ret@ { target, finalValue ->
+        return ret@{ target, finalValue ->
             val fieldValue = getter(target)!!
             val childValue = childSetter(fieldValue, finalValue)
 
@@ -215,7 +214,6 @@ private class FieldListItem(val target: Class<*>, val name: String) {
 
             return@ret NULL_OBJECT
         }
-
     }
 
     fun createInvolvementChecker(): (target: Any, check: Any) -> Boolean {
@@ -244,7 +242,7 @@ private class FieldListItem(val target: Class<*>, val name: String) {
         if (childGetter == null) {
             return { t, c -> getter(t) === c }
         } else {
-            return ret@ { t, c ->
+            return ret@{ t, c ->
                 val us = getter(t) ?: return@ret false
                 us === c || childGetter(us, c)
             }

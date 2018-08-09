@@ -50,4 +50,3 @@ open class ItemModFood(name: String, amount: Int, saturation: Float, wolfFood: B
     open val creativeTab: ModCreativeTab?
         get() = ModCreativeTab.defaultTabs[modId]
 }
-

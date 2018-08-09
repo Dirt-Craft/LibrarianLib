@@ -17,11 +17,11 @@ class ExpandedItemStackHandler : ItemStackHandler {
     constructor(stacks: Array<ItemStack>) : super(stacks.toNonnullList())
     constructor(stacks: Iterable<ItemStack>) : super(stacks.toNonnullList())
 
-    override fun getStackLimit(slot: Int, stack: ItemStack)
-            = if (canInsertIntoSlot(slot, stack)) super.getStackLimit(slot, stack) else 0
+    override fun getStackLimit(slot: Int, stack: ItemStack) =
+            if (canInsertIntoSlot(slot, stack)) super.getStackLimit(slot, stack) else 0
 
-    fun canInsertIntoSlot(slot: Int, stack: ItemStack)
-            = slotPredicate?.invoke(this, slot, stack) ?: true
+    fun canInsertIntoSlot(slot: Int, stack: ItemStack) =
+            slotPredicate?.invoke(this, slot, stack) ?: true
 
     override fun onContentsChanged(slot: Int) {
         changedCallback?.invoke(this, slot)

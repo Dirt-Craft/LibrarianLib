@@ -109,5 +109,4 @@ object VariantHelper {
         if (itemForm != null)
             RegistrationHandler.register(itemForm, ResourceLocation(modId, snakeName))
     }
-
 }

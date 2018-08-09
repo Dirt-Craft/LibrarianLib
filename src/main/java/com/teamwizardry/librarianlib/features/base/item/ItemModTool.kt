@@ -120,4 +120,3 @@ open class ItemModTool(name: String, attackDamage: Float, attackSpeed: Float, to
         return true
     }
 }
-

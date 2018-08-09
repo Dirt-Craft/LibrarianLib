@@ -17,7 +17,6 @@ import net.minecraftforge.registries.IForgeRegistryEntry
 import java.io.File
 import java.nio.file.Paths
 
-
 /**
  * Sets your mod's default path prefix. By default, paths are `src/main/resources/assets`.
  * Trailing and leading slashes will be removed. Do not use backslashes.
@@ -119,7 +118,5 @@ inline fun generateBlockStates(dsl: FileDsl<Block>, noinline stateMapper: ((bloc
         }
 }
 
-
 var generatedFiles = mutableListOf<String>()
-
 

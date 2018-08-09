@@ -28,7 +28,6 @@ import net.minecraft.world.World
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-
 /**
  * @author WireSegal
  * Created at 10:36 AM on 5/7/16.
@@ -99,7 +98,6 @@ open class BlockModWall(name: String, val parent: IBlockState) : BlockMod(name, 
         else true
     }
 
-
     @Suppress("OverridingDeprecatedMember")
     override fun getMapColor(state: IBlockState, worldIn: IBlockAccess, pos: BlockPos) = parent.getMapColor(worldIn, pos)
 
@@ -127,7 +125,6 @@ open class BlockModWall(name: String, val parent: IBlockState) : BlockMod(name, 
     }
 
     override fun createBlockState() = BlockStateContainer(this, UP, NORTH, EAST, WEST, SOUTH)
-
 
     override fun generateMissingBlockstate(block: IModBlockProvider, mapper: ((block: Block) -> Map<IBlockState, ModelResourceLocation>)?): Boolean {
         val name = ResourceLocation(parentName.resourceDomain, "blocks/${parentName.resourcePath}").toString()
@@ -192,7 +189,6 @@ open class BlockModWall(name: String, val parent: IBlockState) : BlockMod(name, 
                 "textures" {
                     "wall"(name)
                 }
-
             }
             getPathForBlockModel(this, "${simpleName}_side") to {
                 "parent"("block/wall_side")

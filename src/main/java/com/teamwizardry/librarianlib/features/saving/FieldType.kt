@@ -11,7 +11,6 @@ import kotlin.reflect.jvm.javaField
 import kotlin.reflect.jvm.javaGetter
 import kotlin.reflect.jvm.javaType
 
-
 val getGenericSuperclassMH = MethodHandleHelper.wrapperForStaticMethod(`$Gson$Types`::class.java, "getGenericSupertype", null, Type::class.java, Class::class.java, Class::class.java)
 
 abstract class FieldType protected constructor(val type: Type, annotated: AnnotatedType?, open val clazz: Class<*>) {

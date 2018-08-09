@@ -36,5 +36,4 @@ class Key private constructor(val character: Char, val keyCode: Int) {
             return key
         }
     }
-
 }

@@ -55,7 +55,6 @@ open class ModSoundEvent(name: String, subtitle: String?, private val sounds: Li
         return obj
     }
 
-
     // Internal
 
     init {
@@ -80,8 +79,8 @@ open class ModSoundEvent(name: String, subtitle: String?, private val sounds: Li
                 MinecraftForge.EVENT_BUS.register(this)
         }
 
-        fun serialize(el: JsonElement)
-                = if (LibLibConfig.prettyJsonSerialization) el.serialize() else el.toString() + "\n"
+        fun serialize(el: JsonElement) =
+                if (LibLibConfig.prettyJsonSerialization) el.serialize() else el.toString() + "\n"
 
         fun log(text: String) {
             if (LibrarianLib.DEV_ENVIRONMENT) LibrarianLog.info(text)

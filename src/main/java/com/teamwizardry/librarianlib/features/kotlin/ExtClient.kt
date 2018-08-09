@@ -50,7 +50,6 @@ val GuiComponent.x
 val GuiComponent.y
     get() = pos.yi
 
-
 val RenderManager.renderPosX by MethodHandleHelper.delegateForReadOnly<RenderManager, Double>(RenderManager::class.java, "field_78725_b", "renderPosX")
 val RenderManager.renderPosY by MethodHandleHelper.delegateForReadOnly<RenderManager, Double>(RenderManager::class.java, "field_78726_c", "renderPosY")
 val RenderManager.renderPosZ by MethodHandleHelper.delegateForReadOnly<RenderManager, Double>(RenderManager::class.java, "field_78723_d", "renderPosZ")

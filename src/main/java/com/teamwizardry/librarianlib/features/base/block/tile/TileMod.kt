@@ -252,9 +252,9 @@ abstract class TileMod : TileEntity() {
     }
 
     override fun <T : Any> getCapability(capability: Capability<T>, facing: EnumFacing?): T? {
-        return modules.values.mapNotNull { it.getCapability(capability, facing) }.firstOrNull() ?:
-                AbstractSaveHandler.getCapability(this, capability, facing) ?:
-                super.getCapability(capability, facing)
+        return modules.values.mapNotNull { it.getCapability(capability, facing) }.firstOrNull()
+                ?: AbstractSaveHandler.getCapability(this, capability, facing)
+                ?: super.getCapability(capability, facing)
     }
 
     override fun hasCapability(capability: Capability<*>, facing: EnumFacing?): Boolean {
@@ -277,5 +277,4 @@ abstract class TileMod : TileEntity() {
     companion object {
         internal val fastTESRClasses = mutableSetOf<Class<out TileMod>>()
     }
-
 }

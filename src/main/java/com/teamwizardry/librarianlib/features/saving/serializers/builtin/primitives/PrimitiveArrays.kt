@@ -32,7 +32,6 @@ object SerializeByteArray : Serializer<ByteArray>(FieldType.create(ByteArray::cl
         buf.writeVarInt(value.size)
         value.forEach { buf.writeByte(it.toInt()) }
     }
-
 }
 
 @SerializerRegister(CharArray::class)
@@ -68,7 +67,6 @@ object SerializeCharArray : Serializer<CharArray>(FieldType.create(CharArray::cl
         buf.writeVarInt(value.size)
         value.forEach { buf.writeChar(it.toInt()) }
     }
-
 }
 
 @SerializerRegister(ShortArray::class)
@@ -104,7 +102,6 @@ object SerializeShortArray : Serializer<ShortArray>(FieldType.create(ShortArray:
         buf.writeVarInt(value.size)
         value.forEach { buf.writeShort(it.toInt()) }
     }
-
 }
 
 @SerializerRegister(IntArray::class)
@@ -132,7 +129,6 @@ object SerializeIntArray : Serializer<IntArray>(FieldType.create(IntArray::class
         buf.writeVarInt(value.size)
         value.forEach { buf.writeInt(it) }
     }
-
 }
 
 @SerializerRegister(LongArray::class)
@@ -168,7 +164,6 @@ object SerializeLongArray : Serializer<LongArray>(FieldType.create(LongArray::cl
         buf.writeVarInt(value.size)
         value.forEach { buf.writeLong(it) }
     }
-
 }
 
 @SerializerRegister(FloatArray::class)
@@ -204,7 +199,6 @@ object SerializeFloatArray : Serializer<FloatArray>(FieldType.create(FloatArray:
         buf.writeVarInt(value.size)
         value.forEach { buf.writeFloat(it) }
     }
-
 }
 
 @SerializerRegister(DoubleArray::class)
@@ -240,7 +234,6 @@ object SerializeDoubleArray : Serializer<DoubleArray>(FieldType.create(DoubleArr
         buf.writeVarInt(value.size)
         value.forEach { buf.writeDouble(it) }
     }
-
 }
 
 @SerializerRegister(BooleanArray::class)
@@ -276,7 +269,6 @@ object SerializeBooleanArray : Serializer<BooleanArray>(FieldType.create(Boolean
         buf.writeVarInt(value.size)
         value.forEach { buf.writeBoolean(it) }
     }
-
 }
 
 @SerializerRegister(Array<String>::class)
@@ -317,5 +309,4 @@ object SerializeStringArray : Serializer<Array<String>>(FieldType.create(Array<S
         buf.writeVarInt(value.size)
         value.forEach { buf.writeString(it) }
     }
-
 }

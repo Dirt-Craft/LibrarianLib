@@ -34,8 +34,8 @@ class WorldDataContainer(ident: String) : WorldSavedData(NAME) {
 
         fun get(world: World): WorldDataContainer {
             gettingWorld = world
-            val wdc = world.perWorldStorage.getOrLoadData(WorldDataContainer::class.java, NAME) as? WorldDataContainer ?:
-                    WorldDataContainer(NAME).also { world.perWorldStorage.setData(NAME, it) }
+            val wdc = world.perWorldStorage.getOrLoadData(WorldDataContainer::class.java, NAME) as? WorldDataContainer
+                    ?: WorldDataContainer(NAME).also { world.perWorldStorage.setData(NAME, it) }
             gettingWorld = null
             return wdc
         }

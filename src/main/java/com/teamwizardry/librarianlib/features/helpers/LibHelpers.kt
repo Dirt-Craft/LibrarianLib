@@ -48,10 +48,10 @@ fun aabb(a: Vec3d, b: Vec3d) = AxisAlignedBB(a.x, a.y, a.z, b.x, b.y, b.z)
 internal var modIdOverride: String? = null
 
 val currentModId: String
-    get() = modIdOverride ?:
-            Loader.instance().activeModContainer()?.modId ?:
-            OwnershipHandler.getModId(Class.forName(Throwable().stackTrace[2].className)) ?:
-            ""
+    get() = modIdOverride
+            ?: Loader.instance().activeModContainer()?.modId
+            ?: OwnershipHandler.getModId(Class.forName(Throwable().stackTrace[2].className))
+            ?: ""
 
 fun <T : Any?> threadLocal() = ThreadLocalDelegate<T>(null)
 fun <T> threadLocal(initial: () -> T) = ThreadLocalDelegate(initial)

@@ -31,7 +31,6 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import java.util.*
 
-
 @Suppress("LeakingThis", "DEPRECATION", "OverridingDeprecatedMember")
 abstract class BlockModLeaves(name: String, vararg variants: String) : BlockMod(name, Material.LEAVES, *variants), IShearable, IModelGenerator {
     companion object {
@@ -50,7 +49,6 @@ abstract class BlockModLeaves(name: String, vararg variants: String) : BlockMod(
     }
 
     override fun getBurnTime(stack: ItemStack) = 100
-
 
     open val canBeOpaque: Boolean
         get() = true
@@ -190,7 +188,6 @@ abstract class BlockModLeaves(name: String, vararg variants: String) : BlockMod(
             worldIn.spawnParticle(EnumParticleTypes.DRIP_WATER, d0, d1, d2, 0.0, 0.0, 0.0, *IntArray(0))
         }
     }
-
 
     override fun quantityDropped(random: Random): Int {
         return if (random.nextInt(20) == 0) 1 else 0

@@ -33,9 +33,25 @@ class RenderFunctionBasic(val texture: TextureAtlasSprite, layer: ParticleRender
     /**
      * `i` is from 0-1 along the animation
      */
-    override fun render(i: Float, particle: ParticleBase, color: Color, alpha: Float,
-                        worldRendererIn: BufferBuilder, entityIn: Entity?, partialTicks: Float, rotationX: Float, rotationZ: Float, rotationYZ: Float, rotationXY: Float, rotationXZ: Float,
-                        scale: Float, rotation: Float, pos: Vec3d, skyLight: Int, blockLight: Int) {
+    override fun render(
+        i: Float,
+        particle: ParticleBase,
+        color: Color,
+        alpha: Float,
+        worldRendererIn: BufferBuilder,
+        entityIn: Entity?,
+        partialTicks: Float,
+        rotationX: Float,
+        rotationZ: Float,
+        rotationYZ: Float,
+        rotationXY: Float,
+        rotationXZ: Float,
+        scale: Float,
+        rotation: Float,
+        pos: Vec3d,
+        skyLight: Int,
+        blockLight: Int
+    ) {
         val uMin = texture.minU.toDouble()
         val uMax = texture.maxU.toDouble()
         val vMin = texture.minV.toDouble()

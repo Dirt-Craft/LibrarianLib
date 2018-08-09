@@ -25,7 +25,6 @@ open class BlockModBush(name: String, materialIn: Material, color: MapColor, var
     constructor(name: String, materialIn: Material, vararg variants: String) : this(name, materialIn, materialIn.materialMapColor, *variants)
     constructor(name: String, vararg variants: String) : this(name, Material.PLANTS, *variants)
 
-
     override val bareName: String = VariantHelper.toSnakeCase(name)
     override val variants: Array<out String> = VariantHelper.beginSetupBlock(bareName, variants)
     val modId = currentModId

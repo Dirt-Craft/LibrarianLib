@@ -61,7 +61,6 @@ open class GuiBase(protected var guiWidth: Int, protected var guiHeight: Int) : 
 
         fullscreenComponents.size = vec(width, height)
 
-
         val scaledresolution = ScaledResolution(Minecraft.getMinecraft())
 
         debugger.transform.scale = 1.0 / scaledresolution.scaleFactor

@@ -36,6 +36,5 @@ class CallbackValue<T>(private var value: T) {
             this@CallbackValue.value = value
             callback = null
         }
-
     }
 }

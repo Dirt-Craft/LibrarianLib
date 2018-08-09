@@ -36,7 +36,7 @@ class ChunkWorldData : WorldSavedData(NAME) {
             ChunkDataRegistry.getApplicable(e.chunk).forEach {
                 val data = it.constructor(e.chunk)
                 data.name = it.name
-                if(rootData.hasKey(it.name.toString())) {
+                if (rootData.hasKey(it.name.toString())) {
                     val nbt = rootData.getCompoundTag(it.name.toString())
                     data.loadFromNBT(nbt)
                 } else {
@@ -81,7 +81,7 @@ class ChunkWorldData : WorldSavedData(NAME) {
                 get(e.chunk.world).containers[e.chunk.pos] = container
             } else {
                 val worldData = get(e.chunk.world)
-                if(!worldData.containers.contains(e.chunk.pos)) {
+                if (!worldData.containers.contains(e.chunk.pos)) {
                     val container = ChunkDataContainer()
                     ChunkDataRegistry.getApplicable(e.chunk).forEach {
                         val data = it.constructor(e.chunk)
@@ -106,8 +106,8 @@ class ChunkWorldData : WorldSavedData(NAME) {
         }
 
         fun get(world: World): ChunkWorldData {
-            return world.perWorldStorage.getOrLoadData(ChunkWorldData::class.java, ChunkWorldData.NAME) as? ChunkWorldData ?:
-                    ChunkWorldData().also { world.perWorldStorage.setData(ChunkWorldData.NAME, it) }
+            return world.perWorldStorage.getOrLoadData(ChunkWorldData::class.java, ChunkWorldData.NAME) as? ChunkWorldData
+                    ?: ChunkWorldData().also { world.perWorldStorage.setData(ChunkWorldData.NAME, it) }
         }
     }
 

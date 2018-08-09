@@ -24,6 +24,5 @@ object LibShaders {
         override fun uniformDefaults() {
             hue?.set(0f)
         }
-
     }
 }

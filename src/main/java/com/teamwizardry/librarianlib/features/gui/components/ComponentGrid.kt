@@ -19,5 +19,4 @@ class ComponentGrid(posX: Int, posY: Int, var cellWidth: Int, var cellHeight: In
             }
         }
     }
-
 }

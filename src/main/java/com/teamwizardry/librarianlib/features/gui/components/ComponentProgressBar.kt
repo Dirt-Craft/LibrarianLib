@@ -18,12 +18,18 @@ import net.minecraftforge.fml.relauncher.SideOnly
  * Easy way to render a progress bar with a foreground [Sprite], used to show the progress, as well as a background [Sprite].
  */
 @SideOnly(Side.CLIENT)
-class ComponentProgressBar @JvmOverloads constructor(fgSprite: ISprite?, bgSprite: ISprite?,
-                                                     x: Int, y: Int,
-                                                     fgWidth: Int = fgSprite?.width ?: 16, fgHeight: Int = fgSprite?.height ?: 16,
-                                                     bgWidth: Int = bgSprite?.width ?: 16, bgHeight: Int = bgSprite?.height ?: 16,
-                                                     direction: Option<ComponentSpriteProgressBar, ComponentSpriteProgressBar.ProgressDirection> = Option(ComponentSpriteProgressBar.ProgressDirection.X_POS),
-                                                     progress: Option<ComponentSpriteProgressBar, Float> = Option(1.0F))
+class ComponentProgressBar @JvmOverloads constructor(
+    fgSprite: ISprite?,
+    bgSprite: ISprite?,
+    x: Int,
+    y: Int,
+    fgWidth: Int = fgSprite?.width ?: 16,
+    fgHeight: Int = fgSprite?.height ?: 16,
+    bgWidth: Int = bgSprite?.width ?: 16,
+    bgHeight: Int = bgSprite?.height ?: 16,
+    direction: Option<ComponentSpriteProgressBar, ComponentSpriteProgressBar.ProgressDirection> = Option(ComponentSpriteProgressBar.ProgressDirection.X_POS),
+    progress: Option<ComponentSpriteProgressBar, Float> = Option(1.0F)
+)
     : GuiComponent(x, y, bgWidth, bgHeight) {
 
     var backgroundComponent = ComponentSprite(bgSprite, 0, 0, bgWidth, bgHeight)

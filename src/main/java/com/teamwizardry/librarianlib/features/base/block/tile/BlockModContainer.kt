@@ -24,7 +24,7 @@ abstract class BlockModContainer(name: String, materialIn: Material, vararg vari
 
     override fun hasTileEntity(state: IBlockState?) = true
 
-    override abstract fun createTileEntity(world: World, state: IBlockState): TileEntity?
+    abstract override fun createTileEntity(world: World, state: IBlockState): TileEntity?
 
     override fun breakBlock(worldIn: World, pos: BlockPos, state: IBlockState) {
         val tile = worldIn.getTileEntity(pos)

@@ -20,7 +20,6 @@ abstract class AnnotationMarkerProcessor<A : Annotation, T : Any>(val annotation
     }
 
     abstract fun process(clazz: Class<T>, annotation: A)
-
 }
 
 object AnnotationMarkersHandler {
@@ -47,8 +46,8 @@ object AnnotationMarkersHandler {
                         build.add(" | |-+ ${it.canonicalName}")
                     }
                     build.add(" |-+ Stacktrace:")
-                    build.add(" | | ============================================================\n"
-                            + error +
+                    build.add(" | | ============================================================\n" +
+                            error +
                             " | | ============================================================")
                 }
             }

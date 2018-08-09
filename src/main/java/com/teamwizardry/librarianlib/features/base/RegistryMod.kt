@@ -3,7 +3,6 @@ package com.teamwizardry.librarianlib.features.base
 import net.minecraft.util.ResourceLocation
 import net.minecraft.util.registry.RegistryNamespaced
 
-
 class RegistryMod<T : Any> : Iterable<RegistryMod.RegistryEntry<ResourceLocation, T>> {
     private val registry = RegistryNamespaced<ResourceLocation, T>()
     private var lastId = 0
@@ -34,5 +33,4 @@ class RegistryMod<T : Any> : Iterable<RegistryMod.RegistryEntry<ResourceLocation
             }
         }
     }
-
 }

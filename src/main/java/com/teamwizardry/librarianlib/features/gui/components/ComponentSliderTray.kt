@@ -56,7 +56,6 @@ class ComponentSliderTray(posX: Int, posY: Int, internal var offsetX: Int, inter
             if (animatingOut) {
                 if (currentOffsetX <= offsetX) currentOffsetX += (offsetX - Math.abs(currentOffsetX)) / 3
             }
-
         } else
             invalidate()
 

@@ -13,5 +13,4 @@ class InterpLine(val start: Vec3d, val end: Vec3d) : InterpFunction<Vec3d> {
     override fun get(i: Float): Vec3d {
         return start + (end - start) * i
     }
-
 }

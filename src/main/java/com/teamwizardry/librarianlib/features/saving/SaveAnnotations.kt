@@ -49,7 +49,6 @@ annotation class NoSync
 @MustBeDocumented
 annotation class NonPersistent
 
-
 /**
  * @author WireSegal
  * Created at 5:33 PM on 10/31/16.

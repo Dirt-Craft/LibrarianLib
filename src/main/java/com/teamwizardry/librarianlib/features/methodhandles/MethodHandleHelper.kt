@@ -14,7 +14,7 @@ import java.lang.reflect.Method
  */
 object MethodHandleHelper {
 
-    //region base
+    // region base
 
     /**
      * Reflects a method from a class, and provides a MethodHandle for it.
@@ -54,9 +54,9 @@ object MethodHandleHelper {
         return publicLookup().unreflectConstructor(c)
     }
 
-    //endregion
+    // endregion
 
-    //region getter
+    // region getter
 
     /**
      * Reflects a getter from a class, and provides a wrapper for it.
@@ -104,9 +104,9 @@ object MethodHandleHelper {
     @JvmStatic
     fun wrapperForStaticGetter(field: Field): () -> Any? = wrapperForStaticGetter(publicLookup().unreflectGetter(field))
 
-    //endregion
+    // endregion
 
-    //region setter
+    // region setter
 
     /**
      * Reflects a setter from a class, and provides a wrapper for it.
@@ -150,9 +150,9 @@ object MethodHandleHelper {
     @JvmStatic
     fun wrapperForStaticSetter(field: Field): (Any?) -> Unit = wrapperForStaticSetter(publicLookup().unreflectSetter(field))
 
-    //endregion
+    // endregion
 
-    //region methods
+    // region methods
 
     /**
      * Reflects a method from a class, and provides a wrapper for it.
@@ -208,9 +208,9 @@ object MethodHandleHelper {
     @JvmStatic
     fun wrapperForStaticMethod(method: Method): (Array<Any?>) -> Any? = wrapperForStaticMethod(publicLookup().unreflect(method))
 
-    //endregion
+    // endregion
 
-    //region constructors
+    // region constructors
 
     /**
      * Reflects a constructor from a class, and provides a wrapper for it.
@@ -239,9 +239,9 @@ object MethodHandleHelper {
         return wrapperForConstructor(publicLookup().unreflectConstructor(constructor))
     }
 
-    //endregion
+    // endregion
 
-    //region delegates
+    // region delegates
 
     @JvmStatic
     fun <T : Any, V> delegateForReadOnly(clazz: Class<T>, vararg fieldNames: String): ImmutableFieldDelegate<T, V> {
@@ -269,10 +269,10 @@ object MethodHandleHelper {
         return MutableStaticFieldDelegate(getter, setter)
     }
 
-    //endregion
+    // endregion
 }
 
-//region extensions
+// region extensions
 
 @Suppress("UNCHECKED_CAST")
 fun <T : Any, V> Class<T>.mhGetter(vararg names: String): (T) -> V = MethodHandleHelper.wrapperForGetter(this, *names) as (T) -> V
@@ -295,4 +295,4 @@ fun <T : Any, V> Class<T>.mhStaticVarDelegate(vararg names: String) = MethodHand
 fun <T : Any> Class<T>.mhMethod(name: String, obf: String?, vararg params: Class<*>) = MethodHandleHelper.wrapperForMethod(this, name, obf, *params)
 fun <T : Any> Class<T>.mhStaticMethod(name: String, obf: String?, vararg params: Class<*>) = MethodHandleHelper.wrapperForStaticMethod(this, name, obf, *params)
 
-//endregion
+// endregion

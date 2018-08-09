@@ -66,8 +66,8 @@ open class BlockModPillar(name: String, material: Material, vararg variants: Str
                 else -> BlockLog.EnumAxis.NONE
             })
 
-    override fun getMetaFromState(state: IBlockState)
-            = when (state.getValue(AXIS)) {
+    override fun getMetaFromState(state: IBlockState) =
+            when (state.getValue(AXIS)) {
                 BlockLog.EnumAxis.Y -> 0b00
                 BlockLog.EnumAxis.X -> 0b01
                 BlockLog.EnumAxis.Z -> 0b10

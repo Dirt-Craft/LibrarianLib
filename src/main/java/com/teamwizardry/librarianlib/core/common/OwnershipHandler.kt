@@ -42,7 +42,7 @@ object OwnershipHandler {
             for ((mod, pack) in prefixes) {
                 if (mod in owned) continue
                 for (base in BASE_PATHS) {
-                    val path = "${ABS_BASE}/$base/" + pack.replace(".", "/")
+                    val path = "$ABS_BASE/$base/" + pack.replace(".", "/")
                     val file = File(path)
                     if (file.exists() && file.isDirectory) {
                         owned.add(mod)
@@ -51,9 +51,6 @@ object OwnershipHandler {
                 }
             }
         }
-
-
-
 
         DEV_OWNED = owned
     }

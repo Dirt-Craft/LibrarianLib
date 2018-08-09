@@ -55,5 +55,4 @@ open class Option<P, T>(defaultValue: T) {
     operator fun invoke(callback: ((P) -> T)?) {
         func(callback)
     }
-
 }

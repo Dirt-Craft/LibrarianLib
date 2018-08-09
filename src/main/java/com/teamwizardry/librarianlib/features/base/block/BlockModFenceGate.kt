@@ -39,7 +39,6 @@ open class BlockModFenceGate(name: String, val parent: IBlockState) : BlockFence
 
     private val parentName = parent.block.registryName
 
-
     val modId = currentModId
     override val bareName: String = VariantHelper.toSnakeCase(name)
     override val variants: Array<out String> = VariantHelper.beginSetupBlock(name, arrayOf())
@@ -68,7 +67,6 @@ open class BlockModFenceGate(name: String, val parent: IBlockState) : BlockFence
      */
     override val creativeTab: ModCreativeTab?
         get() = ModCreativeTab.defaultTabs[modId]
-
 
     @Suppress("OverridingDeprecatedMember", "DEPRECATION")
     override fun getActualState(state: IBlockState, worldIn: IBlockAccess, pos: BlockPos): IBlockState {

@@ -32,8 +32,8 @@ abstract class ItemModArrow(name: String, vararg variants: String) : ItemArrow()
 
     init {
         BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(this, object : BehaviorProjectileDispense() {
-            override fun getProjectileEntity(worldIn: World, position: IPosition, stackIn: ItemStack)
-                    = generateArrowEntity(worldIn, stackIn, Vec3d(position.x, position.y, position.z), null)
+            override fun getProjectileEntity(worldIn: World, position: IPosition, stackIn: ItemStack) =
+                    generateArrowEntity(worldIn, stackIn, Vec3d(position.x, position.y, position.z), null)
         })
     }
 
@@ -66,4 +66,3 @@ abstract class ItemModArrow(name: String, vararg variants: String) : ItemArrow()
     open val creativeTab: ModCreativeTab?
         get() = ModCreativeTab.defaultTabs[modId]
 }
-

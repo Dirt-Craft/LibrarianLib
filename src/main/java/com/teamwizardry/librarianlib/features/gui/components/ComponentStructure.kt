@@ -35,7 +35,6 @@ class ComponentStructure(posX: Int, posY: Int, var structure: Structure?) : GuiC
         vb.addVertexData(buf)
 
         tessellator.draw()
-
     }
 
     fun initStructure() {
@@ -47,5 +46,4 @@ class ComponentStructure(posX: Int, posY: Int, var structure: Structure?) : GuiC
     companion object {
         private var bufferInts: IntArray? = null
     }
-
 }

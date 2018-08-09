@@ -56,5 +56,4 @@ class ComponentSpriteProgressBar @JvmOverloads constructor(var sprite: ISprite?,
         if (alwaysTop)
             GL11.glPopAttrib()
     }
-
 }

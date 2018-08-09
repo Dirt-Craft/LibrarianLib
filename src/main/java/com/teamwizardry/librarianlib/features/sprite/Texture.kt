@@ -38,10 +38,11 @@ import java.util.*
  */
 @SideOnly(Side.CLIENT)
 class Texture(
-        /**
-         * The location of the texture
-         */
-        val loc: ResourceLocation) {
+    /**
+     * The location of the texture
+     */
+    val loc: ResourceLocation
+) {
     /**
      * The width of the texture in pixels
      */
@@ -90,7 +91,6 @@ class Texture(
         } catch (e: IOException) {
             e.printStackTrace()
         }
-
     }
 
     /**
@@ -133,5 +133,4 @@ class Texture(
 
         var textures: MutableList<WeakReference<Texture>> = ArrayList()
     }
-
 }

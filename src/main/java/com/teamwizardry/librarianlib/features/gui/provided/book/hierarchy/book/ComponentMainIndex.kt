@@ -43,7 +43,6 @@ class ComponentMainIndex(book: IBookGui, page: Int) : GuiComponent(16, 16, book.
         val player = Minecraft.getMinecraft().player
         var added = -(page * 9)
 
-
         val buffer = 8
         val marginX = 12
         val marginY = 39

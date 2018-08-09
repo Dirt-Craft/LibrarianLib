@@ -24,13 +24,20 @@ import net.minecraftforge.fml.relauncher.SideOnly
  * foreground [Sprite] will be rendered over it (overlay).
  */
 @SideOnly(Side.CLIENT)
-class ComponentFluidStack @JvmOverloads constructor(fgSprite: ISprite?, bgSprite: ISprite?,
-                                                    x: Int, y: Int,
-                                                    fgWidth: Int = fgSprite?.width ?: 16, fgHeight: Int = fgSprite?.height ?: 16,
-                                                    bgWidth: Int = bgSprite?.width ?: 16, bgHeight: Int = bgSprite?.height ?: 16,
-                                                    var fluidWidth: Int = bgWidth, var fluidHeight: Int = bgHeight,
-                                                    direction: Option<ComponentSpriteProgressBar, ComponentSpriteProgressBar.ProgressDirection> = Option(ComponentSpriteProgressBar.ProgressDirection.X_POS),
-                                                    val tankProps: IFluidTankProperties)
+class ComponentFluidStack @JvmOverloads constructor(
+    fgSprite: ISprite?,
+    bgSprite: ISprite?,
+    x: Int,
+    y: Int,
+    fgWidth: Int = fgSprite?.width ?: 16,
+    fgHeight: Int = fgSprite?.height ?: 16,
+    bgWidth: Int = bgSprite?.width ?: 16,
+    bgHeight: Int = bgSprite?.height ?: 16,
+    var fluidWidth: Int = bgWidth,
+    var fluidHeight: Int = bgHeight,
+    direction: Option<ComponentSpriteProgressBar, ComponentSpriteProgressBar.ProgressDirection> = Option(ComponentSpriteProgressBar.ProgressDirection.X_POS),
+    val tankProps: IFluidTankProperties
+)
     : GuiComponent(x, y, bgWidth, bgHeight) {
 
     private var lastFluid: Fluid? = null

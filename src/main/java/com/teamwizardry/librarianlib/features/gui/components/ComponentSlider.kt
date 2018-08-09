@@ -49,6 +49,6 @@ class ComponentSlider(posX: Int, posY: Int, width: Int, height: Int, percentage:
     }
 
     override fun drawComponent(mousePos: Vec2d, partialTicks: Float) {
-        //NO-OP
+        // NO-OP
     }
 }

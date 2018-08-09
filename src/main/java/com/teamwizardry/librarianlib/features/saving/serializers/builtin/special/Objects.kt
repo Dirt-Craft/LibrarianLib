@@ -157,13 +157,12 @@ object SerializeObjectFactory : SerializerFactory("Object") {
                 }
                 if (it.value.meta.hasFlag(SavingFieldFlag.FINAL)) {
                     if (oldValue !== value) {
-                        throw SerializerException("Cannot set final field ${it.value.name} in class ${type} to new value. Either make the field mutable or modify the serializer to change the existing object instead of creating a new one.")
+                        throw SerializerException("Cannot set final field ${it.value.name} in class $type to new value. Either make the field mutable or modify the serializer to change the existing object instead of creating a new one.")
                     }
                 } else {
                     it.value.setter(instance, value)
                 }
             }
-
         }
 
         override fun writeBytes(buf: ByteBuf, value: Any, syncing: Boolean) {
@@ -199,7 +198,6 @@ object SerializeObjectFactory : SerializerFactory("Object") {
     }
 }
 
-
 class SerializerAnalysis(val type: FieldType) {
     val alwaysFields: Map<String, FieldCache>
     val noSyncFields: Map<String, FieldCache>
@@ -226,8 +224,8 @@ class SerializerAnalysis(val type: FieldType) {
                     }
                 } else if (type.clazz.isAnnotationPresent(Savable::class.java)) {
                     allFields.filter {
-                        (it.value.meta.hasFlag(SavingFieldFlag.FIELD) || it.value.meta.hasFlag(SavingFieldFlag.PROPERTY))
-                                && !it.value.meta.hasFlag(SavingFieldFlag.TRANSIENT)
+                        (it.value.meta.hasFlag(SavingFieldFlag.FIELD) || it.value.meta.hasFlag(SavingFieldFlag.PROPERTY)) &&
+                                !it.value.meta.hasFlag(SavingFieldFlag.TRANSIENT)
                     }
                 } else {
                     mapOf<String, FieldCache>()
@@ -247,8 +245,8 @@ class SerializerAnalysis(val type: FieldType) {
                 } else {
                     type.clazz.declaredConstructors.find {
                         val paramsToFind = HashMap(fields)
-                        val customParamNames = it.getDeclaredAnnotation(SavableConstructorOrder::class.java)?.params ?:
-                                it.kotlinFunction?.parameters?.map { it.name }?.toTypedArray()
+                        val customParamNames = it.getDeclaredAnnotation(SavableConstructorOrder::class.java)?.params
+                                ?: it.kotlinFunction?.parameters?.map { it.name }?.toTypedArray()
                         var i = 0
                         it.parameters.all {
                             val ret =
@@ -259,13 +257,13 @@ class SerializerAnalysis(val type: FieldType) {
                             i++
                             ret
                         }
-                    } ?:
-                            type.clazz.declaredConstructors.find { it.parameterCount == 0 } ?:
-                            throw SerializerException("Couldn't find zero-argument constructor or constructor with parameters (${fields.map { it.value.meta.type.toString() + " " + it.key }.joinToString(", ")}) for immutable type ${type.clazz.canonicalName}")
+                    }
+                            ?: type.clazz.declaredConstructors.find { it.parameterCount == 0 }
+                            ?: throw SerializerException("Couldn't find zero-argument constructor or constructor with parameters (${fields.map { it.value.meta.type.toString() + " " + it.key }.joinToString(", ")}) for immutable type ${type.clazz.canonicalName}")
                 }
-        constructorArgOrder = constructor.getDeclaredAnnotation(SavableConstructorOrder::class.java)?.params?.asList() ?:
-                constructor.kotlinFunction?.parameters?.let { if (it.any { it.name == null }) null else it.map { it.name!! } } ?:
-                constructor.parameters.map { it.name }
+        constructorArgOrder = constructor.getDeclaredAnnotation(SavableConstructorOrder::class.java)?.params?.asList()
+                ?: constructor.kotlinFunction?.parameters?.let { if (it.any { it.name == null }) null else it.map { it.name!! } }
+                ?: constructor.parameters.map { it.name }
         constructorMH = if (inPlaceSavable) {
             { _ -> throw SerializerException("Cannot create instance of class marked with @SaveInPlace") }
         } else {

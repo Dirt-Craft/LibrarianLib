@@ -48,7 +48,6 @@ operator fun Vec3i.component1() = x
 operator fun Vec3i.component2() = y
 operator fun Vec3i.component3() = z
 
-
 // Vec2d ===============================================================================================================
 
 operator fun Vec2d.times(other: Vec2d) = this.mul(other)

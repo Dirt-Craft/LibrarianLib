@@ -7,7 +7,6 @@ import com.teamwizardry.librarianlib.features.kotlin.pos
 import com.teamwizardry.librarianlib.features.kotlin.times
 import com.teamwizardry.librarianlib.features.math.Vec2d
 import com.teamwizardry.librarianlib.features.sprite.ISprite
-import com.teamwizardry.librarianlib.features.sprite.Sprite
 import com.teamwizardry.librarianlib.features.utilities.client.StencilUtil
 import net.minecraft.client.renderer.GlStateManager
 import net.minecraft.client.renderer.Tessellator
@@ -66,7 +65,7 @@ class ComponentClippingHandler(val component: GuiComponent) {
     }
 
     private fun stencil() {
-        if(customClipping != null) {
+        if (customClipping != null) {
             GlStateManager.pushAttrib()
             customClipping!!()
             GlStateManager.enableTexture2D()
@@ -74,7 +73,7 @@ class ComponentClippingHandler(val component: GuiComponent) {
             return
         }
         val sp = clippingSprite
-        if(sp != null) {
+        if (sp != null) {
             GlStateManager.pushAttrib()
             GlStateManager.enableTexture2D()
             sp.bind()
@@ -196,9 +195,9 @@ class ComponentClippingHandler(val component: GuiComponent) {
     }
 
     internal fun isPointClipped(point: Vec2d): Boolean {
-        if(clippingSprite != null || customClipping != null) return false // we can't clip these
+        if (clippingSprite != null || customClipping != null) return false // we can't clip these
 
-        if(clipToBounds) {
+        if (clipToBounds) {
             val size = component.geometry.size
             if (point.x < 0 || point.x > size.x ||
                     point.y < 0 || point.y > size.y) {

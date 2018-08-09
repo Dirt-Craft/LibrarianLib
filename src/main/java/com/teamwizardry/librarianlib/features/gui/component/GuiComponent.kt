@@ -9,7 +9,6 @@ import com.teamwizardry.librarianlib.features.math.Vec2d
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-
 /**
  * The base class of every on-screen object. These can be nested within each other using [add]. Subcomponents will be
  * positioned relative to their parent, so modifications to the parent's [pos] will change their rendering position.
@@ -65,7 +64,7 @@ abstract class GuiComponent @JvmOverloads constructor(posX: Int, posY: Int, widt
      */
     open fun drawComponent(mousePos: Vec2d, partialTicks: Float) {}
 
-    //region - Handlers
+    // region - Handlers
     /** Use this for advanced data manipulation and querying */
     @Suppress("LeakingThis")
     @JvmField
@@ -94,9 +93,9 @@ abstract class GuiComponent @JvmOverloads constructor(posX: Int, posY: Int, widt
     @Suppress("LeakingThis")
     @JvmField
     val clipping = ComponentClippingHandler(this)
-    //endregion
+    // endregion
 
-    //region - Base component stuff
+    // region - Base component stuff
     @JvmField
     val BUS = EventBus()
 
@@ -117,9 +116,9 @@ abstract class GuiComponent @JvmOverloads constructor(posX: Int, posY: Int, widt
     fun invalidate() {
         this.isInvalid = true
     }
-    //endregion
+    // endregion
 
-    //region - GeometryHandler
+    // region - GeometryHandler
     /**
      * The position of the component relative to its parent. This is the first operation performed by [transform]
      */
@@ -148,24 +147,24 @@ abstract class GuiComponent @JvmOverloads constructor(posX: Int, posY: Int, widt
      *
      * [pos] defaults to (0, 0)
      */
-    fun transformToParentContext(pos: Vec2d = Vec2d.ZERO)
-            = geometry.transformToParentContext(pos)
+    fun transformToParentContext(pos: Vec2d = Vec2d.ZERO) =
+            geometry.transformToParentContext(pos)
 
     /**
      * Transforms [pos] (`Vec2d.ZERO` by default) in our context into `other`'s context (or the root context if null)
      */
     @JvmOverloads
-    fun thisPosToOtherContext(other: GuiComponent?, pos: Vec2d = Vec2d.ZERO)
-            = geometry.thisPosToOtherContext(other, pos)
+    fun thisPosToOtherContext(other: GuiComponent?, pos: Vec2d = Vec2d.ZERO) =
+            geometry.thisPosToOtherContext(other, pos)
 
     /**
      * Transforms [pos] from `other`'s context (or the root context if null) to our context
      */
-    fun otherPosToThisContext(other: GuiComponent?, pos: Vec2d)
-            = geometry.thisPosToOtherContext(other, pos)
-    //endregion
+    fun otherPosToThisContext(other: GuiComponent?, pos: Vec2d) =
+            geometry.thisPosToOtherContext(other, pos)
+    // endregion
 
-    //region - RelationshipHandler
+    // region - RelationshipHandler
     /**
      * The sorting factor for the ordering of components for rendering. Higher = later
      */
@@ -187,11 +186,11 @@ abstract class GuiComponent @JvmOverloads constructor(posX: Int, posY: Int, widt
     var parent
             by relationships::parent.delegate
 
-    fun add(vararg children: GuiComponent)
-            = relationships.add(*children)
-    //endregion
+    fun add(vararg children: GuiComponent) =
+            relationships.add(*children)
+    // endregion
 
-    //region - TagHandler
+    // region - TagHandler
     /**
      * Do not use this to check if a component has a tag, as event hooks can add virtual tags to components. Use [hasTag] instead.
      *
@@ -206,15 +205,15 @@ abstract class GuiComponent @JvmOverloads constructor(posX: Int, posY: Int, widt
      * Adds the passed tag to this component if it doesn't already have it.
      * @return true if the tag didn't exist and was added
      */
-    fun addTag(tag: Any)
-            = tags.addTag(tag)
+    fun addTag(tag: Any) =
+            tags.addTag(tag)
 
     /**
      * Removes the passed tag to this component if it doesn't already have it.
      * @return true if the tag existed and was removed
      */
-    fun removeTag(tag: Any)
-            = tags.removeTag(tag)
+    fun removeTag(tag: Any) =
+            tags.removeTag(tag)
 
     /**
      * Adds or removes the passed tag to this component if it isn't already in the correct state.
@@ -224,44 +223,44 @@ abstract class GuiComponent @JvmOverloads constructor(posX: Int, posY: Int, widt
      * @param shouldHave The target state for [hasTag] after calling this method
      * @return True if the tag was added or removed
      */
-    fun setTag(tag: Any, shouldHave: Boolean)
-            = tags.setTag(tag, shouldHave)
+    fun setTag(tag: Any, shouldHave: Boolean) =
+            tags.setTag(tag, shouldHave)
 
     /**
      * Checks if the component has the tag specified.
      */
-    fun hasTag(tag: Any)
-            = tags.hasTag(tag)
-    //endregion
+    fun hasTag(tag: Any) =
+            tags.hasTag(tag)
+    // endregion
 
-    //region - DataHandler
+    // region - DataHandler
     /**
      * Sets the value associated with the pair of keys [clazz] and [key]. The value must be a subclass of [clazz]
      */
-    fun <D : Any> setData(clazz: Class<D>, key: String, value: D)
-            = data.setData(clazz, key, value)
+    fun <D : Any> setData(clazz: Class<D>, key: String, value: D) =
+            data.setData(clazz, key, value)
 
     /**
      * Removes the value associated with the pair of keys [clazz] and [key]
      */
-    fun <D : Any> removeData(clazz: Class<D>, key: String)
-            = data.removeData(clazz, key)
+    fun <D : Any> removeData(clazz: Class<D>, key: String) =
+            data.removeData(clazz, key)
 
     /**
      * Returns the value associated with the pair of keys [clazz] and [key] if it exists, else it returns null.
      * The value will be an instance of [clazz]
      */
-    fun <D : Any> getData(clazz: Class<D>, key: String)
-            = data.getData(clazz, key)
+    fun <D : Any> getData(clazz: Class<D>, key: String) =
+            data.getData(clazz, key)
 
     /**
      * Checks if there is a value associated with the pair of keys [clazz] and [key]
      */
-    fun <D : Any> hasData(clazz: Class<D>, key: String)
-            = data.hasData(clazz, key)
-    //endregion
+    fun <D : Any> hasData(clazz: Class<D>, key: String) =
+            data.hasData(clazz, key)
+    // endregion
 
-    //region - RenderHandler
+    // region - RenderHandler
     /**
      * The animator for this component. Generally stored in the root component
      */
@@ -271,9 +270,9 @@ abstract class GuiComponent @JvmOverloads constructor(posX: Int, posY: Int, widt
      * Add the passed animations to this component's animator
      */
     fun add(vararg animations: Animation<*>) = render.add(*animations)
-    //endregion
+    // endregion
 
-    //region - Internal
+    // region - Internal
     init {
         this.pos = vec(posX, posY)
         this.size = vec(width, height)
@@ -281,6 +280,5 @@ abstract class GuiComponent @JvmOverloads constructor(posX: Int, posY: Int, widt
         @Suppress("LeakingThis")
         ComponentEventHookAnnotSearcher.search(this)
     }
-    //endregion
-
+    // endregion
 }

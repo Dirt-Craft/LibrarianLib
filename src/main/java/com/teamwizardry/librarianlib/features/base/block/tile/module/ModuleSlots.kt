@@ -20,9 +20,9 @@ class ModuleSlots(handler: IItemHandlerModifiable, minSlot: Int, maxSlotExclusiv
     private val allowedSides = mutableSetOf(*EnumFacing.VALUES, null)
 
     @Suppress("UNCHECKED_CAST")
-    override fun <T : Any> getCapability(capability: Capability<T>, facing: EnumFacing?): T?
-            = if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing in allowedSides) wrapper as T else null
+    override fun <T : Any> getCapability(capability: Capability<T>, facing: EnumFacing?): T? =
+            if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing in allowedSides) wrapper as T else null
 
-    override fun hasCapability(capability: Capability<*>, facing: EnumFacing?)
-            = capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing in allowedSides
+    override fun hasCapability(capability: Capability<*>, facing: EnumFacing?) =
+            capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing in allowedSides
 }

@@ -43,7 +43,6 @@ interface ICriterion {
                 error.printStackTrace()
                 return null
             }
-
         }
     }
 }

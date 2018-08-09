@@ -5,8 +5,13 @@ import org.lwjgl.opengl.ARBShaderObjects
 
 class FloatTypes {
 
-    class FloatUniform(owner: Shader, name: String, type: UniformType,
-                       size: Int, location: Int) : Uniform(owner, name, type, size, location) {
+    class FloatUniform(
+        owner: Shader,
+        name: String,
+        type: UniformType,
+        size: Int,
+        location: Int
+    ) : Uniform(owner, name, type, size, location) {
 
         fun set(value: Float) {
             ARBShaderObjects.glUniform1fARB(location, value)
@@ -17,8 +22,13 @@ class FloatTypes {
         }
     }
 
-    class FloatVec2Uniform(owner: Shader, name: String, type: UniformType,
-                           size: Int, location: Int) : Uniform(owner, name, type, size, location) {
+    class FloatVec2Uniform(
+        owner: Shader,
+        name: String,
+        type: UniformType,
+        size: Int,
+        location: Int
+    ) : Uniform(owner, name, type, size, location) {
 
         fun set(x: Float, y: Float) {
             ARBShaderObjects.glUniform2fARB(location, x, y)
@@ -29,8 +39,13 @@ class FloatTypes {
         }
     }
 
-    class FloatVec3Uniform(owner: Shader, name: String, type: UniformType,
-                           size: Int, location: Int) : Uniform(owner, name, type, size, location) {
+    class FloatVec3Uniform(
+        owner: Shader,
+        name: String,
+        type: UniformType,
+        size: Int,
+        location: Int
+    ) : Uniform(owner, name, type, size, location) {
 
         fun set(x: Float, y: Float, z: Float) {
             ARBShaderObjects.glUniform3fARB(location, x, y, z)
@@ -41,8 +56,13 @@ class FloatTypes {
         }
     }
 
-    class FloatVec4Uniform(owner: Shader, name: String, type: UniformType,
-                           size: Int, location: Int) : Uniform(owner, name, type, size, location) {
+    class FloatVec4Uniform(
+        owner: Shader,
+        name: String,
+        type: UniformType,
+        size: Int,
+        location: Int
+    ) : Uniform(owner, name, type, size, location) {
 
         fun set(x: Float, y: Float, z: Float, w: Float) {
             ARBShaderObjects.glUniform4fARB(location, x, y, z, w)

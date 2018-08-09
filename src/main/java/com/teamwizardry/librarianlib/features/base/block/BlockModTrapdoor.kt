@@ -108,21 +108,18 @@ open class BlockModTrapdoor(name: String, val parent: IBlockState) : BlockTrapDo
                 "textures" {
                     "texture"(name)
                 }
-
             }
             getPathForBlockModel(this, "${simpleName}_top") to {
                 "parent"("block/trapdoor_top")
                 "textures" {
                     "texture"(name)
                 }
-
             }
             getPathForBlockModel(this, "${simpleName}_open") to {
                 "parent"("block/trapdoor_open")
                 "textures" {
                     "texture"(name)
                 }
-
             }
         })
         return true

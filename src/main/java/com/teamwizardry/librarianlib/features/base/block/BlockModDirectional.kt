@@ -105,7 +105,6 @@ open class BlockModDirectional(name: String, material: Material, horizontal: Boo
 
                 if (dir.horizontalIndex != -1 && dir.horizontalAngle != 0f)
                     "y" to (dir.horizontalAngle.toInt() - 180) % 360
-
             }
         }, {
             getPathForBlockModel(this) to generateBaseBlockModel(this)

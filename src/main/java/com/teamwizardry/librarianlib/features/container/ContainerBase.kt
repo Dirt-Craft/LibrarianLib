@@ -53,5 +53,4 @@ abstract class ContainerBase(val player: EntityPlayer) {
     fun addContainerSlots() {
         allSlots.forEach { impl.addSlotToContainer(it) }
     }
-
 }

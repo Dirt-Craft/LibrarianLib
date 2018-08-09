@@ -9,7 +9,6 @@ import com.teamwizardry.librarianlib.features.saving.AbstractSaveHandler
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.*
 
-
 // NBTTagList ==========================================================================================================
 
 val NBTTagList.indices: IntRange
@@ -136,4 +135,3 @@ operator fun NBTTagCompound.iterator(): Iterator<Pair<String, NBTBase>> {
 }
 
 operator fun NBTTagCompound.get(key: String): NBTBase? = this.getTag(key)
-

@@ -62,15 +62,15 @@ class ComponentGuiEventHandler(private val component: GuiComponent) {
             return
 
         if (component.mouseOver) {
-             if(posDownInside != null) {
+             if (posDownInside != null) {
                  component.BUS.fire(GuiComponentEvents.MouseClickEvent(component, posDownInside, transformedPos, button))
-             } else if(posDownOutside != null) {
+             } else if (posDownOutside != null) {
                  component.BUS.fire(GuiComponentEvents.MouseClickDragInEvent(component, posDownOutside, transformedPos, button))
              }
         } else {
-            if(posDownInside != null) {
+            if (posDownInside != null) {
                 component.BUS.fire(GuiComponentEvents.MouseClickDragOutEvent(component, posDownInside, transformedPos, button))
-            } else if(posDownOutside != null) {
+            } else if (posDownOutside != null) {
                 component.BUS.fire(GuiComponentEvents.MouseClickOutsideEvent(component, posDownOutside, transformedPos, button))
             }
         }

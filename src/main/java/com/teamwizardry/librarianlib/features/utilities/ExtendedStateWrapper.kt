@@ -20,23 +20,22 @@ open class ExtendedStateWrapper(private val wrapped: IBlockState, val world: IBl
         return extState?.unlistedNames ?: emptyList()
     }
 
-    override fun <V> getValue(property: IUnlistedProperty<V>?)
-            = extState?.getValue(property)
+    override fun <V> getValue(property: IUnlistedProperty<V>?) =
+            extState?.getValue(property)
 
-    override fun <V> withProperty(property: IUnlistedProperty<V>?, value: V?)
-            = extState?.let { ExtendedStateWrapper(it.withProperty(property, value), this) } ?: this
+    override fun <V> withProperty(property: IUnlistedProperty<V>?, value: V?) =
+            extState?.let { ExtendedStateWrapper(it.withProperty(property, value), this) } ?: this
 
-    override fun getUnlistedProperties(): ImmutableMap<IUnlistedProperty<*>, java.util.Optional<*>>
-            = extState?.unlistedProperties ?: ImmutableMap.of<IUnlistedProperty<*>, java.util.Optional<*>>()
+    override fun getUnlistedProperties(): ImmutableMap<IUnlistedProperty<*>, java.util.Optional<*>> =
+            extState?.unlistedProperties ?: ImmutableMap.of<IUnlistedProperty<*>, java.util.Optional<*>>()
 
     override fun getClean() = clean
 
     override fun <T : Comparable<T>> getValue(property: IProperty<T>): T = wrapped.getValue(property)
 
-    override fun <T : Comparable<T>, V : T> withProperty(property: IProperty<T>, value: V)
-            = ExtendedStateWrapper(wrapped.withProperty(property, value), this)
+    override fun <T : Comparable<T>, V : T> withProperty(property: IProperty<T>, value: V) =
+            ExtendedStateWrapper(wrapped.withProperty(property, value), this)
 
-    override fun <T : Comparable<T>> cycleProperty(property: IProperty<T>)
-            = ExtendedStateWrapper(wrapped.cycleProperty(property), this)
-
+    override fun <T : Comparable<T>> cycleProperty(property: IProperty<T>) =
+            ExtendedStateWrapper(wrapped.cycleProperty(property), this)
 }

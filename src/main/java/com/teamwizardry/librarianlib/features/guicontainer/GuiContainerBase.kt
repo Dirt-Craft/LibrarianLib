@@ -79,7 +79,6 @@ open class GuiContainerBase(val container: ContainerBase, var guiWidth: Int, var
         return false
     }
 
-
     override fun drawDefaultBackground() { /* NOOP */
     }
 

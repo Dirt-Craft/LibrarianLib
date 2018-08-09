@@ -60,4 +60,3 @@ open class ItemModSword(name: String, material: ToolMaterial) : ItemSword(materi
         return true
     }
 }
-

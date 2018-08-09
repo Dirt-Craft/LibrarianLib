@@ -38,7 +38,7 @@ class ContainerImpl(val container: ContainerBase) : Container() {
         return container.transferStackInSlot(inventorySlots[index] as SlotBase)
     }
 
-    override public fun addSlotToContainer(slotIn: Slot): Slot {
+    public override fun addSlotToContainer(slotIn: Slot): Slot {
         return super.addSlotToContainer(slotIn)
     }
 

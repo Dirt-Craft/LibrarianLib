@@ -14,7 +14,6 @@ import java.io.File
 import java.io.IOException
 import javax.imageio.ImageIO
 
-
 /**
  * Created by TheCodeWarrior
  */
@@ -59,7 +58,6 @@ object TextureMapExporter {
             } catch (ioexception: IOException) {
                 LibrarianLog.info("[TextureDump] Unable to write: ", ioexception)
             }
-
         }
     }
 }

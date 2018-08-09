@@ -9,8 +9,8 @@ import net.minecraftforge.common.MinecraftForge
 
 open class TranslationHolder(private val key: String, private val args: Array<Any?> = arrayOf()) {
 
-    override fun toString()
-            = LibrarianLib.PROXY.translate(key, *args).replace('&', '§')
+    override fun toString() =
+            LibrarianLib.PROXY.translate(key, *args).replace('&', '§')
 
     fun add(tooltip: MutableList<String>) = tooltip.add(toString())
     fun addDynamic(tooltip: MutableList<String>) = TooltipHelper.addDynamic(tooltip, key, *args)

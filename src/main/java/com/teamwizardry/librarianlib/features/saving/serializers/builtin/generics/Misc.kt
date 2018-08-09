@@ -14,8 +14,8 @@ import io.netty.buffer.ByteBuf
 import net.minecraft.nbt.NBTBase
 import net.minecraft.nbt.NBTTagCompound
 
-//@SerializerFactoryRegister
-//object Serialize_V_Factory : SerializerFactory("_V_") {
+// @SerializerFactoryRegister
+// object Serialize_V_Factory : SerializerFactory("_V_") {
 //    override fun canApply(type: FieldType): SerializerFactoryMatch {
 //        return this.canApplyExact(type, _V_::class.java)
 //    }
@@ -42,7 +42,7 @@ import net.minecraft.nbt.NBTTagCompound
 //        override fun writeBytes(buf: ByteBuf, value: _V_, syncing: Boolean) {
 //        }
 //    }
-//}
+// }
 
 @SerializerFactoryRegister
 object SerializePairFactory : SerializerFactory("Pair") {

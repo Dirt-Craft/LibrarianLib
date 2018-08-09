@@ -56,7 +56,6 @@ open class BlockModFence(name: String, val parent: IBlockState) : BlockFence(par
         return ItemModBlock(this)
     }
 
-
     /**
      * Override this to have a custom creative tab. Leave blank to have a default tab (or none if no default tab is set).
      */

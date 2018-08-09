@@ -8,7 +8,7 @@ import net.minecraft.util.ITickable
 abstract class TileModInventoryTickable(size: Int) : TileModInventory(size), ITickable {
     abstract fun tick()
 
-    override final fun update() {
+    final override fun update() {
         modules.forEach { it.value.onUpdate(this) }
         tick()
     }

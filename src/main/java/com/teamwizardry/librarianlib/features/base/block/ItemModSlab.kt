@@ -59,7 +59,6 @@ open class ItemModSlab(block: BlockModSlab) : ItemSlab(block, block.singleBlock,
             variants.indices.mapTo(subItems) { ItemStack(this, 1, it) }
     }
 
-
     override val itemForm: ItemBlock
         get() = this
 
@@ -84,15 +83,14 @@ open class ItemModSlab(block: BlockModSlab) : ItemSlab(block, block.singleBlock,
     override val stateMapper: ((Block) -> Map<IBlockState, ModelResourceLocation>)?
         get() = this.modBlock.stateMapper
 
-    override fun generateMissingBlockstate(block: IModBlockProvider, mapper: ((block: Block) -> Map<IBlockState, ModelResourceLocation>)?)
-            = if (this.modBlock is IModelGenerator) modBlock.generateMissingBlockstate(block, mapper) else false
+    override fun generateMissingBlockstate(block: IModBlockProvider, mapper: ((block: Block) -> Map<IBlockState, ModelResourceLocation>)?) =
+            if (this.modBlock is IModelGenerator) modBlock.generateMissingBlockstate(block, mapper) else false
 
-    override fun generateMissingItem(item: IModItemProvider, variant: String)
-            = if (this.modBlock is IModelGenerator) modBlock.generateMissingItem(item, variant) else false
+    override fun generateMissingItem(item: IModItemProvider, variant: String) =
+            if (this.modBlock is IModelGenerator) modBlock.generateMissingItem(item, variant) else false
 
     @SideOnly(Side.CLIENT)
     override fun getSpecialModel(index: Int) = if (this.modBlock is ISpecialModelProvider) this.modBlock.getSpecialModel(index) else null
 
     override fun getRarity(stack: ItemStack) = this.modBlock.getBlockRarity(stack)
 }
-

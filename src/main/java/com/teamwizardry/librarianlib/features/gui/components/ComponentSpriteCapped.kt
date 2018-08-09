@@ -5,9 +5,18 @@ import com.teamwizardry.librarianlib.features.math.Vec2d
 import com.teamwizardry.librarianlib.features.sprite.DrawingUtil
 import com.teamwizardry.librarianlib.features.sprite.Sprite
 
-class ComponentSpriteCapped(internal var topLeft:
+class ComponentSpriteCapped(
+    internal var topLeft:
 
-                            Sprite, internal var middle: Sprite, internal var bottomRight: Sprite, internal var horizontal: Boolean, posX: Int, posY: Int, width: Int, height: Int) : GuiComponent(posX, posY, width, height) {
+    Sprite,
+    internal var middle: Sprite,
+    internal var bottomRight: Sprite,
+    internal var horizontal: Boolean,
+    posX: Int,
+    posY: Int,
+    width: Int,
+    height: Int
+) : GuiComponent(posX, posY, width, height) {
 
     override fun drawComponent(mousePos: Vec2d, partialTicks: Float) {
         topLeft.tex.bind()
@@ -24,5 +33,4 @@ class ComponentSpriteCapped(internal var topLeft:
         }
         DrawingUtil.endDrawingSession()
     }
-
 }

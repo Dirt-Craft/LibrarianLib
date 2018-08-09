@@ -13,7 +13,6 @@ class ComponentSprite @JvmOverloads constructor(var sprite: ISprite?, x: Int, y:
 
     class AnimationLoopEvent(val component: ComponentSprite) : Event()
 
-
     var depth = Option<ComponentSprite, Boolean>(true)
     var color = Option<ComponentSprite, Color>(Color.WHITE)
 
@@ -42,5 +41,4 @@ class ComponentSprite @JvmOverloads constructor(var sprite: ISprite?, x: Int, y:
         if (alwaysTop)
             GL11.glPopAttrib()
     }
-
 }

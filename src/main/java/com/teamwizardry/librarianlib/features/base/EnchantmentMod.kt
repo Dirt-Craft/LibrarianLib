@@ -14,7 +14,7 @@ import net.minecraft.util.ResourceLocation
  * Created at 7:41 PM on 1/24/17.
  */
 @Suppress("LeakingThis")
-open class EnchantmentMod(name: String, rarity: Rarity, type: EnumEnchantmentType, vararg open val applicableSlots: EntityEquipmentSlot) : Enchantment(rarity, type, applicableSlots) {
+open class EnchantmentMod(name: String, rarity: Rarity, type: EnumEnchantmentType, open vararg val applicableSlots: EntityEquipmentSlot) : Enchantment(rarity, type, applicableSlots) {
 
     private val modId = currentModId
 
@@ -23,16 +23,16 @@ open class EnchantmentMod(name: String, rarity: Rarity, type: EnumEnchantmentTyp
         RegistrationHandler.register(this, ResourceLocation(modId, name))
     }
 
-    private fun getEntityEquipmentForLevel(entityIn: EntityLivingBase)
-            = applicableSlots.mapNotNull { entityIn.getItemStackFromSlot(it) }
+    private fun getEntityEquipmentForLevel(entityIn: EntityLivingBase) =
+            applicableSlots.mapNotNull { entityIn.getItemStackFromSlot(it) }
 
-    fun getMaxLevel(entity: EntityLivingBase)
-            = getEntityEquipmentForLevel(entity)
+    fun getMaxLevel(entity: EntityLivingBase) =
+            getEntityEquipmentForLevel(entity)
             .map { EnchantmentHelper.getEnchantmentLevel(this, it) }
             .max() ?: 0
 
-    fun getTotalLevel(entity: EntityLivingBase)
-            = getEntityEquipmentForLevel(entity)
+    fun getTotalLevel(entity: EntityLivingBase) =
+            getEntityEquipmentForLevel(entity)
             .map { EnchantmentHelper.getEnchantmentLevel(this, it) }
             .sum()
 }

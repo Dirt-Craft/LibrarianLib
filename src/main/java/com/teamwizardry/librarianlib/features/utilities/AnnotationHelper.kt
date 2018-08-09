@@ -12,7 +12,6 @@ import java.lang.reflect.Method
  */
 object AnnotationHelper {
 
-
     /**
      * Find all annotated fields of super-type [objClass] with annotation [annotationClass] from data table [table]
      * and send them to the callback [callback].
@@ -41,7 +40,6 @@ object AnnotationHelper {
             } catch (ex: Exception) {
                 ex.printStackTrace()
             }
-
         }
     }
 
@@ -59,10 +57,8 @@ object AnnotationHelper {
             } catch (ex: Exception) {
                 throw ex
             }
-
         }
     }
-
 
     /**
      * Find all annotated methods with annotation [annotationClass] from data table [table]
@@ -88,7 +84,6 @@ object AnnotationHelper {
             } catch (ex: Exception) {
                 ex.printStackTrace()
             }
-
         }
     }
 }

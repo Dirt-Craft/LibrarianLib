@@ -201,5 +201,4 @@ class ComponentRenderHandler(private val component: GuiComponent) {
 
         component.relationships.forEachChild { it.render.drawLate(mousePos, partialTicks) }
     }
-
 }

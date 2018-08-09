@@ -25,5 +25,4 @@ class CriterionChoose(json: JsonObject) : ICriterion {
                 .registerTypeAdapter(RandomValueRange::class.java, RandomValueRange.Serializer())
                 .create()
     }
-
 }

@@ -121,7 +121,6 @@ enum class UniformType constructor(private val initializer: (Shader, String, Uni
     IMAGE_CUBE(::NoUniform),
     IMAGE_BUFFER(::NoUniform),
 
-
     // int images: 1D, 2D, other
     INT_IMAGE_1D(::NoUniform),
     INT_IMAGE_1D_ARRAY(::NoUniform),
@@ -172,13 +171,12 @@ enum class UniformType constructor(private val initializer: (Shader, String, Uni
                         if (t == Integer.TYPE) {
                             type.type = f.getInt(null)
                             map.put(type.type, type)
-                            //LibrarianLog.I.debug(" == Found %s.%s, it is %d (0x%s)", clazz.getName(), name, type.type, Integer.toHexString(type.type));
+                            // LibrarianLog.I.debug(" == Found %s.%s, it is %d (0x%s)", clazz.getName(), name, type.type, Integer.toHexString(type.type));
                             break
                         }
                     } catch (e: Throwable) {
-                        //NO-OP
+                        // NO-OP
                     }
-
                 }
                 if (!map.containsValue(type))
                     LibrarianLog.error("Couldn't find uniform OpenGL constant for %s", name)
@@ -192,5 +190,4 @@ enum class UniformType constructor(private val initializer: (Shader, String, Uni
             return uniformType
         }
     }
-
 }

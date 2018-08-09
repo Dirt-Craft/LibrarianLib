@@ -126,4 +126,3 @@ abstract class Animation<T : Any>(val target: T, val property: AnimatablePropert
     internal var _id: Int = -1
         private set
 }
-

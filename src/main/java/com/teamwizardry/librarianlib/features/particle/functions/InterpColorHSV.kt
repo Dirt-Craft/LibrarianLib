@@ -52,5 +52,4 @@ class InterpColorHSV private constructor(private val aTransp: Int, private val b
                 ) or ((aTransp + (bTransp - aTransp) * i).toInt() shl 24)
         )
     }
-
 }

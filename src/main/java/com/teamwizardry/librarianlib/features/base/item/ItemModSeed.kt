@@ -68,6 +68,5 @@ open class ItemModSeed(name: String, val crops: Block) : ItemMod(name), IPlantab
 
             return super.dispenseStack(par1IBlockSource, par2ItemStack)
         }
-
     }
 }

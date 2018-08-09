@@ -14,9 +14,10 @@ import com.teamwizardry.librarianlib.features.math.interpolate.InterpFunction
  * P0 is [start], P1 is [startControl], P2 is [endControl], and P3 is [end]
  */
 class InterpBezier2D @JvmOverloads constructor(
-        val start: Vec2d, val end: Vec2d,
-        val startControl: Vec2d = ((end - start) / 2).withY(0),
-        val endControl: Vec2d = ((start - end) / 2).withY(0)
+    val start: Vec2d,
+    val end: Vec2d,
+    val startControl: Vec2d = ((end - start) / 2).withY(0),
+    val endControl: Vec2d = ((start - end) / 2).withY(0)
 ) : InterpFunction<Vec2d> {
 
     private val absoluteStartControl = start + startControl

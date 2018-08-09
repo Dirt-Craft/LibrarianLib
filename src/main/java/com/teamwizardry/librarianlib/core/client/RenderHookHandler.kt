@@ -25,7 +25,6 @@ object RenderHookHandler {
         GlowingHandler.glow(world, null, state, pos, buffer)
     })
 
-
     @JvmStatic
     fun registerItemHook(hook: ItemHook) {
         itemHooks.add(hook)
@@ -55,8 +54,6 @@ object RenderHookHandler {
     fun runFluidHook(blockFluidRenderer: BlockFluidRenderer, world: IBlockAccess, state: IBlockState, pos: BlockPos, vertexBuffer: BufferBuilder) {
         fluidHooks.forEach { it(blockFluidRenderer, world, state, pos, vertexBuffer) }
     }
-
-
 }
 
 typealias ItemHook = (ItemStack, IBakedModel) -> Unit

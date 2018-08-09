@@ -42,7 +42,6 @@ open class Structure(loc: ResourceLocation) {
             } catch (e: IOException) {
                 e.printStackTrace()
             }
-
         }
     }
 
@@ -198,9 +197,7 @@ open class Structure(loc: ResourceLocation) {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-
     }
-
 
     private fun transformedBlockPos(pos: BlockPos, mirrorIn: Mirror, rotationIn: Rotation): BlockPos {
         var i = pos.x

@@ -16,7 +16,6 @@ open class BlockMod(name: String, materialIn: Material, color: MapColor, vararg 
 
     constructor(name: String, materialIn: Material, vararg variants: String) : this(name, materialIn, materialIn.materialMapColor, *variants)
 
-
     override val bareName: String = VariantHelper.toSnakeCase(name)
     override val variants: Array<out String> = VariantHelper.beginSetupBlock(bareName, variants)
     val modId = currentModId

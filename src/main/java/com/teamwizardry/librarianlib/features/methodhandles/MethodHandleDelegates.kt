@@ -69,7 +69,6 @@ data class MutableFieldDelegate<in T, V>(val getter: (T) -> Any?, val setter: (T
     }
 }
 
-
 data class ImmutableStaticFieldDelegate<in T, out V> @JvmOverloads constructor(val getter: () -> Any?, val cache: Boolean = false) : ReadOnlyProperty<T, V> {
     private var cachedValue: V? = null
     private var initialized = false
