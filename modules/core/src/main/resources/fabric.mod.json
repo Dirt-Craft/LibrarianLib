@@ -1,0 +1,21 @@
+{
+  "id": "librarianlib-core",
+  "name": "Librarianlib - Core",
+  "description": "The core module of LibrarianLib",
+  "version": "${version}",
+  "side": "universal",
+  "languageAdapter": "net.fabricmc.language.kotlin.KotlinLanguageAdapter",
+  "initializers": [
+    "com.teamwizardry.librarianlib.core.LibMod"
+  ],
+  "requires": {
+    "fabric": "*",
+    "fabric-language-kotlin": {
+      "version": ">=1.3.21"
+    }
+  },
+  "mixins": {
+    "client": "librarianlib-core.client.json",
+    "common": "librarianlib-core.common.json"
+  }
+}

@@ -1,0 +1,17 @@
+pluginManagement {
+    repositories {
+        jcenter()
+        maven {
+            name = 'Fabric'
+            url = 'https://maven.fabricmc.net/'
+        }
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'librarianlib'
+
+['core', 'utils'].forEach {
+    include it
+    project(':' + it).projectDir = file("modules/" + it)
+}

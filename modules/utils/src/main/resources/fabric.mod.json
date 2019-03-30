@@ -1,0 +1,22 @@
+{
+  "id": "librarianlib-utils",
+  "name": "Librarianlib - Utils",
+  "description": "The utils module of LibrarianLib",
+  "version": "${version}",
+  "side": "universal",
+  "languageAdapter": "net.fabricmc.language.kotlin.KotlinLanguageAdapter",
+  "initializers": [
+    "com.teamwizardry.librarianlib.utils.LibMod"
+  ],
+  "requires": {
+    "fabric": "*",
+    "librarianlib-core": "*",
+    "fabric-language-kotlin": {
+      "version": ">=1.3.21"
+    }
+  },
+  "mixins": {
+    "client": "librarianlib-utils.client.json",
+    "common": "librarianlib-utils.common.json"
+  }
+}
