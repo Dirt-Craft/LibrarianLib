@@ -26,8 +26,8 @@ fun fastSqrt(value: Double): Double = MathHelper.sqrt(value).toDouble()
 fun fastInverseSqrt(value: Float): Float = MathHelper.fastInverseSqrt(value.toDouble()).toFloat()
 fun fastInverseSqrt(value: Double): Double = MathHelper.fastInverseSqrt(value)
 
-fun floorInt(value: Float): Int = floor(value).toInt()
-fun floorInt(value: Double): Int = floor(value).toInt()
+fun floorToInt(value: Float): Int = floor(value).toInt()
+fun floorToInt(value: Double): Int = floor(value).toInt()
 
-fun ceilInt(value: Float): Int = ceil(value).toInt()
-fun ceilInt(value: Double): Int = ceil(value).toInt()
+fun ceilToInt(value: Float): Int = ceil(value).toInt()
+fun ceilToInt(value: Double): Int = ceil(value).toInt()

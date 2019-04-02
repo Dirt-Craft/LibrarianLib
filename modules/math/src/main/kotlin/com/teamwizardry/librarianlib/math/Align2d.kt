@@ -1,31 +1,24 @@
 package com.teamwizardry.librarianlib.math
 
-import com.flowpowered.math.vector.Vec2d
-import com.teamwizardry.librarianlib.features.helpers.vec
+import com.teamwizardry.librarianlib.math.utils.vec2d
+import com.teamwizardry.librarianlib.math.vector.Vec2
 
 /**
  * An axis in 2d
  */
-enum class Axis2d(val direction: Vec2d) {
-    X(vec(1, 0)),
-    Y(vec(0, 1))
+enum class Axis2d(val direction: Vec2) {
+    X(vec2d(1, 0)),
+    Y(vec2d(0, 1))
 }
 
 /**
  * A cardinal direction in 2d
  */
-enum class Cardinal2d(val direction: Vec2d, val axis: Axis2d, val sign: Int) {
-    POSITIVE_X(vec( 1,  0), Axis2d.X,  1),
-    POSITIVE_Y(vec( 0,  1), Axis2d.Y,  1),
-    NEGATIVE_X(vec(-1,  0), Axis2d.X, -1),
-    NEGATIVE_Y(vec( 0, -1), Axis2d.Y, -1);
-
-    object GUI {
-        @JvmStatic val UP: Cardinal2d = NEGATIVE_Y
-        @JvmStatic val DOWN: Cardinal2d = POSITIVE_Y
-        @JvmStatic val LEFT: Cardinal2d = NEGATIVE_X
-        @JvmStatic val RIGHT: Cardinal2d = POSITIVE_X
-    }
+enum class Cardinal2d(val direction: Vec2, val axis: Axis2d, val sign: Int) {
+    POSITIVE_X(vec2d( 1,  0), Axis2d.X,  1),
+    POSITIVE_Y(vec2d( 0,  1), Axis2d.Y,  1),
+    NEGATIVE_X(vec2d(-1,  0), Axis2d.X, -1),
+    NEGATIVE_Y(vec2d( 0, -1), Axis2d.Y, -1);
 }
 
 /**
@@ -71,7 +64,7 @@ enum class Align2d(val x: X, val y: Y) {
         private val map = values().associateBy { it.x to it.y }
         @JvmStatic
         operator fun get(x: Align2d.X, y: Align2d.Y): Align2d {
-            return map[x to y]!!
+            return map.getValue(x to y)
         }
     }
 }

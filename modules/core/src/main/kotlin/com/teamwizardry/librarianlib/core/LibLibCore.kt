@@ -1,5 +1,6 @@
 package com.teamwizardry.librarianlib.core
 
+import net.fabricmc.api.EnvType
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.loader.launch.knot.Knot
 

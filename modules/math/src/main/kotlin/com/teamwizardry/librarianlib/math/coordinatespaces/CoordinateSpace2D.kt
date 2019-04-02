@@ -1,5 +1,6 @@
 package com.teamwizardry.librarianlib.math.coordinatespaces
 
+/*
 import com.teamwizardry.librarianlib.features.helpers.vec
 import com.teamwizardry.librarianlib.math.Matrix3
 import com.teamwizardry.librarianlib.math.Rect2d
@@ -203,3 +204,4 @@ interface CoordinateSpace2D {
 }
 
 class UnrelatedCoordinateSpaceException(val space1: CoordinateSpace2D, val space2: CoordinateSpace2D): RuntimeException()
+*/
