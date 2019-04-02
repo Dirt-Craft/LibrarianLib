@@ -1,10 +1,12 @@
 plugins {
 	id 'fabric-loom' version '0.2.0-SNAPSHOT' apply false
+    id 'org.jetbrains.kotlin.jvm' version '1.3.21'
 }
 
 allprojects {
 	apply plugin: 'fabric-loom'
 	apply plugin: 'maven-publish'
+    apply plugin: 'org.jetbrains.kotlin.jvm'
 
 	version = rootProject.mod_version
     if(project == rootProject) {
@@ -38,6 +40,10 @@ allprojects {
 			url = "https://kotlin.bintray.com/kotlinx"
 			name = "Kotlin X"
 		}
+        maven {
+            url = 'https://jitpack.io' 
+            name = 'JitPack' 
+        }
 	}
 
 	dependencies {
@@ -45,8 +51,8 @@ allprojects {
 		minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
 		mappings "net.fabricmc:yarn:${rootProject.yarn_mappings}"
 		modCompile "net.fabricmc:fabric-loader:${rootProject.loader_version}"
-		modCompile "net.fabricmc:fabric-language-kotlin:1.3.21+"
-		compileOnly "net.fabricmc:fabric-language-kotlin:1.3.21+"
+		modCompile "net.fabricmc:fabric-language-kotlin:${rootProject.kotlin_version}+"
+		compileOnly "net.fabricmc:fabric-language-kotlin:${rootProject.kotlin_version}+"
 
 		// Fabric API. This is technically optional, but you probably want it anyway.
 		modCompile "net.fabricmc:fabric:${rootProject.fabric_version}"
@@ -71,6 +77,22 @@ allprojects {
 	tasks.withType(JavaCompile) {
 		options.encoding = "UTF-8"
 	}
+
+    compileKotlin {
+        kotlinOptions {
+            javaParameters = true
+            jvmTarget = "1.8"
+            freeCompilerArgs = ["-Xjvm-default=enable"]
+        }
+    }
+    compileTestKotlin {
+        kotlinOptions {
+            javaParameters = true
+            jvmTarget = "1.8"
+            freeCompilerArgs = ["-Xjvm-default=enable"]
+        }
+    }
+
 
 // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
 // if it is present.
@@ -103,6 +125,11 @@ allprojects {
 			// uncomment to publish to the local maven
 			// mavenLocal()
 		}
+	}
+}
+
+[rootProject, project(':core')].forEach {
+	configure(it) {
 	}
 }
 

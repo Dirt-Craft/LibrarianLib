@@ -6,7 +6,7 @@
   "side": "universal",
   "languageAdapter": "net.fabricmc.language.kotlin.KotlinLanguageAdapter",
   "initializers": [
-    "com.teamwizardry.librarianlib.utils.LibMod"
+    "com.teamwizardry.librarianlib.utils.LibLibUtils"
   ],
   "requires": {
     "fabric": "*",

@@ -1,12 +1,12 @@
 {
-  "id": "librarianlib-core",
-  "name": "Librarianlib - Core",
-  "description": "The core module of LibrarianLib",
+  "id": "librarianlib-gui",
+  "name": "Librarianlib - Gui",
+  "description": "The gui module of LibrarianLib",
   "version": "${version}",
   "side": "universal",
   "languageAdapter": "net.fabricmc.language.kotlin.KotlinLanguageAdapter",
   "initializers": [
-    "com.teamwizardry.librarianlib.core.LibLibCore"
+    "com.teamwizardry.librarianlib.gui.LibMod"
   ],
   "requires": {
     "fabric": "*",
@@ -15,7 +15,7 @@
     }
   },
   "mixins": {
-    "client": "librarianlib-core.client.json",
-    "common": "librarianlib-core.common.json"
+    "client": "librarianlib-gui.client.json",
+    "common": "librarianlib-gui.common.json"
   }
 }

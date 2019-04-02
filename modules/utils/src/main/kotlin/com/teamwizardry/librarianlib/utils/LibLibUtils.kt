@@ -1,9 +1,9 @@
 package com.teamwizardry.librarianlib.utils
 
+import com.teamwizardry.librarianlib.core.LibLibModule
 import net.fabricmc.api.ModInitializer
 
-object LibMod: ModInitializer {
+internal object LibLibUtils: LibLibModule("utils") {
     override fun onInitialize() {
-        println("LibrarianLib Utils: Initialized")
     }
 }

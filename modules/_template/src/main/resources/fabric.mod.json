@@ -1,0 +1,21 @@
+{
+  "id": "librarianlib-template",
+  "name": "Librarianlib - Template",
+  "description": "The template module of LibrarianLib",
+  "version": "${version}",
+  "side": "universal",
+  "languageAdapter": "net.fabricmc.language.kotlin.KotlinLanguageAdapter",
+  "initializers": [
+    "com.teamwizardry.librarianlib.template.LibLibTemplate"
+  ],
+  "requires": {
+    "fabric": "*",
+    "fabric-language-kotlin": {
+      "version": ">=1.3.21"
+    }
+  },
+  "mixins": {
+    "client": "librarianlib-template.client.json",
+    "common": "librarianlib-template.common.json"
+  }
+}
