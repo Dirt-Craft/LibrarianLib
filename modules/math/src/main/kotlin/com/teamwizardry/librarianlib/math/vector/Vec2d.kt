@@ -10,50 +10,24 @@ interface Vec2d: Vec2 {
     val y: Double
 
     override fun add(x: Int, y: Int): Vec2d
-
     override fun sub(x: Int, y: Int): Vec2d
-
     override fun mul(a: Int): Vec2d
     override fun mul(x: Int, y: Int): Vec2d
-
-    override operator fun div(a: Int): Vec2d
-    override fun div(x: Int, y: Int): Vec2d
-
     override fun pow(a: Int): Vec2d
-
     override fun abs(): Vec2d
     override fun negate(): Vec2d
-
     override fun min(x: Int, y: Int): Vec2d
-
     override fun max(x: Int, y: Int): Vec2d
-
-    @JvmDefault
-    override fun add(v: Vec2): Vec2d = super.add(v) as Vec2d
-
-    @JvmDefault
-    override fun mul(v: Vec2): Vec2d = super.mul(v) as Vec2d
-
-    @JvmDefault
-    override fun sub(v: Vec2): Vec2d = super.sub(v) as Vec2d
-
-    @JvmDefault
-    override operator fun div(v: Vec2): Vec2d = super.div(v) as Vec2d
-
-    @JvmDefault
-    override infix fun project(v: Vec2): Vec2d = super.project(v) as Vec2d
-
-    @JvmDefault
-    override fun min(v: Vec2): Vec2d = super.min(v) as Vec2d
-
-    @JvmDefault
-    override fun max(v: Vec2): Vec2d = super.max(v) as Vec2d
-
-    @JvmDefault
-    operator fun component1(): Double = x
-
-    @JvmDefault
-    operator fun component2(): Double = y
+    @JvmDefault override fun add(v: Vec2): Vec2d = super.add(v) as Vec2d
+    @JvmDefault override fun mul(v: Vec2): Vec2d = super.mul(v) as Vec2d
+    @JvmDefault override fun sub(v: Vec2): Vec2d = super.sub(v) as Vec2d
+    @JvmDefault override fun min(v: Vec2): Vec2d = super.min(v) as Vec2d
+    @JvmDefault override fun max(v: Vec2): Vec2d = super.max(v) as Vec2d
+    @JvmDefault @JvmSynthetic override operator fun plus(v: Vec2): Vec2d = super.plus(v) as Vec2d
+    @JvmDefault @JvmSynthetic override operator fun minus(v: Vec2): Vec2d = super.minus(v) as Vec2d
+    @JvmDefault @JvmSynthetic override operator fun times(v: Vec2): Vec2d = super.times(v) as Vec2d
+    @JvmDefault @JvmSynthetic override operator fun unaryMinus(): Vec2d = negate()
+    @JvmDefault @JvmSynthetic override operator fun times(a: Int): Vec2d = mul(a)
 
     companion object {
         private val pool = object: VectorPool<Vec2d>(2, VectorPool.BITS_2D) {
@@ -119,5 +93,7 @@ interface Vec2d: Vec2 {
         override fun max(x: Float, y: Float): Vec2d = getPooled(Math.max(this.x, x.toDouble()), Math.max(this.y, y.toDouble()))
         override fun max(x: Double, y: Double): Vec2d = getPooled(Math.max(this.x, x), Math.max(this.y, y))
 
+        override fun toDouble(): Vec2d = this
+        override fun toInt(): Vec2i = Vec2i.getPooled(xi, yi)
     }
 }

@@ -7,56 +7,24 @@ interface Vec2i: Vec2 {
     val y: Int
 
     override fun add(x: Int, y: Int): Vec2i
-
     override fun sub(x: Int, y: Int): Vec2i
-
     override fun mul(a: Int): Vec2i
     override fun mul(x: Int, y: Int): Vec2i
-
-    override operator fun div(a: Int): Vec2i
-    override fun div(x: Int, y: Int): Vec2i
-
     override fun pow(a: Int): Vec2i
-
-    override fun ceil(): Vec2i
-    override fun floor(): Vec2i
-    override fun round(): Vec2i
     override fun abs(): Vec2i
     override fun negate(): Vec2i
-
     override fun min(x: Int, y: Int): Vec2i
-
     override fun max(x: Int, y: Int): Vec2i
-
-    @JvmDefault
-    fun add(v: Vec2i): Vec2i = super.add(v) as Vec2i
-
-    @JvmDefault
-    fun mul(v: Vec2i): Vec2i = super.mul(v) as Vec2i
-
-    @JvmDefault
-    fun sub(v: Vec2i): Vec2i = super.sub(v) as Vec2i
-
-    @JvmDefault
-    operator fun div(v: Vec2i): Vec2i = super.div(v) as Vec2i
-
-    @JvmDefault
-    infix fun dot(v: Vec2i): Vec2i = super.dot(v) as Vec2i
-
-    @JvmDefault
-    infix fun project(v: Vec2i): Vec2i = super.project(v) as Vec2i
-
-    @JvmDefault
-    fun min(v: Vec2i): Vec2i = super.min(v) as Vec2i
-
-    @JvmDefault
-    fun max(v: Vec2i): Vec2i = super.max(v) as Vec2i
-
-    @JvmDefault
-    operator fun component1(): Int = x
-
-    @JvmDefault
-    operator fun component2(): Int = y
+    fun add(v: Vec2i): Vec2i = add(v.x, v.y)
+    fun mul(v: Vec2i): Vec2i = mul(v.x, v.y)
+    fun sub(v: Vec2i): Vec2i = sub(v.x, v.y)
+    fun min(v: Vec2i): Vec2i = min(v.x, v.y)
+    fun max(v: Vec2i): Vec2i = max(v.x, v.y)
+    @JvmDefault @JvmSynthetic operator fun plus(v: Vec2i): Vec2i = add(v.x, v.y)
+    @JvmDefault @JvmSynthetic operator fun minus(v: Vec2i): Vec2i = sub(v.x, v.y)
+    @JvmDefault @JvmSynthetic operator fun times(v: Vec2i): Vec2i = mul(v.x, v.y)
+    @JvmDefault @JvmSynthetic override operator fun unaryMinus(): Vec2i = negate()
+    @JvmDefault @JvmSynthetic override operator fun times(a: Int): Vec2i = mul(a)
 
     companion object {
         private val pool = object: VectorPool<Vec2i>(2, VectorPool.BITS_2D) {
@@ -96,10 +64,10 @@ interface Vec2i: Vec2 {
         override fun mul(x: Float, y: Float): Vec2d = Vec2d.getPooled(this.x * x, this.y * y)
         override fun mul(x: Double, y: Double): Vec2d = Vec2d.getPooled(this.x * x, this.y * y)
 
-        override fun div(a: Int): Vec2i = getPooled(this.x / a, this.y / a)
+        override fun div(a: Int): Vec2d = Vec2d.getPooled(this.xd / a, this.yd / a)
         override fun div(a: Float): Vec2d = Vec2d.getPooled(this.x / a, this.y / a)
         override fun div(a: Double): Vec2d = Vec2d.getPooled(this.x / a, this.y / a)
-        override fun div(x: Int, y: Int): Vec2i = getPooled(this.x / x, this.y / y)
+        override fun div(x: Int, y: Int): Vec2d = Vec2d.getPooled(this.xd / x, this.yd / y)
         override fun div(x: Float, y: Float): Vec2d = Vec2d.getPooled(this.x / x, this.y / y)
         override fun div(x: Double, y: Double): Vec2d = Vec2d.getPooled(this.x / x, this.y / y)
 
@@ -128,5 +96,8 @@ interface Vec2i: Vec2 {
         override fun max(x: Int, y: Int): Vec2i = getPooled(Math.max(this.x, x), Math.max(this.y, y))
         override fun max(x: Float, y: Float): Vec2d = Vec2d.getPooled(Math.max(this.xf, x), Math.max(this.yf, y))
         override fun max(x: Double, y: Double): Vec2d = Vec2d.getPooled(Math.max(this.xd, x), Math.max(this.yd, y))
+
+        override fun toDouble(): Vec2d = Vec2d.getPooled(xd, yd)
+        override fun toInt(): Vec2i = this
     }
 }

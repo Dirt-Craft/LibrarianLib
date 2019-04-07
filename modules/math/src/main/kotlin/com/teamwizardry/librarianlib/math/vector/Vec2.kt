@@ -23,10 +23,10 @@ interface Vec2 {
     fun mul(x: Float, y: Float): Vec2d
     fun mul(x: Double, y: Double): Vec2d
 
-    operator fun div(a: Int): Vec2
+    operator fun div(a: Int): Vec2d
     operator fun div(a: Float): Vec2d
     operator fun div(a: Double): Vec2d
-    fun div(x: Int, y: Int): Vec2
+    fun div(x: Int, y: Int): Vec2d
     fun div(x: Float, y: Float): Vec2d
     fun div(x: Double, y: Double): Vec2d
 
@@ -67,10 +67,7 @@ interface Vec2 {
     }
 
     @JvmDefault
-    operator fun div(v: Vec2): Vec2 = when(v) {
-        is Vec2i -> div(v.xi, v.yi)
-        else -> div(v.xd, v.yd)
-    }
+    operator fun div(v: Vec2): Vec2d = div(v.xd, v.yd)
 
     @JvmDefault
     infix fun dot(v: Vec2): Double = when(v) {
@@ -79,7 +76,7 @@ interface Vec2 {
     }
 
     @JvmDefault
-    infix fun project(v: Vec2): Vec2 = when(v) {
+    infix fun project(v: Vec2): Vec2d = when(v) {
         is Vec2i -> project(v.xi, v.yi)
         else -> project(v.xd, v.yd)
     }
@@ -140,8 +137,8 @@ interface Vec2 {
         return create(a * x, a * y)
     }
 
-    @JvmDefault fun toDouble(): Vec2d = create(xd, yd)
-    @JvmDefault fun toInt(): Vec2i = create(xi, yi)
+    fun toDouble(): Vec2d
+    fun toInt(): Vec2i
 
     //kotlin aliases
 
@@ -151,8 +148,8 @@ interface Vec2 {
     @JvmDefault @JvmSynthetic operator fun unaryMinus(): Vec2 = negate()
 
     @JvmDefault @JvmSynthetic operator fun times(a: Int): Vec2 = mul(a)
-    @JvmDefault @JvmSynthetic operator fun times(a: Float): Vec2 = mul(a)
-    @JvmDefault @JvmSynthetic operator fun times(a: Double): Vec2 = mul(a)
+    @JvmDefault @JvmSynthetic operator fun times(a: Float): Vec2d = mul(a)
+    @JvmDefault @JvmSynthetic operator fun times(a: Double): Vec2d = mul(a)
 
     companion object {
         @JvmStatic
