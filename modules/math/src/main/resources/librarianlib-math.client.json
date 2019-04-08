@@ -3,7 +3,6 @@
   "package": "com.teamwizardry.librarianlib.math.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "ExampleMixin"
   ],
   "injectors": {
     "defaultRequire": 1

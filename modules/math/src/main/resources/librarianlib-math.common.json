@@ -3,6 +3,8 @@
   "package": "com.teamwizardry.librarianlib.math.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "BlockPosMixin",
+    "Vec3dMixin"
   ],
   "injectors": {
     "defaultRequire": 1
