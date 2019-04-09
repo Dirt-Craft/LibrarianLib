@@ -123,7 +123,7 @@ interface Vec3 {
         val Dx = xd - x
         val Dy = yd - y
         val Dz = zd - z
-        return Dx * Dx + Dy * Dy + Dz + Dz
+        return Dx * Dx + Dy * Dy + Dz * Dz
     }
 
     @JvmDefault fun distance(v: Vec3): Double = distance(v.xd, v.yd, v.zd)
@@ -136,7 +136,7 @@ interface Vec3 {
         return Math.sqrt(Dx * Dx + Dy * Dy + Dz * Dz)
     }
 
-    @JvmDefault fun lengthSquared(): Double = xd * xd + yd * yd
+    @JvmDefault fun lengthSquared(): Double = xd * xd + yd * yd + zd * zd
     @JvmDefault fun length(): Double = Math.sqrt(lengthSquared())
 
     @JvmDefault fun normalize(): Vec3d {
