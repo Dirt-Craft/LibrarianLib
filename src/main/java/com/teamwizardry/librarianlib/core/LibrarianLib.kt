@@ -58,7 +58,13 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
  * - A simple event bus implementation [Event] [EventBus]
  * - Capability which uses the [Save] scheme to save and sync fields [CapabilityMod]
  */
-@Mod(modid = LibrarianLib.MODID, version = LibrarianLib.VERSION, name = LibrarianLib.MODNAME, dependencies = LibrarianLib.DEPENDENCIES, modLanguageAdapter = LibrarianLib.ADAPTER, acceptedMinecraftVersions = LibrarianLib.ALLOWED)
+@Mod(modid = LibrarianLib.MODID,
+        version = LibrarianLib.VERSION,
+        name = LibrarianLib.MODNAME,
+        dependencies = LibrarianLib.DEPENDENCIES,
+        modLanguageAdapter = LibrarianLib.ADAPTER,
+        acceptedMinecraftVersions = LibrarianLib.ALLOWED,
+        acceptableRemoteVersions = "*")
 object LibrarianLib {
 
     init {
